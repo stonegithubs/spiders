@@ -1,0 +1,121 @@
+{
+  "errno": 0,
+  "en_ph": {
+    "ph_am_mp3": "\/1\/0\/1b\/20\/1b20e9021b3a16b059287caddc7862f6.mp3",
+    "ph_am": "",
+    "ph_en_mp3": "\/oxford\/0\/e4\/29\/e4290b9e977e8218d00c7b2376a995d9.mp3",
+    "ph_en": "\u02c8b\u026ald\u026a\u014b",
+    "ph_other": "\u02c8bildi\u014b",
+    "ph_tts_mp3": "\/1\/b\/2\/1b20e9021b3a16b059287caddc7862f6.mp3"
+  },
+  "from": "zh",
+  "to": "en",
+  "trans": [
+    {
+      "dst": "Building",
+      "prefixWrap": 0,
+      "src": "\u5efa\u7b51\u7269",
+      "relation": [],
+      "result": [
+        [
+          0,
+          "Building",
+          [
+            "0|9"
+          ],
+          [],
+          [
+            "0|9"
+          ],
+          [
+            "0|8"
+          ]
+        ]
+      ]
+    }
+  ],
+  "dict": {
+    "symbols": [
+      {
+        "word_symbol": "ji\u00e0n zh\u00f9 w\u00f9",
+        "parts": [
+          {
+            "part_name": "",
+            "means": [
+              {
+                "has_mean": "1",
+                "means": [
+                  "\u5efa\u7b51\u7269",
+                  "\u623f\u5c4b",
+                  "\u697c\u623f",
+                  "\u5efa\u7b51\uff08\u827a\u672f\u6216\u884c\u4e1a\uff09"
+                ],
+                "text": "building",
+                "part": "n.",
+                "split": "1",
+                "word_mean": "building"
+              },
+              {
+                "has_mean": "1",
+                "means": [
+                  "\u7ed3\u6784",
+                  "\u6784\u9020",
+                  "\u5efa\u7b51\u7269",
+                  "\u4f53\u7cfb"
+                ],
+                "text": "structure",
+                "part": "n.",
+                "split": "1",
+                "word_mean": "structure"
+              },
+              {
+                "has_mean": "1",
+                "means": [
+                  "\u5927\u5efa\u7b51\u7269",
+                  "\u77e5\u8bc6\u7684\u7ed3\u6784"
+                ],
+                "text": "edifice",
+                "part": "n.",
+                "split": "1",
+                "word_mean": "edifice"
+              },
+              {
+                "has_mean": "1",
+                "means": [
+                  "\u907f\u96be\u6240",
+                  "\u906e\u853d",
+                  "\u5c45\u6240",
+                  "\uff08\u65e0\u5bb6\u53ef\u5f52\u8005\u6216\u53d7\u8650\u5f85\u8005\u7684\uff09\u6536\u5bb9\u6240"
+                ],
+                "text": "shelter",
+                "part": "n.",
+                "split": "1",
+                "word_mean": "shelter"
+              },
+              {
+                "has_mean": "1",
+                "means": [
+                  "\u5efa\u7b51\u7269"
+                ],
+                "text": "bldg.",
+                "part": "",
+                "split": "0",
+                "word_mean": "bldg."
+              }
+            ]
+          }
+        ],
+        "symbol_mp3": ""
+      }
+    ],
+    "word_name": "\u5efa\u7b51\u7269",
+    "from": "kingsoft",
+    "word_means": [
+      "building",
+      "structure",
+      "edifice",
+      "shelter",
+      "bldg."
+    ]
+  }
+}

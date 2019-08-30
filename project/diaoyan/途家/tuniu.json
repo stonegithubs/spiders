@@ -1,0 +1,1401 @@
+{
+  'success': True,
+  'data': {
+    'isRecommend': None,
+    'list': [
+      {
+        'id': 414421,
+        'url': '/detail/414421',
+        'snapshot': 'http://m4.tuniucdn.com/filebroker/cdn/res/80/79/8079ccdab1a626a8a723839f801d124e_w450_h300_c1_t0.jpg',
+        'type': 'blue-medal',
+        'name': '北京都季商旅酒店',
+        'level': 6,
+        'levelInfo': {
+          'id': '3/6',
+          'name': '三星级/舒适型',
+          'sort': 5000,
+          'title': '途牛用户评定为舒适型酒店',
+          'class': 'hotel_types',
+          'starCount': 'three',
+          'n': 3
+        },
+        'address': '南河沿大街C座和D座',
+        'nearestHotLandmark': '长安街向南河沿大街北行100米',
+        'surroundingLandmarks': [
+          {
+            'name': '天安门、王府井地区',
+            'code': 31
+          }
+        ],
+        'addressInfo': '南河沿大街C座和D座，近长安街向南河沿大街北行100米。【天安门、王府井地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.407129',
+          'lat': '39.911228'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'change-wash': 'change-wash',
+          'conference-room': 'conference-room',
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': True,
+        'remarkScore': 4.6,
+        'remarkCount': 408,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.4'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.7'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.6'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.6'
+          }
+        ],
+        'startPrice': 481,
+        'prPic': '/ajax/Spic?pr=s1aYvr4qJkpPDV8LrXZYsw',
+        'prPicSmall': '/ajax/Spic?pr=s1aYvr4qJkpPDV8LrXZYsw&size=1',
+        'decorateYear': '2016',
+        'orderTime': '13小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 530268,
+        'url': '/detail/530268',
+        'snapshot': 'http://m3.tuniucdn.com/filebroker/cdn/res/ba/ae/baaea429375882aed9ba34fb84ae4313_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '北京帅府天苑酒店',
+        'level': 7,
+        'levelInfo': {
+          'id': '4/7',
+          'name': '二星级/经济型',
+          'sort': 4000,
+          'title': '途牛用户评定为经济型酒店',
+          'class': 'hotel_types',
+          'starCount': 'two',
+          'n': 2
+        },
+        'address': '王府井大街帅府园胡同20号北楼',
+        'nearestHotLandmark': '王府井大街',
+        'surroundingLandmarks': [
+          {
+            'name': '天安门、王府井地区',
+            'code': 31
+          }
+        ],
+        'addressInfo': '王府井大街帅府园胡同20号北楼，近王府井大街。【天安门、王府井地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.412153',
+          'lat': '39.911815'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'change-wash': 'change-wash',
+          'conference-room': 'conference-room',
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': True,
+        'remarkScore': 4.4,
+        'remarkCount': 370,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.2'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.6'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.4'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.4'
+          }
+        ],
+        'startPrice': 394,
+        'prPic': '/ajax/Spic?pr=3UjGGL-8asYANe1GJD_3_g',
+        'prPicSmall': '/ajax/Spic?pr=3UjGGL-8asYANe1GJD_3_g&size=1',
+        'decorateYear': '2019',
+        'orderTime': '13小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 5868368,
+        'url': '/detail/5868368',
+        'snapshot': 'http://m.tuniucdn.com/fb2/t1/G2/M00/C7/45/Cii-TFkmzDeIcEliAAFdrz9hwqgAAKXgAO8iXkAAV3H580_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '古北水镇大酒店',
+        'level': 5,
+        'levelInfo': {
+          'id': '1/5',
+          'name': '五星级/豪华型',
+          'sort': 9000,
+          'title': '途牛用户评定为豪华型酒店',
+          'class': 'hotel_types',
+          'starCount': 'five',
+          'n': 5
+        },
+        'address': '密云古北口镇司马台村',
+        'nearestHotLandmark': '古北水镇售票处',
+        'surroundingLandmarks': [
+          {
+            'name': '密云风景区',
+            'code': 894
+          }
+        ],
+        'addressInfo': '密云古北口镇司马台村，近古北水镇售票处。【密云风景区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '117.269575',
+          'lat': '40.644067'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'change-wash': 'change-wash',
+          'swimming-pool': 'swimming-pool',
+          'gym': 'gym',
+          'conference-room': 'conference-room'
+        },
+        'preferred': True,
+        'remarkScore': 4.7,
+        'remarkCount': 456,
+        'remarkAspect': [
+          {
+            'name': '服务质量',
+            'score': '4.6'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.8'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.8'
+          },
+          {
+            'name': '设备设施',
+            'score': '4.7'
+          }
+        ],
+        'startPrice': 1046,
+        'prPic': '/ajax/Spic?pr=pYqbS3dbU5z0Gq6l8moskw',
+        'prPicSmall': '/ajax/Spic?pr=pYqbS3dbU5z0Gq6l8moskw&size=1',
+        'decorateYear': '2014',
+        'orderTime': '13小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 413839,
+        'url': '/detail/413839',
+        'snapshot': 'http://m2.tuniucdn.com/filebroker/cdn/res/15/0f/150fdddd0182e793af38543bb225ab28_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '锦江之星(北京南站店)',
+        'level': 7,
+        'levelInfo': {
+          'id': '4/7',
+          'name': '二星级/经济型',
+          'sort': 4000,
+          'title': '途牛用户评定为经济型酒店',
+          'class': 'hotel_types',
+          'starCount': 'two',
+          'n': 2
+        },
+        'address': '永定门东街9号',
+        'nearestHotLandmark': '永定门桥',
+        'surroundingLandmarks': [
+          {
+            'name': '前门、崇文门商贸区',
+            'code': 32
+          }
+        ],
+        'addressInfo': '永定门东街9号，近永定门桥。【前门、崇文门商贸区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.405211',
+          'lat': '39.873161'
+        },
+        'facilities': {
+          'wifi': 'wifi',
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'change-wash': 'change-wash',
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': True,
+        'remarkScore': 4.2,
+        'remarkCount': 231,
+        'remarkAspect': [
+          {
+            'name': '位置交通',
+            'score': '4.2'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.2'
+          },
+          {
+            'name': '设备设施',
+            'score': '4.0'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.2'
+          }
+        ],
+        'startPrice': 307,
+        'prPic': '/ajax/Spic?pr=ibuz8Kq-WC2uceerpVFo0A',
+        'prPicSmall': '/ajax/Spic?pr=ibuz8Kq-WC2uceerpVFo0A&size=1',
+        'decorateYear': '2015',
+        'orderTime': '13小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 396407,
+        'url': '/detail/396407',
+        'snapshot': 'http://m.tuniucdn.com/fb2/t1/G2/M00/C6/E9/Cii-T1kmnzWIILjKAAF_HzDsG2kAAKXAgMix1IAAX83973_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '北京广电国际酒店',
+        'level': 8,
+        'levelInfo': {
+          'id': '2/8',
+          'name': '四星级/高档型',
+          'sort': 7000,
+          'title': '途牛用户评定为高档型酒店',
+          'class': 'hotel_types',
+          'starCount': 'four',
+          'n': 4
+        },
+        'address': '西城西便门外大街2号',
+        'nearestHotLandmark': '国家广播电影电视总局',
+        'surroundingLandmarks': [
+          {
+            'name': '西单、金融街地区',
+            'code': 41
+          }
+        ],
+        'addressInfo': '西城西便门外大街2号，近国家广播电影电视总局。【西单、金融街地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.355019',
+          'lat': '39.903812'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'change-wash': 'change-wash',
+          'gym': 'gym',
+          'conference-room': 'conference-room',
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': True,
+        'remarkScore': 4.6,
+        'remarkCount': 386,
+        'remarkAspect': [
+          {
+            'name': '服务质量',
+            'score': '4.6'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.7'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.7'
+          },
+          {
+            'name': '设备设施',
+            'score': '4.6'
+          }
+        ],
+        'startPrice': 693,
+        'prPic': '/ajax/Spic?pr=NL2eyVhf7EaAOIffhDj2Og',
+        'prPicSmall': '/ajax/Spic?pr=NL2eyVhf7EaAOIffhDj2Og&size=1',
+        'decorateYear': '2017',
+        'orderTime': '13小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 396055,
+        'url': '/detail/396055',
+        'snapshot': 'http://m.tuniucdn.com/filebroker/cdn/res/22/bc/22bc4984daebd9604833c6a98e82862b_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '北京远通维景国际大酒店',
+        'level': 5,
+        'levelInfo': {
+          'id': '1/5',
+          'name': '五星级/豪华型',
+          'sort': 9000,
+          'title': '途牛用户评定为豪华型酒店',
+          'class': 'hotel_types',
+          'starCount': 'five',
+          'n': 5
+        },
+        'address': '西城平安里西大街30号',
+        'nearestHotLandmark': '官园桥',
+        'surroundingLandmarks': [
+          {
+            'name': '西单、金融街地区',
+            'code': 41
+          }
+        ],
+        'addressInfo': '西城平安里西大街30号，近官园桥。【西单、金融街地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.356568',
+          'lat': '39.931449'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'pickup': 'pickup',
+          'change-wash': 'change-wash',
+          'gym': 'gym',
+          'conference-room': 'conference-room',
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': True,
+        'remarkScore': 4.6,
+        'remarkCount': 475,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.6'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.7'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.7'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.7'
+          }
+        ],
+        'startPrice': 942,
+        'prPic': '/ajax/Spic?pr=INU7OU72H5ohosH1ySBfYw',
+        'prPicSmall': '/ajax/Spic?pr=INU7OU72H5ohosH1ySBfYw&size=1',
+        'decorateYear': '2016',
+        'orderTime': '1天',
+        'holidayUrl': ''
+      },
+      {
+        'id': 205960650,
+        'url': '/detail/205960650',
+        'snapshot': 'http://m.tuniucdn.com/fb2/t1/G5/M00/C2/30/Cii-slzqiFGII-80AAEb2SebHQUAAWIbQKogKsAARvx198_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '速8酒店(北京前门大栅栏店)',
+        'level': 7,
+        'levelInfo': {
+          'id': '4/7',
+          'name': '二星级/经济型',
+          'sort': 4000,
+          'title': '途牛用户评定为经济型酒店',
+          'class': 'hotel_types',
+          'starCount': 'two',
+          'n': 2
+        },
+        'address': '前门大栅栏西街56号',
+        'nearestHotLandmark': '朱家胡同',
+        'surroundingLandmarks': [
+          {
+            'name': '前门、崇文门商贸区',
+            'code': 32
+          }
+        ],
+        'addressInfo': '前门大栅栏西街56号，近朱家胡同。【前门、崇文门商贸区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.392844',
+          'lat': '39.89437'
+        },
+        'facilities': {
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': True,
+        'remarkScore': 4.1,
+        'remarkCount': 188,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '3.9'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.3'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.1'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.0'
+          }
+        ],
+        'startPrice': 504,
+        'prPic': '/ajax/Spic?pr=TzxMkstPcLdP-sQ4oTxhiA',
+        'prPicSmall': '/ajax/Spic?pr=TzxMkstPcLdP-sQ4oTxhiA&size=1',
+        'decorateYear': '',
+        'orderTime': '11小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 633786,
+        'url': '/detail/633786',
+        'snapshot': 'http://m4.tuniucdn.com/filebroker/cdn/res/e4/8d/e48db2d9add09b301627da80ca114a80_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '北京府右街宾馆',
+        'level': 3,
+        'levelInfo': {
+          'id': '3/6',
+          'name': '三星级/舒适型',
+          'sort': 6000,
+          'title': '国家旅游局评定为三星级',
+          'class': 'hotel_stars',
+          'starCount': 'three',
+          'n': 3
+        },
+        'address': '太仆寺街21号',
+        'nearestHotLandmark': '西单商场后面',
+        'surroundingLandmarks': [
+          {
+            'name': '西单、金融街地区',
+            'code': 41
+          }
+        ],
+        'addressInfo': '太仆寺街21号，近西单商场后面。【西单、金融街地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.380363',
+          'lat': '39.912506'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'conference-room': 'conference-room',
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': True,
+        'remarkScore': 4.6,
+        'remarkCount': 349,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.5'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.6'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.6'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.6'
+          }
+        ],
+        'startPrice': 411,
+        'prPic': '/ajax/Spic?pr=3du-YcozuiXMImt_ucTlRQ',
+        'prPicSmall': '/ajax/Spic?pr=3du-YcozuiXMImt_ucTlRQ&size=1',
+        'decorateYear': '',
+        'orderTime': '8小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 395994,
+        'url': '/detail/395994',
+        'snapshot': 'http://m.tuniucdn.com/filebroker/cdn/res/f0/cb/f0cb1efb7766fb8d8847e64b7cb2df50_w450_h300_c1_t0.jpg',
+        'type': 'gold-medal',
+        'name': '北京贵都大酒店',
+        'level': 8,
+        'levelInfo': {
+          'id': '2/8',
+          'name': '四星级/高档型',
+          'sort': 7000,
+          'title': '途牛用户评定为高档型酒店',
+          'class': 'hotel_types',
+          'starCount': 'four',
+          'n': 4
+        },
+        'address': '西城广安门内大街217号',
+        'nearestHotLandmark': '宣武医院、北京南站',
+        'surroundingLandmarks': [
+          {
+            'name': '西单、金融街地区',
+            'code': 41
+          },
+          {
+            'name': '北京西站、丽泽商务区',
+            'code': 136
+          }
+        ],
+        'addressInfo': '西城广安门内大街217号，近宣武医院、北京南站。【西单、金融街地区、北京西站、丽泽商务区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.367505',
+          'lat': '39.889846'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'pickup': 'pickup',
+          'change-wash': 'change-wash',
+          'gym': 'gym',
+          'conference-room': 'conference-room'
+        },
+        'preferred': True,
+        'remarkScore': 4.8,
+        'remarkCount': 451,
+        'remarkAspect': [
+          {
+            'name': '位置交通',
+            'score': '4.7'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.8'
+          },
+          {
+            'name': '设备设施',
+            'score': '4.8'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.8'
+          }
+        ],
+        'startPrice': 879,
+        'prPic': '/ajax/Spic?pr=HeZsnr1tRXQt3k-s4GZPiQ',
+        'prPicSmall': '/ajax/Spic?pr=HeZsnr1tRXQt3k-s4GZPiQ&size=1',
+        'decorateYear': '2016',
+        'orderTime': '12小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 394516,
+        'url': '/detail/394516',
+        'snapshot': 'http://m.tuniucdn.com/filebroker/cdn/res/d1/f1/d1f11c5e62eaffe01e59c61466ac4f98_w450_h300_c1_t0.jpg',
+        'type': 'gold-medal',
+        'name': '北京饭店',
+        'level': 1,
+        'levelInfo': {
+          'id': '1/5',
+          'name': '五星级/豪华型',
+          'sort': 10000,
+          'title': '国家旅游局评定为五星级',
+          'class': 'hotel_stars',
+          'starCount': 'five',
+          'n': 5
+        },
+        'address': '东城东长安街33号',
+        'nearestHotLandmark': '王府井大街',
+        'surroundingLandmarks': [
+          {
+            'name': '天安门、王府井地区',
+            'code': 31
+          },
+          {
+            'name': '前门、崇文门商贸区',
+            'code': 32
+          }
+        ],
+        'addressInfo': '东城东长安街33号，近王府井大街。【天安门、王府井地区、前门、崇文门商贸区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.410145',
+          'lat': '39.909061'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'pickup': 'pickup',
+          'change-wash': 'change-wash',
+          'swimming-pool': 'swimming-pool',
+          'gym': 'gym'
+        },
+        'preferred': False,
+        'remarkScore': 4.5,
+        'remarkCount': 669,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.2'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.8'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.5'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.5'
+          }
+        ],
+        'startPrice': 1380,
+        'prPic': '/ajax/Spic?pr=1TkhlxjsfNGcNuYdTd_Tbw',
+        'prPicSmall': '/ajax/Spic?pr=1TkhlxjsfNGcNuYdTd_Tbw&size=1',
+        'decorateYear': '2008',
+        'orderTime': '12小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 395081,
+        'url': '/detail/395081',
+        'snapshot': 'http://m.tuniucdn.com/fb2/t1/G1/M00/41/74/Cii9EFkzP4KIMz7nAAFNx09y9wIAALhjgEaIGQAAU3f307_w450_h300_c1_t0.jpg',
+        'type': 'gold-medal',
+        'name': '北京新世纪日航饭店',
+        'level': 1,
+        'levelInfo': {
+          'id': '1/5',
+          'name': '五星级/豪华型',
+          'sort': 10000,
+          'title': '国家旅游局评定为五星级',
+          'class': 'hotel_stars',
+          'starCount': 'five',
+          'n': 5
+        },
+        'address': '海淀首体南路6号',
+        'nearestHotLandmark': '北京首都体育馆对面',
+        'surroundingLandmarks': [
+          {
+            'name': '西直门及北京展览馆地区',
+            'code': 40
+          }
+        ],
+        'addressInfo': '海淀首体南路6号，近北京首都体育馆对面。【西直门及北京展览馆地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.327933',
+          'lat': '39.93753'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'pickup': 'pickup',
+          'change-wash': 'change-wash',
+          'swimming-pool': 'swimming-pool',
+          'gym': 'gym'
+        },
+        'preferred': False,
+        'remarkScore': 4.4,
+        'remarkCount': 627,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.2'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.4'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.4'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.4'
+          }
+        ],
+        'startPrice': 623,
+        'prPic': '/ajax/Spic?pr=unOPmCfE1OI-xH_pzKLCCQ',
+        'prPicSmall': '/ajax/Spic?pr=unOPmCfE1OI-xH_pzKLCCQ&size=1',
+        'decorateYear': '2013',
+        'orderTime': '18小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 540562,
+        'url': '/detail/540562',
+        'snapshot': 'http://m.tuniucdn.com/fb2/t1/G2/M00/33/40/Cii-T1i9A1OIT7gJAADqoyY-0-oAAIHXAN6Yo0AAOq7532_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '北京贝尔特酒店',
+        'level': 8,
+        'levelInfo': {
+          'id': '2/8',
+          'name': '四星级/高档型',
+          'sort': 7000,
+          'title': '途牛用户评定为高档型酒店',
+          'class': 'hotel_types',
+          'starCount': 'four',
+          'n': 4
+        },
+        'address': '崇文门外大街3-18号',
+        'nearestHotLandmark': '崇文门新世界商场后面',
+        'surroundingLandmarks': [
+          {
+            'name': '前门、崇文门商贸区',
+            'code': 32
+          }
+        ],
+        'addressInfo': '崇文门外大街3-18号，近崇文门新世界商场后面。【前门、崇文门商贸区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.41735',
+          'lat': '39.899183'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'change-wash': 'change-wash',
+          'gym': 'gym',
+          'conference-room': 'conference-room',
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': False,
+        'remarkScore': 4.5,
+        'remarkCount': 582,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.3'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.7'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.5'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.5'
+          }
+        ],
+        'startPrice': 738,
+        'prPic': '/ajax/Spic?pr=jWLjgNPutyMrcRpdxnXbEg',
+        'prPicSmall': '/ajax/Spic?pr=jWLjgNPutyMrcRpdxnXbEg&size=1',
+        'decorateYear': '2012',
+        'orderTime': '13小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 396017,
+        'url': '/detail/396017',
+        'snapshot': 'http://m.tuniucdn.com/fb2/t1/G1/M00/99/DC/Cii9EVi9FuqISs1nAANsAPw4xXwAAIbmgNwX5EAA2wY649_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '北京西苑饭店',
+        'level': 1,
+        'levelInfo': {
+          'id': '1/5',
+          'name': '五星级/豪华型',
+          'sort': 10000,
+          'title': '国家旅游局评定为五星级',
+          'class': 'hotel_stars',
+          'starCount': 'five',
+          'n': 5
+        },
+        'address': '海淀三里河路1号',
+        'nearestHotLandmark': '北京首都体育馆和北京动物园',
+        'surroundingLandmarks': [
+          {
+            'name': '西直门及北京展览馆地区',
+            'code': 40
+          }
+        ],
+        'addressInfo': '海淀三里河路1号，近北京首都体育馆和北京动物园。【西直门及北京展览馆地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.332004',
+          'lat': '39.937425'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'pickup': 'pickup',
+          'change-wash': 'change-wash',
+          'swimming-pool': 'swimming-pool',
+          'gym': 'gym'
+        },
+        'preferred': False,
+        'remarkScore': 4.4,
+        'remarkCount': 572,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.3'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.6'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.5'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.4'
+          }
+        ],
+        'startPrice': 679,
+        'prPic': '/ajax/Spic?pr=G01VD4SNQiGJfBvjx4MZZQ',
+        'prPicSmall': '/ajax/Spic?pr=G01VD4SNQiGJfBvjx4MZZQ&size=1',
+        'decorateYear': '2013',
+        'orderTime': '',
+        'holidayUrl': ''
+      },
+      {
+        'id': 396400,
+        'url': '/detail/396400',
+        'snapshot': 'http://m.tuniucdn.com/fb2/t1/G2/M00/E3/BF/Cii-TFkzbKOISpQdAAFscDmNx08AALKpgJ6DWIAAWyI217_w450_h300_c1_t0.jpg',
+        'type': 'silver-medal',
+        'name': '北京乾元酒店',
+        'level': 5,
+        'levelInfo': {
+          'id': '1/5',
+          'name': '五星级/豪华型',
+          'sort': 9000,
+          'title': '途牛用户评定为豪华型酒店',
+          'class': 'hotel_types',
+          'starCount': 'five',
+          'n': 5
+        },
+        'address': '东城东直门内大街19号',
+        'nearestHotLandmark': '建设部综合勘察研究设计院',
+        'surroundingLandmarks': [
+          {
+            'name': '东直门、工体、雍和宫地区',
+            'code': 133
+          }
+        ],
+        'addressInfo': '东城东直门内大街19号，近建设部综合勘察研究设计院。【东直门、工体、雍和宫地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.42515',
+          'lat': '39.941528'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'change-wash': 'change-wash',
+          'gym': 'gym',
+          'conference-room': 'conference-room',
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': False,
+        'remarkScore': 4.7,
+        'remarkCount': 487,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.6'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.7'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.7'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.7'
+          }
+        ],
+        'startPrice': 773,
+        'prPic': '/ajax/Spic?pr=FAf3wwsnCYv_2ZX6J8zKQw',
+        'prPicSmall': '/ajax/Spic?pr=FAf3wwsnCYv_2ZX6J8zKQw&size=1',
+        'decorateYear': '2014',
+        'orderTime': '12小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 394500,
+        'url': '/detail/394500',
+        'snapshot': 'http://m.tuniucdn.com/fb2/t1/G2/M00/E3/54/Cii-TFkzPsOIC4gnAAJJeleDwv4AALJ8wMKkm8AAkmS844_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '北京国际饭店',
+        'level': 1,
+        'levelInfo': {
+          'id': '1/5',
+          'name': '五星级/豪华型',
+          'sort': 10000,
+          'title': '国家旅游局评定为五星级',
+          'class': 'hotel_stars',
+          'starCount': 'five',
+          'n': 5
+        },
+        'address': '建国门内大街9号',
+        'nearestHotLandmark': '北京火车站正对面',
+        'surroundingLandmarks': [
+          {
+            'name': '北京站、建国门地区',
+            'code': 135
+          }
+        ],
+        'addressInfo': '建国门内大街9号，近北京火车站正对面。【北京站、建国门地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.428322',
+          'lat': '39.909732'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'pickup': 'pickup',
+          'change-wash': 'change-wash',
+          'swimming-pool': 'swimming-pool',
+          'gym': 'gym'
+        },
+        'preferred': False,
+        'remarkScore': 4.5,
+        'remarkCount': 527,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.3'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.7'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.6'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.6'
+          }
+        ],
+        'startPrice': 880,
+        'prPic': '/ajax/Spic?pr=dFk-cj6xY6hv0QV5675fqg',
+        'prPicSmall': '/ajax/Spic?pr=dFk-cj6xY6hv0QV5675fqg&size=1',
+        'decorateYear': '2012',
+        'orderTime': '1天',
+        'holidayUrl': ''
+      },
+      {
+        'id': 394473,
+        'url': '/detail/394473',
+        'snapshot': 'http://m.tuniucdn.com/fb2/t1/G1/M00/25/B0/Cii9EFkmmkyIX-tVAAMhw4yvclQAAKvXAP2UX4AAyHb233_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '北京丽晶酒店',
+        'level': 1,
+        'levelInfo': {
+          'id': '1/5',
+          'name': '五星级/豪华型',
+          'sort': 10000,
+          'title': '国家旅游局评定为五星级',
+          'class': 'hotel_stars',
+          'starCount': 'five',
+          'n': 5
+        },
+        'address': '东城金宝街99号',
+        'nearestHotLandmark': '北京金宝大厦',
+        'surroundingLandmarks': [
+          {
+            'name': '天安门、王府井地区',
+            'code': 31
+          }
+        ],
+        'addressInfo': '东城金宝街99号，近北京金宝大厦。【天安门、王府井地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.418801',
+          'lat': '39.916359'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'pickup': 'pickup',
+          'change-wash': 'change-wash',
+          'swimming-pool': 'swimming-pool',
+          'gym': 'gym'
+        },
+        'preferred': False,
+        'remarkScore': 4.7,
+        'remarkCount': 493,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.6'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.8'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.7'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.7'
+          }
+        ],
+        'startPrice': 1484,
+        'prPic': '/ajax/Spic?pr=xuyU8KGnfu3_oXqpr1BcOw',
+        'prPicSmall': '/ajax/Spic?pr=xuyU8KGnfu3_oXqpr1BcOw&size=1',
+        'decorateYear': '2006',
+        'orderTime': '12小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 434978,
+        'url': '/detail/434978',
+        'snapshot': 'http://m3.tuniucdn.com/filebroker/cdn/res/6d/0b/6d0b01e34cb2cd9d30c2201945a82b83_w450_h300_c1_t0.jpg',
+        'type': 'strategic-cooperation',
+        'name': '飘HOME连锁酒店(北京前门大栅栏店)',
+        'level': 7,
+        'levelInfo': {
+          'id': '4/7',
+          'name': '二星级/经济型',
+          'sort': 4000,
+          'title': '途牛用户评定为经济型酒店',
+          'class': 'hotel_types',
+          'starCount': 'two',
+          'n': 2
+        },
+        'address': '珠市口西大街韩家胡同17号',
+        'nearestHotLandmark': '地铁7号线虎坊桥站B出口东300米',
+        'surroundingLandmarks': [
+          {
+            'name': '天安门、王府井地区',
+            'code': 31
+          },
+          {
+            'name': '前门、崇文门商贸区',
+            'code': 32
+          }
+        ],
+        'addressInfo': '珠市口西大街韩家胡同17号，近地铁7号线虎坊桥站B出口东300米。【天安门、王府井地区、前门、崇文门商贸区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.3888',
+          'lat': '39.891683'
+        },
+        'facilities': {
+          'change-wash': 'change-wash',
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': False,
+        'remarkScore': 4.6,
+        'remarkCount': 495,
+        'remarkAspect': [
+          {
+            'name': '位置交通',
+            'score': '4.5'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.6'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.6'
+          },
+          {
+            'name': '设备设施',
+            'score': '4.5'
+          }
+        ],
+        'startPrice': 521,
+        'prPic': '/ajax/Spic?pr=2faa3qK_FvHiQYFC0IWiCg',
+        'prPicSmall': '/ajax/Spic?pr=2faa3qK_FvHiQYFC0IWiCg&size=1',
+        'decorateYear': '2016',
+        'orderTime': '23小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 395815,
+        'url': '/detail/395815',
+        'snapshot': 'http://m.tuniucdn.com/fb2/t1/G4/M00/C3/EA/Cii_J10tzpOIKjyqAAFFHp9juhQAAH-FQIr9xkAAUU2499_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '北京明豪华美达酒店(原明豪戴斯酒店)',
+        'level': 8,
+        'levelInfo': {
+          'id': '2/8',
+          'name': '四星级/高档型',
+          'sort': 7000,
+          'title': '途牛用户评定为高档型酒店',
+          'class': 'hotel_types',
+          'starCount': 'four',
+          'n': 4
+        },
+        'address': '天竺镇府前一街13号',
+        'nearestHotLandmark': '天竺大街',
+        'surroundingLandmarks': [
+          {
+            'name': '首都机场、新国展地区',
+            'code': 44
+          }
+        ],
+        'addressInfo': '天竺镇府前一街13号，近天竺大街。【首都机场、新国展地区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.580678',
+          'lat': '40.062832'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'pickup': 'pickup',
+          'change-wash': 'change-wash',
+          'gym': 'gym',
+          'conference-room': 'conference-room'
+        },
+        'preferred': False,
+        'remarkScore': 4.6,
+        'remarkCount': 493,
+        'remarkAspect': [
+          {
+            'name': '位置交通',
+            'score': '4.5'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.7'
+          },
+          {
+            'name': '设备设施',
+            'score': '4.6'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.6'
+          }
+        ],
+        'startPrice': 404,
+        'prPic': '/ajax/Spic?pr=GpPspMwf--_ab6ckW50QxA',
+        'prPicSmall': '/ajax/Spic?pr=GpPspMwf--_ab6ckW50QxA&size=1',
+        'decorateYear': '2017',
+        'orderTime': '13小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 396229,
+        'url': '/detail/396229',
+        'snapshot': 'http://m.tuniucdn.com/filebroker/cdn/res/ab/55/ab55f5e2b739105473a2fa09670fd61c_w450_h300_c1_t0.jpg',
+        'type': None,
+        'name': '北京前门建国饭店',
+        'level': 2,
+        'levelInfo': {
+          'id': '2/8',
+          'name': '四星级/高档型',
+          'sort': 8000,
+          'title': '国家旅游局评定为四星级',
+          'class': 'hotel_stars',
+          'starCount': 'four',
+          'n': 4
+        },
+        'address': '永安路175号',
+        'nearestHotLandmark': '虎坊桥',
+        'surroundingLandmarks': [
+          {
+            'name': '前门、崇文门商贸区',
+            'code': 32
+          }
+        ],
+        'addressInfo': '永安路175号，近虎坊桥。【前门、崇文门商贸区】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.385579',
+          'lat': '39.886655'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'pickup': 'pickup',
+          'change-wash': 'change-wash',
+          'gym': 'gym',
+          'conference-room': 'conference-room'
+        },
+        'preferred': False,
+        'remarkScore': 4.5,
+        'remarkCount': 510,
+        'remarkAspect': [
+          {
+            'name': '设备设施',
+            'score': '4.3'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.5'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.5'
+          },
+          {
+            'name': '服务质量',
+            'score': '4.5'
+          }
+        ],
+        'startPrice': 631,
+        'prPic': '/ajax/Spic?pr=MpMYMtfg7H7cn1RjKlWg1w',
+        'prPicSmall': '/ajax/Spic?pr=MpMYMtfg7H7cn1RjKlWg1w&size=1',
+        'decorateYear': '2012',
+        'orderTime': '20小时',
+        'holidayUrl': ''
+      },
+      {
+        'id': 395985,
+        'url': '/detail/395985',
+        'snapshot': 'http://m.tuniucdn.com/filebroker/cdn/res/9a/e0/9ae011a7fcd06b0861a9a22f198c8de8_w450_h300_c1_t0.jpg',
+        'type': 'blue-medal',
+        'name': '北京京仪大酒店',
+        'level': 8,
+        'levelInfo': {
+          'id': '2/8',
+          'name': '四星级/高档型',
+          'sort': 7000,
+          'title': '途牛用户评定为高档型酒店',
+          'class': 'hotel_types',
+          'starCount': 'four',
+          'n': 4
+        },
+        'address': '大钟寺东路9号',
+        'nearestHotLandmark': '太阳园',
+        'surroundingLandmarks': [
+          {
+            'name': '中关村、五道口',
+            'code': 651
+          }
+        ],
+        'addressInfo': '大钟寺东路9号，近太阳园。【中关村、五道口】',
+        'distance': '0.000',
+        'poi': None,
+        'pos': {
+          'lng': '116.337544',
+          'lat': '39.972099'
+        },
+        'facilities': {
+          'restaurant': 'restaurant',
+          'parking': 'parking',
+          'pickup': 'pickup',
+          'change-wash': 'change-wash',
+          'conference-room': 'conference-room',
+          'allDay-of-hot-water': 'allDay-of-hot-water'
+        },
+        'preferred': False,
+        'remarkScore': 4.8,
+        'remarkCount': 464,
+        'remarkAspect': [
+          {
+            'name': '服务质量',
+            'score': '4.8'
+          },
+          {
+            'name': '位置交通',
+            'score': '4.7'
+          },
+          {
+            'name': '设备设施',
+            'score': '4.7'
+          },
+          {
+            'name': '环境卫生',
+            'score': '4.8'
+          }
+        ],
+        'startPrice': 654,
+        'prPic': '/ajax/Spic?pr=Wqc4HXOrW2KQoLHkDhjuKQ',
+        'prPicSmall': '/ajax/Spic?pr=Wqc4HXOrW2KQoLHkDhjuKQ&size=1',
+        'decorateYear': '',
+        'orderTime': '1天',
+        'holidayUrl': ''
+      }
+    ],
+    'total': 40984,
+    'page': {
+      'current': 2,
+      'total': 2050
+    },
+    'sort': {
+      'chosen': {
+        'first': {
+          'id': 'recommend'
+        },
+        'second': '',
+        'third': 'cash-back-before'
+      },
+      'first': [
+        {
+          'id': 'recommend',
+          'name': '推荐'
+        },
+        {
+          'id': 'satisfaction',
+          'name': '口碑'
+        },
+        {
+          'id': 'price',
+          'name': '价格',
+          'type': 'asc-desc'
+        },
+        {
+          'id': 'decorate',
+          'name': '最近装修'
+        },
+        {
+          'id': 'distance',
+          'name': '距离'
+        }
+      ],
+      'second': [
+        {
+          'id': 'promotion',
+          'name': '促销'
+        },
+        {
+          'id': 'instant-confirmation',
+          'name': '立即确认'
+        }
+      ],
+      'third': [
+        {
+          'id': 'cash-back-before',
+          'name': '返前价'
+        },
+        {
+          'id': 'cash-back-after',
+          'name': '返后价'
+        }
+      ]
+    },
+    'suggest': None
+  }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$USER_HOME$/myspider/.idea/myspider.iml" filepath="$USER_HOME$/myspider/.idea/myspider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pro.iml" filepath="$PROJECT_DIR$/.idea/pro.iml" />
+      <module fileurl="file://$USER_HOME$/pro1/.idea/pro1.iml" filepath="$USER_HOME$/pro1/.idea/pro1.iml" />
+      <module fileurl="file://$USER_HOME$/pro2/.idea/pro2.iml" filepath="$USER_HOME$/pro2/.idea/pro2.iml" />
+      <module fileurl="file://$USER_HOME$/pro3/.idea/pro3.iml" filepath="$USER_HOME$/pro3/.idea/pro3.iml" />
+      <module fileurl="file://$USER_HOME$/pro4/.idea/pro4.iml" filepath="$USER_HOME$/pro4/.idea/pro4.iml" />
+      <module fileurl="file://$USER_HOME$/spider_project/.idea/spider_project.iml" filepath="$USER_HOME$/spider_project/.idea/spider_project.iml" />
+    </modules>
+  </component>
+</project>

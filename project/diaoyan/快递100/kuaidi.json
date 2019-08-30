@@ -1,0 +1,56 @@
+{
+  "msg": "\u8be5\u5355\u53f7\u6682\u65e0\u7269\u6d41\u8fdb\u5c55\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff0c\u6216\u68c0\u67e5\u516c\u53f8\u548c\u5355\u53f7\u662f\u5426\u6709\u8bef\u3002",
+  "status": "-3",
+  "error_code": "13",
+  "data": {
+    "info": {
+      "status": "0",
+      "msg": "\u8be5\u5355\u53f7\u6682\u65e0\u7269\u6d41\u8fdb\u5c55\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff0c\u6216\u68c0\u67e5\u516c\u53f8\u548c\u5355\u53f7\u662f\u5426\u6709\u8bef\u3002",
+      "_source_com": ""
+    },
+    "com": "yunda",
+    "company": {
+      "url": "http:\/\/www.yundaex.com?from=openv",
+      "fullname": "\u97f5\u8fbe\u901f\u9012",
+      "shortname": "\u97f5\u8fbe",
+      "icon": {
+        "id": "27",
+        "smallurl": "https:\/\/ss0.baidu.com\/6ONWsjip0QIZ8tyhnq\/it\/u=3682653099,2524883494&fm=58",
+        "smallpos": "0,400",
+        "middleurl": "https:\/\/ss2.baidu.com\/6ONYsjip0QIZ8tyhnq\/it\/u=1078213688,3146076104&fm=58",
+        "middlepos": "0,576",
+        "normal": "https:\/\/ss0.baidu.com\/6ONWsjip0QIZ8tyhnq\/it\/u=996032835,1968172858&fm=58"
+      },
+      "website": {
+        "title": "www.yundaex.com",
+        "url": "http:\/\/www.yundaex.com"
+      },
+      "tel": "95546",
+      "auxiliary": [
+        {
+          "title": "\u7f51\u70b9\u67e5\u8be2",
+          "url": "http:\/\/www.yundaex.com\/ydweb\/fuwuwangdian.php"
+        },
+        {
+          "title": "\u8fd0\u4ef7\u67e5\u8be2",
+          "url": "http:\/\/www.yundaex.com\/cn\/product_yunfei.php"
+        },
+        {
+          "title": "\u6211\u8981\u5bc4\u4ef6",
+          "url": "http:\/\/member.yundaex.com\/ydmb\/member\/order\/index.jsp"
+        },
+        {
+          "title": "\u97f5\u8fbe\u6d77\u6dd8",
+          "url": "http:\/\/www.udamall.com\/shop\/index.php"
+        }
+      ]
+    },
+    "source": {
+      "logo": "https:\/\/ss2.baidu.com\/6ONYsjip0QIZ8tyhnq\/it\/u=1429564979,1787167512&fm=58",
+      "title": "\u6570\u636e\u6765\u81ea\u5feb\u9012100",
+      "url": "http:\/\/www.kuaidi100.com\/?from=baidu_ala",
+      "name": "\u5feb\u9012100",
+      "showName": "\u5feb\u9012100"
+    }
+  }
+}

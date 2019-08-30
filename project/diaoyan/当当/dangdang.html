@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <script>
+        var userAgent = navigator.userAgent.toLowerCase();
+        var deviceUA = ["iphone", "android", "mobile", "ipod", "mqqbrowser", "midp", "ucweb", "micromessenger"];
+        var preURL=window.location.href.split('.html')[0];
+        var productId=preURL.substring(preURL.lastIndexOf('/')+1)
+        for (var i = 0; i < deviceUA.length; i++) {
+            var regExp = new RegExp(deviceUA[i], "i");
+            if (userAgent.match(regExp) == deviceUA[i]) {
+                window.location.href=window.location.origin+'/touch/products/'+productId+'.html'+window.location.href.split('.html')[1]
+            }
+        }
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>像计算机科学家一样思考Python【全本_书评_在线阅读】-当当云阅读</title>
+    <meta name="keywords" content='像计算机科学家一样思考Python,[美]Allen B. Downey 著,人民邮电出版社,ISBN：9787115320926,科技,计算机&#47;网络,程序设计,电子书,免费试读,在线阅读,epub,pdf,txt' />
+    <meta name="description" content='　　《像计算机科学家一样思考Python》按照培养读者像计算机科学家一样的思维方式的思路来教授Python语言编程。全书贯穿的主体是如何思考、设计、发的方法，而具体的编程语言，只是提供一个具体场景方便介绍的媒介。《像计算机科学家一样思考Python》并不是一本介绍语言的书，而是一本介绍编程思想的书。' />
+    <meta name="mobile-agent"
+          content="format=html5;url=http://e.dangdang.com/touch/products/1900754185.html"/>
+    <link type="text/css" rel="stylesheet" href="http://static.dangdang.com/css/win_login20150728.css?1508485834"/>
+    <link type="text/css" rel="stylesheet" href="css/common.min.css?1508485834"/>
+    <link type="text/css" rel="stylesheet" href="css/product_new_page.min.css?1551341559"/>
+    <script type="text/javascript" src="http://e.dangdang.com/media/h5/pc/web/js/jumpToMobile.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    eval(function(p,a,c,k,e,r){e=function(c){return c.toString(36)};if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'[1-9a]'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('(function(){2 1=4.createElement(\'5\');2 6=window.location.protocol.split(\':\')[0];if(6===\'7\'){1.8=\'7://zz.bdstatic.9/linksubmit/3.a\'}else{1.8=\'http://3.zhanzhang.baidu.9/3.a\'}2 s=4.getElementsByTagName("5")[0];s.parentNode.insertBefore(1,s)})();',[],11,'|bp|var|push|document|script|curProtocol|https|src|com|js'.split('|'),0,{}))</script>
+<script type="text/javascript">
+    eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('z(N 1v=="O"){l 1w=1;l Y="1x.1y";l Z=\'1z\';l 18={19:0,1A:"",C:8,1a:o(a){l b=k.19?"1B":"1C";l c="";P(l i=0;i<a.B*4;i++){c+=b.1b((a[i>>2]>>((i%4)*8+4))&1c)+b.1b((a[i>>2]>>((i%4)*8))&1c)}w c},1d:o(x,e){x[e>>5]|=1D<<((e)%32);x[(((e+1E)>>>9)<<4)+14]=e;l a=1F;l b=-1G;l c=-1H;l d=1I;P(l i=0;i<x.B;i+=16){l f=a;l g=b;l h=c;l j=d;a=k.p(a,b,c,d,x[i+0],7,-1J);d=k.p(d,a,b,c,x[i+1],12,-1K);c=k.p(c,d,a,b,x[i+2],17,1L);b=k.p(b,c,d,a,x[i+3],22,-1M);a=k.p(a,b,c,d,x[i+4],7,-1N);d=k.p(d,a,b,c,x[i+5],12,1O);c=k.p(c,d,a,b,x[i+6],17,-1P);b=k.p(b,c,d,a,x[i+7],22,-1Q);a=k.p(a,b,c,d,x[i+8],7,1R);d=k.p(d,a,b,c,x[i+9],12,-1S);c=k.p(c,d,a,b,x[i+10],17,-1T);b=k.p(b,c,d,a,x[i+11],22,-1U);a=k.p(a,b,c,d,x[i+12],7,1V);d=k.p(d,a,b,c,x[i+13],12,-1W);c=k.p(c,d,a,b,x[i+14],17,-1X);b=k.p(b,c,d,a,x[i+15],22,1Y);a=k.r(a,b,c,d,x[i+1],5,-1Z);d=k.r(d,a,b,c,x[i+6],9,-24);c=k.r(c,d,a,b,x[i+11],14,25);b=k.r(b,c,d,a,x[i+0],20,-26);a=k.r(a,b,c,d,x[i+5],5,-27);d=k.r(d,a,b,c,x[i+10],9,28);c=k.r(c,d,a,b,x[i+15],14,-29);b=k.r(b,c,d,a,x[i+4],20,-2a);a=k.r(a,b,c,d,x[i+9],5,2b);d=k.r(d,a,b,c,x[i+14],9,-2c);c=k.r(c,d,a,b,x[i+3],14,-2d);b=k.r(b,c,d,a,x[i+8],20,2e);a=k.r(a,b,c,d,x[i+13],5,-2f);d=k.r(d,a,b,c,x[i+2],9,-2g);c=k.r(c,d,a,b,x[i+7],14,2h);b=k.r(b,c,d,a,x[i+12],20,-2i);a=k.u(a,b,c,d,x[i+5],4,-2j);d=k.u(d,a,b,c,x[i+8],11,-2k);c=k.u(c,d,a,b,x[i+11],16,2l);b=k.u(b,c,d,a,x[i+14],23,-2m);a=k.u(a,b,c,d,x[i+1],4,-2n);d=k.u(d,a,b,c,x[i+4],11,2o);c=k.u(c,d,a,b,x[i+7],16,-2p);b=k.u(b,c,d,a,x[i+10],23,-2q);a=k.u(a,b,c,d,x[i+13],4,2r);d=k.u(d,a,b,c,x[i+0],11,-2s);c=k.u(c,d,a,b,x[i+3],16,-2t);b=k.u(b,c,d,a,x[i+6],23,2u);a=k.u(a,b,c,d,x[i+9],4,-2v);d=k.u(d,a,b,c,x[i+12],11,-2w);c=k.u(c,d,a,b,x[i+15],16,2x);b=k.u(b,c,d,a,x[i+2],23,-2y);a=k.v(a,b,c,d,x[i+0],6,-2z);d=k.v(d,a,b,c,x[i+7],10,2A);c=k.v(c,d,a,b,x[i+14],15,-2B);b=k.v(b,c,d,a,x[i+5],21,-2C);a=k.v(a,b,c,d,x[i+12],6,2D);d=k.v(d,a,b,c,x[i+3],10,-2E);c=k.v(c,d,a,b,x[i+10],15,-2F);b=k.v(b,c,d,a,x[i+1],21,-2G);a=k.v(a,b,c,d,x[i+8],6,2H);d=k.v(d,a,b,c,x[i+15],10,-2I);c=k.v(c,d,a,b,x[i+6],15,-2J);b=k.v(b,c,d,a,x[i+13],21,2K);a=k.v(a,b,c,d,x[i+4],6,-2L);d=k.v(d,a,b,c,x[i+11],10,-2M);c=k.v(c,d,a,b,x[i+2],15,2N);b=k.v(b,c,d,a,x[i+9],21,-2O);a=k.A(a,f);b=k.A(b,g);c=k.A(c,h);d=k.A(d,j)}w Q(a,b,c,d)},D:o(q,a,b,x,s,t){w k.A(k.1e(k.A(k.A(a,q),k.A(x,t)),s),b)},p:o(a,b,c,d,x,s,t){w k.D((b&c)|((~b)&d),a,b,x,s,t)},r:o(a,b,c,d,x,s,t){w k.D((b&d)|(c&(~d)),a,b,x,s,t)},u:o(a,b,c,d,x,s,t){w k.D(b^c^d,a,b,x,s,t)},v:o(a,b,c,d,x,s,t){w k.D(c^(b|(~d)),a,b,x,s,t)},1f:o(a){l b=Q();l c=(1<<k.C)-1;P(l i=0;i<a.B*k.C;i+=k.C)b[i>>5]|=(a.2P(i/k.C)&c)<<(i%32);w b},A:o(x,y){l a=(x&R)+(y&R);l b=(x>>16)+(y>>16)+(a>>16);w(b<<16)|(a&R)},1e:o(a,b){w(a<<b)|(a>>>(32-b))},1g:o(s){w k.1a(k.1d(k.1f(s),s.B*k.C))}};l T={1h:o(a){l b=U(a)+"=",L=E.F.1i(b),V=2Q;z(L>-1){l c=E.F.1i(";",L);z(c==-1){c=E.F.B}V=2R(E.F.2S(L+b.B,c))}w V},W:o(a,b,c,d,e,f){l g=U(a)+"="+U(b);z(c 2T G){g+="; 2U="+c.2V()}z(d){g+="; 2W="+d}z(e){g+="; 2X="+e}z(f){g+="; 2Y"}E.F=g},2Z:o(a,b,c,d){k.W(a,"",I G(0),b,c,d)}};l 1j={1k:o(){l n=I G();l y=n.30()+\'\';l m=n.31()+1;z(m<10)m="0"+m;l d=n.33();z(d<10)d="0"+d;l H=n.34();z(H<10)H="0"+H;l M=n.36();z(M<10)M="0"+M;l S=n.37();z(S<10)S="0"+S;l a="38"+n.39();a=a.X(a.B-3,3);l b=J.1l(1m+J.1n()*1o);l c=J.1l(1m+J.1n()*1o);l e=y+m+d+H+M+S+a+b+c+Z;l f=18.1g(e);f=k.1p(f);w y+m+d+H+M+S+a+f+b+c},1p:o(a){l b=3a(a.X(0,8),16);l c=3b(b).X(0,6);l d=c.B;z(d<6){c+=k.1q(\'0\',J.3c(6-d))}w c},1q:o(a,b){w I Q(b+1).3d(a)},1r:o(){l t=I G();w t.3e()},1s:o(){k.K=T.1h("1t");z(N k.K==\'O\'||!/^\\d{35}$/.3f(k.K)){l a=I G(3g,1,1);k.K=k.1k();T.W("1t",k.K,a,"/",Y)}z(N k.1u==\'O\'){k.1u=k.1r()}}};1j.1s()}',62,203,'||||||||||||||||||||this|var|||function|md5_ff||md5_gg|||md5_hh|md5_ii|return|||if|safe_add|length|chrsz|md5_cmn|document|cookie|Date||new|Math|permanent_id|cookieStart||typeof|undefined|for|Array|0xFFFF||CookieUtil|encodeURIComponent|cookieValue|set|substr|cookieDomain|_ddclick_hash_key|||||||||Md5Util|hexcase|binl2hex|charAt|0xF|core_md5|bit_rol|str2binl|hex_md5|get|indexOf|__ddclickFunctions|createPermanentID|floor|100000|random|900000|formatHashCode|str_repeat|initTime|init|__permanent_id|timestap|ddclick_page_tracker|ddclick_head_flag|dangdang|com|DDClick521|b64pad|0123456789ABCDEF|0123456789abcdef|0x80|64|1732584193|271733879|1732584194|271733878|680876936|389564586|606105819|1044525330|176418897|1200080426|1473231341|45705983|1770035416|1958414417|42063|1990404162|1804603682|40341101|1502002290|1236535329|165796510|||||1069501632|643717713|373897302|701558691|38016083|660478335|405537848|568446438|1019803690|187363961|1163531501|1444681467|51403784|1735328473|1926607734|378558|2022574463|1839030562|35309556|1530992060|1272893353|155497632|1094730640|681279174|358537222|722521979|76029189|640364487|421815835|530742520|995338651|198630844|1126891415|1416354905|57434055|1700485571|1894986606|1051523|2054922799|1873313359|30611744|1560198380|1309151649|145523070|1120210379|718787259|343485551|charCodeAt|null|decodeURIComponent|substring|instanceof|expires|toGMTString|path|domain|secure|unset|getFullYear|getMonth||getDate|getHours||getMinutes|getSeconds|00|getMilliseconds|parseInt|String|abs|join|getTime|test|2020'.split('|'),0,{}))
+<!--CreateDate  2014-07-28 15:00:01--></script>
+<link href="//static.dangdang.com/css/header2012/header_150611.css?20151117" rel="stylesheet" type="text/css">
+<script charset="gb2312" type="text/javascript">var width = 1; narrow = 0;</script>
+<script type="text/javascript">var newsuggesturl = "http://schprompt.dangdang.com/suggest_new.php?";</script>
+<script src="//static.dangdang.com/js/header2012/pagetop2015_0827.js?20151117" charset="gb2312" type="text/javascript"></script>
+<script src="//static.dangdang.com/js/header2012/dd.menu-aim.js?20151117" charset="gb2312" type="text/javascript"></script>
+
+<div id="hd">
+<div id="tools">
+<div class="tools">
+    <div class="ddnewhead_operate" dd_name="顶链接">
+        <!-- <div class="new_york"><a target="_blank" href="http://static.dangdang.com/topic/2227/176801.shtml" title="当当网?纽约证券交易所上市企业">纽交所上市公司</a></div> -->
+        <ul class="ddnewhead_operate_nav">
+       <!-- <li class="ddnewhead_cart"><a href="javascript:AddToShoppingCart(0);" name="购物车" dd_name="购物车"><i class="icon_card"></i>购物车<b id="cart_items_count"></b></a></li>
+        <li><a target="_blank" href="http://orderb.dangdang.com/myallorders.aspx" name="我的订单" dd_name="我的订单" rel="nofollow">我的订单<b id="unpaid_num" style="color:#ff2832;font:bold 12px Arial;"></b></a></li>-->
+        <li style="background-image:none;"><a target="_blank" href="http://www.dangdang.com" name="当当网首页" dd_name="当当网首页" rel="nofollow">当当网首页</a></li>
+        <li><a target="_blank" href="http://dangdu.dangdang.com/author/" name="mydd_7" dd_name="当当自出版">当当自出版</a></li>
+        <li><a target="_blank" href="http://e.dangdang.com/booksshelf_page.html" name="当当自出版" dd_name="当当自出版">我的云书房</a></li>
+
+        <!-- <li class="dang_erweima">
+          <a target="_blank" href="http://t.dangdang.com/20130220_ydmr" id="a_phonechannel" onmouseover="showgaoji('a_phonechannel','__ddnav_sjdd');" onmouseout="hideotherchannel('a_phonechannel','__ddnav_sjdd');" class="menu_btn"><i class="icon_tel"></i>手机当当</a>
+          <div class="tel_pop" style="display: none;" id="__ddnav_sjdd" onmouseover="showgaoji('a_phonechannel','__ddnav_sjdd');" onmouseout="hideotherchannel('a_phonechannel','__ddnav_sjdd');">
+                <a target="_blank" href="http://t.dangdang.com/20130220_ydmr" class="title"><i class="icon_tel"></i>手机当当</a><i class="title_shadow"></i>
+                <div class="tel_pop_box clearfix">
+                    <div class="tel_pop_box_li"><a href="http://t.dangdang.com/20130220_ydmr" dd_name="手机二维码" target="_blank"><span>当当购物客户端</span><img src="http://img30.ddimg.cn/upload_img/00363/header/go_erweima.png"><span class="text">下载购物App<br>手机端1元秒</span></a></div>
+                    <div class="tel_pop_box_li"><a href="http://t.dangdang.com/20140107_5pz1" dd_name="手机二维码" target="_blank"><span>当当读书客户端</span><img src="http://img39.ddimg.cn/upload_img/00363/sjbz/du_erweima.png"><span class="text">万本电子书<br>免费读</span></a></div>
+                </div>
+          </div>
+        </li> -->
+        <li class="my_dd"><a class="menu_btn" target="_blank" href="http://myhome.dangdang.com/" name="我的当当" dd_name="我的当当" id="a_myddchannel" onmouseover="showgaoji('a_myddchannel','__ddnav_mydd')" onmouseout="hideotherchannel('a_myddchannel','__ddnav_mydd');">我的当当</a>
+            <ul class="ddnewhead_gcard_list" id="__ddnav_mydd" onmouseover="showgaoji('a_myddchannel','__ddnav_mydd')" onmouseout="hideotherchannel('a_myddchannel','__ddnav_mydd');">
+                <li><a target="_blank" href="http://myhome.dangdang.com/mypoint?ref=my-0-L" name="mydd_4" dd_name="我的银铃铛" rel="nofollow">我的银铃铛</a></li>
+                <li><a target="_blank" href="http://myhome.dangdang.com/myFavorite" name="mydd_1" dd_name="我的收藏" rel="nofollow">我的收藏</a></li>
+                <li><a target="_blank" href="http://newaccount.dangdang.com/payhistory/mybalance.aspx" name="mydd_5" dd_name="我的余额" rel="nofollow">我的余额</a></li>
+                <li><a target="_blank" href="http://comm.dangdang.com/review/reviewbuy.php?ref=my-0-L" name="mydd_4" dd_name="我的评论" rel="nofollow">我的评论</a></li>
+                <li><a target="_blank" href="http://newaccount.dangdang.com/payhistory/mycoupon.aspx" name="mydd_2" dd_name="礼券/礼品卡" rel="nofollow">礼券/礼品卡</a></li>
+                <!-- <li><a target="_blank" href="http://e.dangdang.com/ebook/listUserEbooks.do" name="mydd_6" dd_name="电子书架">电子书架</a></li> -->
+            </ul>
+        </li>
+        <li><a class="menu_btn" href="javascript:void(0);" style="cursor:default;" name="qycg" dd_name="企业采购" id="a_qycgchannel" onmouseover="showgaoji('a_qycgchannel','__ddnav_qycg');" onmouseout="hideotherchannel('a_qycgchannel','__ddnav_qycg');">企业采购</a>
+            <ul class="ddnewhead_gcard_list" id="__ddnav_qycg" onmouseover="showgaoji('a_qycgchannel','__ddnav_qycg');" onmouseout="hideotherchannel('a_qycgchannel','__ddnav_qycg');">
+                <li><a target="_blank" href="http://misc.dangdang.com/giftcardCompany/company.aspx" name="qycg_1" dd_name="大宗采购">大宗采购</a></li>
+                <li><a target="_blank" href="http://giftcard.dangdang.com/" name="qycg_2" dd_name="礼品卡采购">礼品卡采购</a></li>
+                <li><a target="_blank" href="http://account.dangdang.com/payhistory/mymoney.aspx" name="gqycg_3" dd_name="礼品卡激活" rel="nofollow">礼品卡激活</a></li>
+                <li><a target="_blank" href="http://help.dangdang.com/details/page24" name="qycg_4" dd_name="礼品卡使用">礼品卡使用</a></li>
+            </ul>
+        </li>
+        <li class="hover "><a class="menu_btn" href="javascript:void(0);" style="cursor:default;" name="ddkf_0" dd_name="客户服务" id="a_bzzxchannel" onmouseover="showgaoji('a_bzzxchannel','__ddnav_bzzx');" onmouseout="hideotherchannel('a_bzzxchannel','__ddnav_bzzx');">客户服务</a>
+            <ul class="ddnewhead_gcard_list" id="__ddnav_bzzx" onmouseover="showgaoji('a_bzzxchannel','__ddnav_bzzx');" onmouseout="hideotherchannel('a_bzzxchannel','__ddnav_bzzx');">
+                <li><a target="_blank" href="http://help.dangdang.com/index" name="ddkf_2" dd_name="帮助中心">帮助中心</a></li>
+    <li><a target="_blank" href="http://return.dangdang.com/reverseapplyselect.aspx" name="ddkf_3" dd_name="自助退换货">自助退换货</a></li>
+                <li><a target="_blank" href="http://help.dangdang.com/details/page206" name="ddkf_4" dd_name="联系客服">联系客服</a></li>
+                <li><a target="_blank" href="http://help.dangdang.com/details/page206" name="tsjy_1" dd_name="我要投诉" rel="nofollow">我要投诉</a></li>
+            </ul>
+        </li>
+        </ul>
+        <div class="ddnewhead_welcome" display="none;">
+            <span id="nickname"><span class="hi hi_none">欢迎光临当当，请</span><a href="https://login.dangdang.com/signin.aspx?returnurl=http%3A//www.dangdang.com/" class="login_link">登录</a><a href="https://login.dangdang.com/Register.aspx">免费注册</a></span>
+            <div class="tel_pop" style="display:none" id="__ddnav_sjdd"  onmouseover="showgaoji('a_phonechannel','__ddnav_sjdd');" onmouseout="hideotherchannel('a_phonechannel','__ddnav_sjdd');">
+                <a target="_blank" href="http://t.dangdang.com/20130220_ydmr" class="title"><i class="icon_tel"></i>手机当当</a><i class="title_shadow"></i>
+                <ul class="tel_pop_box">
+                    <li><a href="http://t.dangdang.com/20130220_ydmr" dd_name="手机二维码"><span>当当手机客户端</span><img src="http://img3.ddimg.cn/00363/doc/erweima2.png"><span class="text">随手查订单<br>随时享优惠</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="ddnewhead_area" style="display:none">
+            <a href="javascript:void(0);" id="area_one" class="ddnewhead_area_a" onmouseover="show_area_list();" onmouseout="hidden_area_list();">送至：<span id="curent_area">北京</span></a>
+            <ul class="ddnewhead_area_list" style="display: none;" id="area_list" onmouseover="this.style.display='block';" onmouseout="this.style.display='none';">
+                <li><a href="javascript:void(0);" onclick="change_area('111','北京')" num="111">北京</a></li>
+                <li><a href="javascript:void(0);" onclick="change_area('112','天津')" num="112">天津</a></li>   
+                <li><a href="javascript:void(0);" onclick="change_area('113','河北')" num="113">河北</a></li>
+                <li><a href="javascript:void(0);" onclick="change_area('114','山西')" num="114">山西</a></li>    
+                <li><a href="javascript:void(0);" onclick="change_area('115','内蒙古')" num="115">内蒙古</a></li>  
+                <li><a href="javascript:void(0);" onclick="change_area('121','辽宁')" num="121">辽宁</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('122','吉林')" num="122">吉林</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('123','黑龙江')" num="123">黑龙江</a></li>
+                <li><a href="javascript:void(0);" onclick="change_area('131','上海')" num="131">上海</a></li>  
+                <li><a href="javascript:void(0);" onclick="change_area('132','江苏')" num="132">江苏</a></li>  
+                <li><a href="javascript:void(0);" onclick="change_area('133','浙江')" num="133">浙江</a></li>
+                <li><a href="javascript:void(0);" onclick="change_area('134','安徽')" num="134">安徽</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('135','福建')" num="135">福建</a></li>  
+                <li><a href="javascript:void(0);" onclick="change_area('136','江西')" num="136">江西</a></li>  
+                <li><a href="javascript:void(0);" onclick="change_area('137','山东')" num="137">山东</a></li>   
+                <li><a href="javascript:void(0);" onclick="change_area('141','河南')" num="141">河南</a></li>       
+                <li><a href="javascript:void(0);" onclick="change_area('142','湖北')" num="142">湖北</a></li>  
+                <li><a href="javascript:void(0);" onclick="change_area('143','湖南')" num="143">湖南</a></li>       
+                <li><a href="javascript:void(0);" onclick="change_area('144','广东')" num="144">广东</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('145','广西')" num="145">广西</a></li>
+                <li><a href="javascript:void(0);" onclick="change_area('146','海南')" num="146">海南</a></li>
+                <li><a href="javascript:void(0);" onclick="change_area('150','重庆')" num="150">重庆</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('151','四川')" num="151">四川</a></li>           
+                <li><a href="javascript:void(0);" onclick="change_area('152','贵州')" num="152">贵州</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('153','云南')" num="153">云南</a></li>
+                <li><a href="javascript:void(0);" onclick="change_area('154','西藏')" num="154">西藏</a></li>   
+                <li><a href="javascript:void(0);" onclick="change_area('161','陕西')" num="161">陕西</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('162','甘肃')" num="162">甘肃</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('163','青海')" num="163">青海</a></li> 
+                <li><a href="javascript:void(0);" onclick="change_area('164','宁夏')" num="164">宁夏</a></li>
+                <li><a href="javascript:void(0);" onclick="change_area('165','新疆')" num="165">新疆</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('171','台湾')" num="171">台湾</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('172','香港')" num="172">香港</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('173','澳门')" num="173">澳门</a></li>        
+                <li><a href="javascript:void(0);" onclick="change_area('174','钓鱼岛')" num="174">钓鱼岛</a></li>                
+            </ul>
+        </div>
+        <div class="new_head_znx" id="znx_content" style="display:none;"></div>
+    </div>
+</div>
+</div>
+<div id="header_end"></div>
+<!--CreateDate  2015-11-25 18:00:02--></div>
+<form action="http://search.dangdang.com/search.aspx" id="bootpagetopSearch" name="bootpagetopSearch" method="GET"></form>
+<!--<script type="text/javascript">var nick_num = 1;initHeaderOperate();</script>-->
+
+
+
+<div class="public_child_nav" dd_name="导航浮层" data-test="">
+    <div class="public_headerchildnav_module">
+        <div class="childrennav">
+            <div class="yuanchuang">
+                <div class="inner">
+                    <a href="./original_index_page.html?originalSex=man" class="boy" id="publicChildMan"><i class="on"></i>男频</a>|
+                    <a href="./original_index_page.html?originalSex=woman" class="girl" id="publicChildWoman"><i class=""></i>女频</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="public_headersearch_module new" dd_name="头部搜索" >
+    <div class="search_bag clearfix">
+        <a href="http://www.dangdang.com" class="ddreader_logo">
+            <img src="http://img62.ddimg.cn/ddreader/images/dangdang_logo.png" target="_blank" alt="当当云阅读">
+            <div class="sep_line"></div>
+        </a>
+        <a href="./index_page.html" target="_blank" class="dangdang_logo">
+            <img class="new_logo" src="http://img61.ddimg.cn/ddreader/images/ddreader_cloud_logo.png" alt="当当云阅读文字"/>
+        </a>
+            <div class="dangQRCode">
+            <img src="http://img61.ddimg.cn/ddreader/dangebook/channel_35000.png" alt="万本电子书0元读">
+            <p>万本电子书0元读</p>
+        </div>
+        <div class="clearfix new_searchbox">
+            <div class="new_search">
+                <input type="text" class="new_searchtext"/>
+                <span type="button" value="提交" class="new_searchbtn">搜索</span>
+                <ul class="new_list clearfix">
+                </ul>
+            </div>
+            <p class="hotword">
+            </p>
+        </div>
+        <ul class="new_icon">
+            <li><a href="javascript:AddToShoppingCart(0);" name="购物车" dd_name="购物车" class="shoppingCartWrap"><img src="img/new_car.png"/>购物车<b id="cart_items_count" class="cart_goods_count"></b></a></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">var nick_num = 1;initHeaderOperate();</script>
+<!-- 导航 -->
+<div class="public_headernav_module padding_top_10" dd_name="头部导航">
+    <div class="new_headernav">
+        <div class="new_nav">
+            <div class="bookclass" id="bookClass">图书分类<em class="upDown"></em>
+                <div class="bookclass_box" id="bookClassBox">
+                    <div class="new_aside">
+                            <dl class="new_title ">
+                                <dt><a target="_blank" href="http://e.dangdang.com/list-XS2-dd_sale-0-1.html">小说</a></dt>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ZTXYTL-dd_sale-0-1.html">侦探/悬疑/推理  </a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-QGDS-dd_sale-0-1.html">情感/都市</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-KHMH-dd_sale-0-1.html">科幻/魔幻</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ZPJ-dd_sale-0-1.html">作品集</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-WGXS-dd_sale-0-1.html">外国小说</a></dd>
+                            </dl>
+                            <dl class="new_title even">
+                                <dt><a target="_blank" href="http://e.dangdang.com/list-WY1-dd_sale-0-1.html">文艺</a></dt>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-WX-dd_sale-0-1.html">文学</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-QCWX-dd_sale-0-1.html">青春文学</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ZJ-dd_sale-0-1.html">传记</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-YS-dd_sale-0-1.html">艺术</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-DMYM-dd_sale-0-1.html">动漫/幽默</a></dd>
+                            </dl>
+                            <dl class="new_title ">
+                                <dt><a target="_blank" href="http://e.dangdang.com/list-SK-dd_sale-0-1.html">历史文化</a></dt>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ZXZJ-dd_sale-0-1.html">哲学/宗教</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-LS1-dd_sale-0-1.html">历史</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ZZJS-dd_sale-0-1.html">政治/军事</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-WH-dd_sale-0-1.html">文化</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-SHKX-dd_sale-0-1.html">社会科学</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-GJ-dd_sale-0-1.html">古籍</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-FL-dd_sale-0-1.html">法律</a></dd>
+                            </dl>
+                            <dl class="new_title even">
+                                <dt><a target="_blank" href="http://e.dangdang.com/list-JG-dd_sale-0-1.html">经济/管理</a></dt>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-GL-dd_sale-0-1.html">管理</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-JJ-dd_sale-0-1.html">经济</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-TZLC-dd_sale-0-1.html">投资理财</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-SCYX-dd_sale-0-1.html">市场/营销</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-SWGT-dd_sale-0-1.html">商务沟通</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ZGJJ-dd_sale-0-1.html">中国经济</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-GJJJ-dd_sale-0-1.html">国际经济</a></dd>
+                            </dl>
+                            <dl class="new_title ">
+                                <dt><a target="_blank" href="http://e.dangdang.com/list-CGLZ-dd_sale-0-1.html">心理/励志</a></dt>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-XLX-dd_sale-0-1.html">心理学</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-NXXLX-dd_sale-0-1.html">女性心理学</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ETXLX-dd_sale-0-1.html">儿童心理学</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-QSQXGL-dd_sale-0-1.html">情绪管理</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ZCRJJW-dd_sale-0-1.html">职场/人际交往</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-RSZX-dd_sale-0-1.html">人生哲学</a></dd>
+                            </dl>
+                            <dl class="new_title even">
+                                <dt><a target="_blank" href="http://e.dangdang.com/list-SH-dd_sale-0-1.html">生活</a></dt>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-LXGX-dd_sale-0-1.html">两性关系</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-QZJY-dd_sale-0-1.html">亲子/家教</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-LYDT-dd_sale-0-1.html">旅游/地图</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-PRMS-dd_sale-0-1.html">烹饪/美食</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-BYJS-dd_sale-0-1.html">保健/养生</a></dd>
+                            </dl>
+                            <dl class="new_title ">
+                                <dt><a target="_blank" href="http://e.dangdang.com/list-TS-dd_sale-0-1.html">童书</a></dt>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ETWENXUE-dd_sale-0-1.html">儿童文学</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-QMDUWW-dd_sale-0-1.html">启蒙读物</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-SEYINGYU-dd_sale-0-1.html">少儿英语</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-DMTHUASHU-dd_sale-0-1.html">动漫/图画书</a></dd>
+                            </dl>
+                            <dl class="new_title even">
+                                <dt><a target="_blank" href="http://e.dangdang.com/list-KJ-dd_sale-0-1.html">科技/教育</a></dt>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-KPDW-dd_sale-0-1.html">科普读物</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-JSJWL-dd_sale-0-1.html">计算机/网络</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ZRKX-dd_sale-0-1.html">自然科学</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-ZXXJF-dd_sale-0-1.html">中小学教辅</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-KS-dd_sale-0-1.html">考试</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-WY2-dd_sale-0-1.html">外语</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-JJS-dd_sale-0-1.html">工具书</a></dd>
+                            </dl>
+                            <dl class="new_title ">
+                                <dt><a target="_blank" href="http://e.dangdang.com/list-JKS-dd_sale-0-1.html">原版书</a></dt>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-WWYBS-dd_sale-0-1.html">外文原版书</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-GTTS-dd_sale-0-1.html">港台圖書</a></dd>
+                                        <dd><a target="_blank" href="http://e.dangdang.com/list-XYZ-dd_sale-0-1.html">小语种</a></dd>
+                            </dl>
+                        <p class="newmore"><a target="_blank" href="./list-DZS-dd_sale-0-1.html">查看更多</a></p>
+                    </div>
+                </div>
+            </div>
+            <ul class="new_bar nav">
+                <li><a href="/index_page.html" target="_blank">电子书</a></li>
+                <li class="yuanchuangnav"><a href="/new_original_index_page.html" target="_blank">网络文学</a></li>
+                <li class="cur"><a href="/vip_page.html" target="_blank">租阅</a><img class="new_hot" src="http://img60.ddimg.cn/ddreader/images/hot_logo.png?123"/></li>
+                <li><a href="http://book.dangdang.com/20161128_zl3t" target="_blank">当当阅读器</a></li>
+                <li><a href="http://book.dangdang.com/ddapp" target="_blank">当当云阅读客户端</a></li>
+                <li><a href="http://dangdu.dangdang.com/author/" target="_blank">我要写书</a></li>
+            </ul>
+            <div class="new_help">
+                <p class="left"><a href="javascript:void(0)" id="readingCenterBtn"><img src="img/new_per_center.png">个人中心</a></p>
+                <p class="want_to_recharge"><a href="javascript:" class="has_logo">我要充值 <img src="http://img62.ddimg.cn/ddreader/images/more20.png?123" alt="赠送20%"></a> </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="outer_wrap">
+    <!-- 顶部条状小banner -->
+    <div class="ad1" dd_name="顶部通栏广告" id="ad1">
+
+        <a target="_blank" href="http://book.dangdang.com/20190802_iv4x">
+            <img src="http://img63.ddimg.cn/ddreader/dangebook/8y5z_1200x75.jpg" alt="顶部广告"/>
+        </a>
+
+        <span class="close_btn"></span>
+    </div>
+    <div class="detail_outer">
+        <div class="detail_left">
+            <div class="shop_detail_box clearfix">
+                <div class="title_box" dd_name="面包屑" id="crumb">
+                    <a href="http://e.dangdang.com" target="_blank">当当云阅读&nbsp;&nbsp;></a>
+
+                    <a href="http://e.dangdang.com/list-KJ-dd_sale-0-1.html" target="_blank">科技&nbsp;&nbsp;></a>
+
+
+                    <a href="http://e.dangdang.com/list-JSJWL-dd_sale-0-1.html" target="_blank">计算机&#47;网络&nbsp;&nbsp;></a>
+
+
+                    <a href="http://e.dangdang.com/list-CXSJ-dd_sale-0-1.html" target="_blank">程序设计&nbsp;&nbsp;></a>
+
+
+
+                    <a href="javascript:;">像计算机科学家一样思考Python</a>
+                </div>
+                <div class="newbook_left">
+                    <div class="bookCover_area">
+                        <!-- 左侧图 -->
+                        <img src="http:&#47;&#47;img62.ddimg.cn&#47;digital&#47;product&#47;41&#47;85&#47;1900754185_ii_cover.jpg?version=6123c751-e891-439d-b253-2f86fa157f74555" alt="像计算机科学家一样思考Python"/>
+                    </div>
+                    <div class="more_links">
+                        <span id="collect_area"></span>&nbsp;|&nbsp;<span id="share_area"></span>&nbsp;|&nbsp;
+
+                        <a href="javascript:;" class="phone" dd_name="手机阅读"><span class="phone_inner">手机阅读</span>
+                            <div class="ecode"><span class="arrow"></span><img src="img/eweima165X165.png" alt=""><span class="tips">扫描下载当当云阅读App</span></div>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="newbook_center" id="productBookDetail">
+                    <!-- 图书描述 -->
+                    <h1 class="bookname_box"><span class="title_words" title="像计算机科学家一样思考Python">像计算机科学家一样思考Python</span><span class="icon">电子书</span>
+
+                        <em><a href="http://e.dangdang.com/vip_page.html" target="_blank" dd_name="租阅" id="vip_link">租阅</a></em>
+
+                    </h1>
+
+
+	                    <p class="title_descript" title="  推荐组合：   贝叶斯思维 统计建模的Python学习法（大数据时代 不懂贝叶斯你就Out了 Think Stats和Think Python图书作者重磅出 数据分析师、数据工程师、数据科学家必备手册）  以“像计算机科学家一样思考”的方式，学习和掌握Python语言！如果你想学习如何编程，使用Python语言是一个极佳的始。这本实践指南会带你一步一个脚印地学习Python语言，从*基本的编程概念，到函数、递归、数据结构和面向对象设计。
+">  推荐组合：   贝叶斯思维 统计建模的Python学习法（大数据时代 不懂贝叶斯你就Out了 Think Stats和Think Python图书作者重磅出 数据分析师、数据工程师、数据科学家必备手册）  以“像计算机科学家一样思考”的方式，学习和掌握Python语言！如果你想学习如何编程，使用Python语言是一个极佳的始。这本实践指南会带你一步一个脚印地学习Python语言，从*基本的编程概念，到函数、递归、数据结构和面向对象设计。
+</p>
+
+
+                    <div id="saleWrap">
+                    </div>
+                    <div class="price_box">
+                        <div class="clearfix">
+                            <div class="cost_box">
+
+                                <p>售&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：<span class="normal_price">¥<i></i></span></p>
+
+
+                            </div>
+                            <div class="count_per">
+
+							 58人正在读 | <em>1人评论</em>
+                             
+
+
+                                    <img src="http://img63.ddimg.cn/web/pcbookstore/readIndex_starLevel_full.png"/>
+
+
+
+                                    <img src="http://img63.ddimg.cn/web/pcbookstore/readIndex_starLevel_full.png"/>
+
+
+
+                                    <img src="http://img63.ddimg.cn/web/pcbookstore/readIndex_starLevel_full.png"/>
+
+
+
+                                    <img src="http://img63.ddimg.cn/web/pcbookstore/readIndex_starLeve_empty.png"/>
+
+
+
+                                    <img src="http://img63.ddimg.cn/web/pcbookstore/readIndex_starLeve_empty.png"/>
+
+
+
+                            <em class="readIndex">6.2</em>
+                            </div>
+                        </div>
+                        <div class="more_promo">
+                        </div>
+                    </div>
+                    <div class="explain_box">
+                        <p  dd_name="作者" id="author">作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;者：<span><a href="../newsearchresult_page.html?keyword=[美]Allen B. Downey 著" target="_blank">[美]Allen B. Downey 著</a></span></p>
+                        <p  dd_name="出版社" id="publisher">出&nbsp;&nbsp;版&nbsp;&nbsp;社：<span><a href="../newsearchresult_page.html?keyword=人民邮电出版社" target="_blank">人民邮电出版社</a></span></p>
+                        <p>出版时间：2013-08-01</p>
+
+                        <p>字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：18.8万</p>
+
+                        <p>所属分类：
+
+
+                            <span>
+                                <a href="http://e.dangdang.com/list-KJ-dd_sale-0-1.html" target="_blank">科技</a>
+>
+                            </span>
+
+
+                            <span>
+                                <a href="http://e.dangdang.com/list-JSJWL-dd_sale-0-1.html" target="_blank">计算机&#47;网络</a>
+>
+                            </span>
+
+
+                            <span>
+                                <a href="http://e.dangdang.com/list-CXSJ-dd_sale-0-1.html" target="_blank">程序设计</a>
+
+                            </span>
+
+
+
+                        </p>
+                    </div>
+                    <b style="display: none" id="cart_items_count"></b>
+                    <div class="newbtn_box btn_line clearfix">
+                        <input id="mediaId" type="hidden" value="1900754185">
+                        <input id="saleId" type="hidden" value="1900754185">
+                        <input id="mediaType" type="hidden" value="2">
+                        <input id="product_title" type="hidden" value="像计算机科学家一样思考Python" />
+                        <input id="product_desc" type="hidden" value="　　《像计算机科学家一样思考Python》按照培养读者像计算机科学家一样的思维方式的思路来教授Python语言编程。全书贯穿的主体是如何思考、设计、发的方法，而具体的编程语言，只是提供一个具体场景方便介绍的媒介。《像计算机科学家一样思考Python》并不是一本介绍语言的书，而是一本介绍编程思想的书。和其他编程设计语言书籍不同，它不拘泥于语言细节，而是尝试从初学者的角度出发，用生动的示例和丰富的练习来引导读者渐佳境。　　作者从最基本的编程概念始讲起，包括语言的语法和语义，而且每个编程概念都有清晰的定义，引领读者循序渐地学习变量、表达式、语句、函数和数据结构。此外，书中还探讨了如何处理文件和数据库，如何理解对象、方法和面向对象编程，如何使用调试技巧来修正语法、运行时和语义错误。每一章都配有术语表和练习题，方便读者巩固所学的知识和技巧。此外，每一章都抽出一节来讲解如何调试程序。作者针对每章中所专注的语言特性，或者相关的发问题，总结了调试的方方面面。可以说这是一种非常有益的创新，让初学编程的读者少走很多弯路。　　全书共19章和3个附录，详细介绍了Python语言编程的方方面面。《像计算机科学家一样思考Python》是一本实用的学习指南，适合没有Python编程经验的程序员阅读，也适合高中或大学的学生、Python爱好者及需要了解编程基础的人阅读。对于第一次触程序设计的人来说，是一本不可多得的佳作。" />
+                        <input id="product_coverPic" type="hidden" value="http://img62.ddimg.cn/digital/product/41/85/1900754185_ii_cover.jpg?version=6123c751-e891-439d-b253-2f86fa157f74555" />
+                    </div>
+                    <p class="prompt">温馨提示：此类商品不支持退换货，不支持下载打印</p>
+                </div>
+            </div>
+            <!-- 为你推荐轮播图 -->
+
+            <p class="commend_title floor_level">
+                为你推荐
+            </p>
+            <div class="commendTabCon" id="commendTabCon" dd_name="为你推荐">
+                <div class="carousel-plugin-model commendHeight">
+                    <div class="carousel-list-con">
+                        <ul class="carousel-list">
+
+
+                            <li class="carousel-item">
+                                <div class="commendContent">
+
+
+                                    <div class="commendCell noBorder">
+                                        <a href="./1900671727.html" target="_blank">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/17/27/1900671727_ii_cover.jpg?version=c767536f-92f6-4bb3-bc46-920224f5d9b0555" title='轻松学：C语言'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='轻松学：C语言'>轻松学：C语言</p>
+
+                                                <p class="commendTag">￥1.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a href="./1900671710.html" target="_blank">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/17/10/1900671710_ii_cover.jpg?version=78ecabd6-2bf6-4e2b-902a-ec9130599a4f555" title='语言的30个小秘密'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='语言的30个小秘密'>语言的30个小秘密</p>
+
+                                                <p class="commendTag">￥3.99</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a href="./1900767182.html" target="_blank">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/71/82/1900767182_ii_cover.jpg?version=c2331c72-6b4d-4a0c-9ca2-5e64793471f5" title='Python 3.5从零开始学'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Python 3.5从零开始学'>Python 3.5从零开始学</p>
+
+                                                <p class="commendTag">￥14.99</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a href="./1900670191.html" target="_blank">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/1/91/1900670191_ii_cover.jpg?version=60ec3a24-7be1-4b46-aad7-1772d31b17c3555" title='微信小程序：开发入门及案例详解'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='微信小程序：开发入门及案例详解'>微信小程序：开发入门及案例详解</p>
+
+                                                <p class="commendTag">￥12.99</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+
+
+                            <li class="carousel-item">
+                                <div class="commendContent">
+
+
+                                    <div class="commendCell noBorder">
+                                        <a href="./1901093998.html" target="_blank">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/39/98/1901093998_ii_cover.jpg?version=cde8f2a1-fc09-475f-afc5-37d150e609e0" title='Kafka权威指南'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Kafka权威指南'>Kafka权威指南</p>
+
+                                                <p class="commendTag">￥34.99</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a href="./1900974305.html" target="_blank">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/43/5/1900974305_ii_cover.jpg?version=0575ba4b-6906-48d5-b079-73fa90944ac5" title='Python网络爬虫从入门到实践'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Python网络爬虫从入门到实践'>Python网络爬虫从入门到实践</p>
+
+                                                <p class="commendTag">￥20.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a href="./1900456292.html" target="_blank">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img61.ddimg.cn/digital/product/62/92/1900456292_ii_cover.jpg?version=521d1dff-4eb1-4c87-8884-c80dd7e9ae94555" title='Java并发编程的艺术'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Java并发编程的艺术'>Java并发编程的艺术</p>
+
+                                                <p class="commendTag">￥25.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a href="./1900648430.html" target="_blank">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/84/30/1900648430_ii_cover.jpg?version=f3277f9c-e252-4713-b760-8853ce0f3782" title='JavaEE开发的颠覆者：Spring Boot实战'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='JavaEE开发的颠覆者：Spring Boot实战'>JavaEE开发的颠覆者：Spring Boot实战</p>
+
+                                                <p class="commendTag">￥9.99</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Tab栏 -->
+            <div class="newTab_box fixedToolBar">
+                <ul class="tab_title">
+                    <li class="cur" data-role="newEditModule">读书简介</li>
+                    <li data-role="catalogModule" id="catalog_btn1" dd_name="目录">目录</li>
+                    <li class="countBar" data-role="barModule" id="article_btn1" dd_name="累计评论">累计评论<span>(3条)</span></li>
+                </ul>
+            </div>
+            <div class="newTab_box">
+                <ul class="tab_title">
+                    <li class="cur" data-role="newEditModule">读书简介</li>
+                    <li data-role="catalogModule" id="catalog_btn2" dd_name="目录">目录</li>
+                    <li class="countBar" data-role="barModule" id="article_btn2" dd_name="累计评论">累计评论<span>(3条)</span></li>
+                </ul>
+            </div>
+
+            <div class="newEdit_box" id="newEditModule">
+		　　《像计算机科学家一样思考Python》按照培养读者像计算机科学家一样的思维方式的思路来教授Python语言编程。全书贯穿的主体是如何思考、设计、发的方法，而具体的编程语言，只是提供一个具体场景方便介绍的媒介。《像计算机科学家一样思考Python》并不是一本介绍语言的书，而是一本介绍编程思想的书。和其他编程设计语言书籍不同，它不拘泥于语言细节，而是尝试从初学者的角度出发，用生动的示例和丰富的练习来引导读者渐佳境。　　作者从最基本的编程概念始讲起，包括语言的语法和语义，而且每个编程概念都有清晰的定义，引领读者循序渐地学习变量、表达式、语句、函数和数据结构。此外，书中还探讨了如何处理文件和数据库，如何理解对象、方法和面向对象编程，如何使用调试技巧来修正语法、运行时和语义错误。每一章都配有术语表和练习题，方便读者巩固所学的知识和技巧。此外，每一章都抽出一节来讲解如何调试程序。作者针对每章中所专注的语言特性，或者相关的发问题，总结了调试的方方面面。可以说这是一种非常有益的创新，让初学编程的读者少走很多弯路。　　全书共19章和3个附录，详细介绍了Python语言编程的方方面面。《像计算机科学家一样思考Python》是一本实用的学习指南，适合没有Python编程经验的程序员阅读，也适合高中或大学的学生、Python爱好者及需要了解编程基础的人阅读。对于第一次触程序设计的人来说，是一本不可多得的佳作。
+
+            </div>
+            <div class="catalog" id="catalogModule">
+                <div class="edit_title"><span class="new_title" id="new_title">目录</span><em class="show"
+                                                                                            id="isshow" dd_name="目录展开"><i>展开</i><img
+                        src="img/down.png"/></em></div>
+                <div class="catalog_txt">
+
+                    <div class="txt" id="catalog_title">
+
+
+
+                        <p>内容提要</p>
+
+
+                        <p>前言</p>
+
+
+                        <p>关于作者</p>
+
+
+                        <p>关于封面</p>
+
+
+                        <p>译后记</p>
+
+
+                        <p>O’Reilly Media, Inc.介绍</p>
+
+
+                        <p>第1章 程序之道</p>
+
+
+                        <p>第2章 变量、表达式和语句</p>
+
+
+                        <p>第3章 函数</p>
+
+
+                        <p>第4章 案例研究：接口设计</p>
+
+
+                        <p>第5章 条件和递归</p>
+
+
+                        <p>第6章 有返回函数</p>
+
+
+                        <p>第7章 迭代</p>
+
+
+                        <p>第8章 字符串</p>
+
+
+                        <p>第9章 案例分析：文字游戏</p>
+
+
+                        <p>第10章 列表</p>
+
+
+                        <p>第11章 字典</p>
+
+
+                        <p>第12章 元组</p>
+
+
+                        <p>第13章 案例研究：选择数据结构</p>
+
+
+                        <p>第14章 文件</p>
+
+
+                        <p>第15章 类和对象</p>
+
+
+                        <p>第16章 类和函数</p>
+
+
+                        <p>第17章 类和方法</p>
+
+
+                        <p>第18章 继承</p>
+
+
+                        <p>第19章 案例研究：Tkinter</p>
+
+
+                        <p>附录A 调试</p>
+
+
+                        <p>附录B 算法分析</p>
+
+
+                        <p>附录C Lumpy</p>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="discuss_box product_bar_module" id="barModule" dd_name="书吧">
+                <p class="edit_title discuss_title">
+                    <span id="newTitle" class="new_title">累计评论(3条)
+                    </span><i class="count_discuss" id="leaguer">5个书友正在讨论这本书</i>
+                    <em class="show" id="deliverFocus" dd_name="发表评论">发表评论</em>
+                </p>
+                <div id="postWrap">
+                    <!--<div class="product_barposts_module new clearfix">
+                        <div class="pic">
+                            <img src="http://img30.ddimg.cn/imghead/50/2/7285799373980-1_o.png?1462153944118" alt="">
+                            <div class="name">134****7389</div>
+                            <div class="time">
+                                2017-3-31
+                            </div>
+                        </div>
+                        <div class="desc">
+                            <div class="post_con">
+                                <h1 class="title"><a href="http://e.dangdang.com/post_detail_page.html?barId=3011881&amp;digestId=1290556" target="_blank">励志偶像</a></h1>
+                                <div class="content">
+                                    <div class="brief"><a href="http://e.dangdang.com/post_detail_page.html?barId=3011881&amp;digestId=1290556" class="left" target="_blank"></a></div>
+                                </div>
+
+                            </div>
+                            <div class="community clearfix">
+                                <a href="javascript:;" class="favor " data-praise="false" digestid="1290556">
+                                    <i class="icon icon_size_20"></i>
+                                    <em class="praise_num">6</em>
+                                </a>
+                                <a href="http://e.dangdang.com/post_detail_page.html?barId=3011881&amp;digestId=1290556" target="_blank" class="comment">
+                                    <i class="icon icon_size_20"></i>
+                                    <em>0</em>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product_barmore_new_module"><a href="http://e.dangdang.com/bar_detail_page.html?barId=3011881" target="_blank">更多评论，去书吧逛逛&nbsp;&nbsp;&gt;&gt;</a></div>-->
+                </div>
+                <div id="bar" class="product_barcell_moudle">
+                    <p class="publish" id="star">发表评论 <span class="icon first"></span><span class="icon"></span><span
+                            class="icon"></span><span class="icon"></span><span class="icon"></span></p>
+                    <div class="post_con" id="postContent">
+                        <textarea class="content" id="ueditorIframe">
+                        </textarea>
+                        <span id="warnTip">发表评论，分享你的想法吧！</span>
+                    </div>
+                    <div class="comments new"><a class="commentBtn" id="commentBtn" dd_name="发表评论">发表评论</a></div>
+                </div>
+                <input id="barId" type="hidden" value="1203226" />
+            </div>
+
+
+            <!-- 中部条状小banner -->
+            <div class="ad2" id="ad2" dd_name="中部条状小banner">
+
+                <a target="_blank" href="http://book.dangdang.com/20161128_zl3t">
+                    <img src="http://img62.ddimg.cn/ddreader/lylins/0103-935.jpg" alt="当当阅读器"/>
+                </a>
+
+            </div>
+            <!-- 买过这本书的人还买过 -->
+
+            <p class="commend_title">
+                买过这本书的人还买过
+            </p>
+            <div class="commendTabCon" id="readTabCon" dd_name="买过这本书的人还买过">
+                <div class="carousel-plugin-model commendHeight">
+                    <div class="carousel-list-con">
+                        <ul class="carousel-list">
+
+                            <li class="carousel-item">
+                                <div class="commendContent">
+
+                                    <div class="commendCell noBorder">
+                                        <a target="_blank" href="./1900115935.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/59/35/1900115935_ii_cover.jpg" title='信息应用系统监理教程(仅适用PC阅读)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='信息应用系统监理教程(仅适用PC阅读)'>信息应用系统监理教程(仅适用PC阅读)</p>
+
+                                                <p class="commendTag">￥18.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900654229.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/42/29/1900654229_ii_cover.jpg" title='Neo4j实战'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Neo4j实战'>Neo4j实战</p>
+
+                                                <p class="commendTag">￥25.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900597561.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/75/61/1900597561_ii_cover.jpg" title='机器人浪潮：开启人工智能的商业时代'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='机器人浪潮：开启人工智能的商业时代'>机器人浪潮：开启人工智能的商业时代</p>
+
+                                                <p class="commendTag">￥18.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900396979.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img61.ddimg.cn/digital/product/69/79/1900396979_ii_cover.jpg" title='零基础学单片机C语言程序设计(第3版，丛书畅销30万册，全新版隆重上市)(仅适用PC阅读)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='零基础学单片机C语言程序设计(第3版，丛书畅销30万册，全新版隆重上市)(仅适用PC阅读)'>零基础学单片机C语言程序设计(第3版，丛书畅销30万册，全新版隆重上市)(仅适用PC阅读)</p>
+
+                                                <p class="commendTag">￥24.11</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="carousel-item">
+                                <div class="commendContent">
+
+                                    <div class="commendCell noBorder">
+                                        <a target="_blank" href="./1900557367.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img61.ddimg.cn/digital/product/73/67/1900557367_ii_cover.jpg" title='Kali Linux高级渗透测试'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Kali Linux高级渗透测试'>Kali Linux高级渗透测试</p>
+
+                                                <p class="commendTag">￥12.99</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900396892.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/68/92/1900396892_ii_cover.jpg" title='Word&#47;Excel&#47;PowerPoint三合一应用大全 (Office办公无忧)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Word&#47;Excel&#47;PowerPoint三合一应用大全 (Office办公无忧)'>Word&#47;Excel&#47;PowerPoint三合一应用大全 (Office办公无忧)</p>
+
+                                                <p class="commendTag">￥25.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900650120.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img61.ddimg.cn/digital/product/1/20/1900650120_ii_cover.jpg" title='Storm分布式实时计算模式'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Storm分布式实时计算模式'>Storm分布式实时计算模式</p>
+
+                                                <p class="commendTag">￥16.99</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900703078.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img61.ddimg.cn/digital/product/30/78/1900703078_ii_cover.jpg" title='从零开始学Excel图表 职场加强版'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='从零开始学Excel图表 职场加强版'>从零开始学Excel图表 职场加强版</p>
+
+                                                <p class="commendTag">￥19.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="carousel-item">
+                                <div class="commendContent">
+
+                                    <div class="commendCell noBorder">
+                                        <a target="_blank" href="./1900440823.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/8/23/1900440823_ii_cover.jpg" title='网络技术与人类未来'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='网络技术与人类未来'>网络技术与人类未来</p>
+
+                                                <p class="commendTag">￥2.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900783561.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/35/61/1900783561_ii_cover.jpg" title='C语言程序设计(第2版)(21世纪高等教育计算机规划教材)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='C语言程序设计(第2版)(21世纪高等教育计算机规划教材)'>C语言程序设计(第2版)(21世纪高等教育计算机规划教材)</p>
+
+                                                <p class="commendTag">￥29.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900290185.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/1/85/1900290185_ii_cover.jpg" title='Java改错学习法(仅适用PC阅读)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Java改错学习法(仅适用PC阅读)'>Java改错学习法(仅适用PC阅读)</p>
+
+                                                <p class="commendTag">￥20.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1901112303.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/23/3/1901112303_ii_cover.jpg" title='KVM实战：原理、进阶与性能调优'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='KVM实战：原理、进阶与性能调优'>KVM实战：原理、进阶与性能调优</p>
+
+                                                <p class="commendTag">￥45.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="carousel-item">
+                                <div class="commendContent">
+
+                                    <div class="commendCell noBorder">
+                                        <a target="_blank" href="./1901126389.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/63/89/1901126389_ii_cover.jpg" title='OpenStack设计与实现(第2版)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='OpenStack设计与实现(第2版)'>OpenStack设计与实现(第2版)</p>
+
+                                                <p class="commendTag">￥24.75</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900377705.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img61.ddimg.cn/digital/product/77/5/1900377705_ii_cover.jpg" title='电脑综合应用培训教程(仅适用PC阅读)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='电脑综合应用培训教程(仅适用PC阅读)'>电脑综合应用培训教程(仅适用PC阅读)</p>
+
+                                                <p class="commendTag">￥14.40</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900557220.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img61.ddimg.cn/digital/product/72/20/1900557220_ii_cover.jpg" title='Linux那些事儿之我是USB(第2版)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Linux那些事儿之我是USB(第2版)'>Linux那些事儿之我是USB(第2版)</p>
+
+                                                <p class="commendTag">￥19.75</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900377677.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img61.ddimg.cn/digital/product/76/77/1900377677_ii_cover.jpg" title='Linux高级程序设计(第2版)(仅适用PC阅读)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Linux高级程序设计(第2版)(仅适用PC阅读)'>Linux高级程序设计(第2版)(仅适用PC阅读)</p>
+
+                                                <p class="commendTag">￥35.29</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="carousel-item">
+                                <div class="commendContent">
+
+                                    <div class="commendCell noBorder">
+                                        <a target="_blank" href="./1901126321.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/63/21/1901126321_ii_cover.jpg" title='单片机C语言编程与Proteus仿真技术(含光盘1张)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='单片机C语言编程与Proteus仿真技术(含光盘1张)'>单片机C语言编程与Proteus仿真技术(含光盘1张)</p>
+
+                                                <p class="commendTag">￥14.75</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900567418.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/74/18/1900567418_ii_cover.jpg" title='计算机应用基础项目教程实验指导'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='计算机应用基础项目教程实验指导'>计算机应用基础项目教程实验指导</p>
+
+                                                <p class="commendTag">￥13.20</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900450627.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/6/27/1900450627_ii_cover.jpg" title='从零开始学Java(第2版)(不提供光盘内容)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='从零开始学Java(第2版)(不提供光盘内容)'>从零开始学Java(第2版)(不提供光盘内容)</p>
+
+                                                <p class="commendTag">￥21.72</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1901126689.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/66/89/1901126689_ii_cover.jpg" title='电脑高效办公'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='电脑高效办公'>电脑高效办公</p>
+
+                                                <p class="commendTag">￥55.86</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 读了这本书的人还在读 -->
+
+            <p class="commend_title">
+                读了这本书的人还在读
+            </p>
+            <div class="commendTabCon" id="buyedTabCon" dd_name="读了这本书的人还在读">
+                <div class="carousel-plugin-model commendHeight">
+                    <div class="carousel-list-con">
+                        <ul class="carousel-list">
+
+
+
+                            <li class="carousel-item">
+                                <div class="commendContent">
+
+                                    <div class="commendCell noBorder">
+                                        <a target="_blank" href="./1900269459.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/94/59/1900269459_ii_cover.jpg" title='机器人技术及其应用(仅适用PC阅读)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='机器人技术及其应用(仅适用PC阅读)'>机器人技术及其应用(仅适用PC阅读)</p>
+
+                                                <p class="commendTag">￥5.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900740467.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img61.ddimg.cn/digital/product/4/67/1900740467_ii_cover.jpg" title='脱机手写汉字识别若干关键技术研究'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='脱机手写汉字识别若干关键技术研究'>脱机手写汉字识别若干关键技术研究</p>
+
+                                                <p class="commendTag">￥7.80</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900650137.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/1/37/1900650137_ii_cover.jpg" title='OpenCL异构并行编程实战'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='OpenCL异构并行编程实战'>OpenCL异构并行编程实战</p>
+
+                                                <p class="commendTag">￥25.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1901115071.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/50/71/1901115071_ii_cover.jpg" title='Scratch趣味编程：陪孩子像搭积木一样学编程'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Scratch趣味编程：陪孩子像搭积木一样学编程'>Scratch趣味编程：陪孩子像搭积木一样学编程</p>
+
+                                                <p class="commendTag">￥25.00</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+
+
+
+                            <li class="carousel-item">
+                                <div class="commendContent">
+
+                                    <div class="commendCell noBorder">
+                                        <a target="_blank" href="./1901084146.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/41/46/1901084146_ii_cover.jpg" title='Serverless架构：无服务器单页应用开发'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Serverless架构：无服务器单页应用开发'>Serverless架构：无服务器单页应用开发</p>
+
+                                                <p class="commendTag">￥43.24</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900740667.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/6/67/1900740667_ii_cover.jpg" title='自动控制原理答疑解惑与典型题解'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='自动控制原理答疑解惑与典型题解'>自动控制原理答疑解惑与典型题解</p>
+
+                                                <p class="commendTag">￥11.40</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1901081913.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img62.ddimg.cn/digital/product/19/13/1901081913_ii_cover.jpg" title='Photoshop移动UI设计完全实例教程(全彩超值版)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='Photoshop移动UI设计完全实例教程(全彩超值版)'>Photoshop移动UI设计完全实例教程(全彩超值版)</p>
+
+                                                <p class="commendTag">￥59.40</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+
+                                    <div class="commendCell">
+                                        <a target="_blank" href="./1900329920.html">
+                                            <div class="commendImgCon">
+                                                <img class="commendImg" src="http://img60.ddimg.cn/digital/product/99/20/1900329920_ii_cover.jpg" title='机器学习及其应用2013(仅适用PC阅读)'>
+                                            </div>
+                                            <div class="commendDesc">
+                                                <p class="commendTip" title='机器学习及其应用2013(仅适用PC阅读)'>机器学习及其应用2013(仅适用PC阅读)</p>
+
+                                                <p class="commendTag">￥25.80</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="detail_right">
+            <!-- 右侧移动设备阅读 -->
+
+                <div class="deviceread_box">
+                  <h4 class="mobile_device">支持设备</h4>
+                  <ul class="clearfix">
+ 
+                    <li><a class="iPad"
+                               href="http://book.dangdang.com/ddapp"
+                               target="_blank" dd_name="iPad" id="iPad"><i></i>iPad</a></li>
+
+
+                    <li><a class="line_pc" href="http://e.dangdang.com/ebook/read.do?productId=1900754185"
+                               target="_blank" dd_name="PC在线" id="pc_online"><i></i>PC在线</a></li>
+
+
+                    <li><a class="touch_screen" href="http://e.dangdang.com/block_html5.htm" target="_blank"  dd_name="触屏版" id="touch"><i></i>触屏版</a></li>
+
+
+                    <li><a class="reader" href="http://product.dangdang.com/60640180.html" target="_blank"  dd_name="国文阅读器" id="gw_reader"><i></i>国文阅读器</a></li>
+
+
+                    <li><a class="andriod" href="http://book.dangdang.com/ddapp" target="_blank"  dd_name="android" id="android_reader"><i></i>andriod</a></li>
+
+
+                    <li><a class="iphone"
+                               href="http://book.dangdang.com/ddapp"
+                               target="_blank" dd_name="iphone" id="iphone_reader"><i></i>iphone</a></li>
+
+
+                  </ul> 
+                </div>
+
+            <!-- 右侧浏览历史 -->
+            <div class="history_wrap" id="history_box" dd_name="浏览历史">
+            </div>
+            <!-- 同类图书排行榜 -->
+            <div class="new_rank_box">
+
+                <p class="title">同类图书排行榜</p>
+                <div class="new_rank_list">
+                    <div class="publish_newseller_list">
+                        <div class="list_content" id="rank_box" dd_name="同类图书排行榜">
+
+                            <div class="nopic green_bg current">
+                                <div class="mark">01</div>
+                                <div class="book_content clearfix">
+
+                                    <div class="cover">
+                                        <a href="./1900671727.html" target="_blank" title="轻松学：C语言" >
+                                            <img src="http://img62.ddimg.cn/digital/product/17/27/1900671727_ii_cover.jpg?version=c767536f-92f6-4bb3-bc46-920224f5d9b0555" alt="轻松学：C语言">
+
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <h3>
+                                            <a href="./1900671727.html" target="_blank" title="轻松学：C语言" >轻松学：C语言</a>
+
+                                            <span class="price_out">￥1.00</span>
+                                        </h3>
+                                        <span class="grey"><a href="./1900671727.html" target="_blank" title="轻松学：C语言" >苏娟</a></span>
+                                        <div class="price_inuse">
+                                            <span class="orange">￥1.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nopic green_bg">
+                                <div class="mark">02</div>
+                                <div class="book_content clearfix">
+
+                                    <div class="cover">
+                                        <a href="./1900671710.html" target="_blank" title="语言的30个小秘密" >
+                                            <img src="http://img60.ddimg.cn/digital/product/17/10/1900671710_ii_cover.jpg?version=78ecabd6-2bf6-4e2b-902a-ec9130599a4f555" alt="语言的30个小秘密">
+
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <h3>
+                                            <a href="./1900671710.html" target="_blank" title="语言的30个小秘密" >语言的30个小秘密</a>
+
+                                            <span class="price_out">￥3.99</span>
+                                        </h3>
+                                        <span class="grey"><a href="./1900671710.html" target="_blank" title="语言的30个小秘密" >语言学午餐</a></span>
+                                        <div class="price_inuse">
+                                            <span class="orange">￥3.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nopic green_bg">
+                                <div class="mark">03</div>
+                                <div class="book_content clearfix">
+
+                                    <div class="cover">
+                                        <a href="./1901075837.html" target="_blank" title="利用Python进行数据分析(原书第2版)" >
+                                            <img src="http://img62.ddimg.cn/digital/product/58/37/1901075837_ii_cover.jpg?version=97ae0f9a-c380-4388-baad-dcf23686077b" alt="利用Python进行数据分析(原书第2版)">
+
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <h3>
+                                            <a href="./1901075837.html" target="_blank" title="利用Python进行数据分析(原书第2版)" >利用Python进行数据分析(原书第2版)</a>
+
+                                            <span class="price_out">￥42.99</span>
+                                        </h3>
+                                        <span class="grey"><a href="./1901075837.html" target="_blank" title="利用Python进行数据分析(原书第2版)" >（美）韦斯·麦金尼（Wes McKinney）</a></span>
+                                        <div class="price_inuse">
+                                            <span class="orange">￥42.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nopic">
+                                <div class="mark">04</div>
+                                <div class="book_content clearfix">
+
+                                    <div class="cover">
+                                        <a href="./1900670191.html" target="_blank" title="微信小程序：开发入门及案例详解" >
+                                            <img src="http://img61.ddimg.cn/digital/product/1/91/1900670191_ii_cover.jpg?version=60ec3a24-7be1-4b46-aad7-1772d31b17c3555" alt="微信小程序：开发入门及案例详解">
+
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <h3>
+                                            <a href="./1900670191.html" target="_blank" title="微信小程序：开发入门及案例详解" >微信小程序：开发入门及案例详解</a>
+
+                                            <span class="price_out">￥12.99</span>
+                                        </h3>
+                                        <span class="grey"><a href="./1900670191.html" target="_blank" title="微信小程序：开发入门及案例详解" >李骏;边思</a></span>
+                                        <div class="price_inuse">
+                                            <span class="orange">￥12.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nopic">
+                                <div class="mark">05</div>
+                                <div class="book_content clearfix">
+
+                                    <div class="cover">
+                                        <a href="./1900767182.html" target="_blank" title="Python 3.5从零开始学" >
+                                            <img src="http://img61.ddimg.cn/digital/product/71/82/1900767182_ii_cover.jpg?version=c2331c72-6b4d-4a0c-9ca2-5e64793471f5" alt="Python 3.5从零开始学">
+
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <h3>
+                                            <a href="./1900767182.html" target="_blank" title="Python 3.5从零开始学" >Python 3.5从零开始学</a>
+
+                                            <span class="price_out">￥14.99</span>
+                                        </h3>
+                                        <span class="grey"><a href="./1900767182.html" target="_blank" title="Python 3.5从零开始学" >刘宇宙</a></span>
+                                        <div class="price_inuse">
+                                            <span class="orange">￥14.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nopic">
+                                <div class="mark">06</div>
+                                <div class="book_content clearfix">
+
+                                    <div class="cover">
+                                        <a href="./1901093998.html" target="_blank" title="Kafka权威指南" >
+                                            <img src="http://img62.ddimg.cn/digital/product/39/98/1901093998_ii_cover.jpg?version=cde8f2a1-fc09-475f-afc5-37d150e609e0" alt="Kafka权威指南">
+
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <h3>
+                                            <a href="./1901093998.html" target="_blank" title="Kafka权威指南" >Kafka权威指南</a>
+
+                                            <span class="price_out">￥34.99</span>
+                                        </h3>
+                                        <span class="grey"><a href="./1901093998.html" target="_blank" title="Kafka权威指南" >（美）妮哈·纳克海德（Neha Narkhede）,格温·沙皮拉（Gwen Shapira）,托德·帕利诺（Todd Palino）</a></span>
+                                        <div class="price_inuse">
+                                            <span class="orange">￥34.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nopic">
+                                <div class="mark">07</div>
+                                <div class="book_content clearfix">
+
+                                    <div class="cover">
+                                        <a href="./1900974305.html" target="_blank" title="Python网络爬虫从入门到实践" >
+                                            <img src="http://img61.ddimg.cn/digital/product/43/5/1900974305_ii_cover.jpg?version=0575ba4b-6906-48d5-b079-73fa90944ac5" alt="Python网络爬虫从入门到实践">
+
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <h3>
+                                            <a href="./1900974305.html" target="_blank" title="Python网络爬虫从入门到实践" >Python网络爬虫从入门到实践</a>
+
+                                            <span class="price_out">￥20.00</span>
+                                        </h3>
+                                        <span class="grey"><a href="./1900974305.html" target="_blank" title="Python网络爬虫从入门到实践" >唐松,陈智铨</a></span>
+                                        <div class="price_inuse">
+                                            <span class="orange">￥20.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nopic">
+                                <div class="mark">08</div>
+                                <div class="book_content clearfix">
+
+                                    <div class="cover">
+                                        <a href="./1901106056.html" target="_blank" title="Scratch编程从入门到精通" >
+                                            <img src="http://img60.ddimg.cn/digital/product/60/56/1901106056_ii_cover.jpg?version=09d9bfc1-90ce-4b84-9ce2-837e8aa22c6d" alt="Scratch编程从入门到精通">
+
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <h3>
+                                            <a href="./1901106056.html" target="_blank" title="Scratch编程从入门到精通" >Scratch编程从入门到精通</a>
+
+                                            <span class="price_out">￥26.99</span>
+                                        </h3>
+                                        <span class="grey"><a href="./1901106056.html" target="_blank" title="Scratch编程从入门到精通" >谢声涛</a></span>
+                                        <div class="price_inuse">
+                                            <span class="orange">￥26.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nopic">
+                                <div class="mark">09</div>
+                                <div class="book_content clearfix">
+
+                                    <div class="cover">
+                                        <a href="./1900456292.html" target="_blank" title="Java并发编程的艺术" >
+                                            <img src="http://img60.ddimg.cn/digital/product/62/92/1900456292_ii_cover.jpg?version=521d1dff-4eb1-4c87-8884-c80dd7e9ae94555" alt="Java并发编程的艺术">
+
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <h3>
+                                            <a href="./1900456292.html" target="_blank" title="Java并发编程的艺术" >Java并发编程的艺术</a>
+
+                                            <span class="price_out">￥25.00</span>
+                                        </h3>
+                                        <span class="grey"><a href="./1900456292.html" target="_blank" title="Java并发编程的艺术" >方腾飞,魏鹏,程晓明</a></span>
+                                        <div class="price_inuse">
+                                            <span class="orange">￥25.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nopic">
+                                <div class="mark">10</div>
+                                <div class="book_content clearfix">
+
+                                    <div class="cover">
+                                        <a href="./1900648430.html" target="_blank" title="JavaEE开发的颠覆者：Spring Boot实战" >
+                                            <img src="http://img60.ddimg.cn/digital/product/84/30/1900648430_ii_cover.jpg?version=f3277f9c-e252-4713-b760-8853ce0f3782" alt="JavaEE开发的颠覆者：Spring Boot实战">
+
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <h3>
+                                            <a href="./1900648430.html" target="_blank" title="JavaEE开发的颠覆者：Spring Boot实战" >JavaEE开发的颠覆者：Spring Boot实战</a>
+
+                                            <span class="price_out">￥9.99</span>
+                                        </h3>
+                                        <span class="grey"><a href="./1900648430.html" target="_blank" title="JavaEE开发的颠覆者：Spring Boot实战" >汪云飞</a></span>
+                                        <div class="price_inuse">
+                                            <span class="orange">￥9.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="more_list">
+                                <a href="http://e.dangdang.com/classification_list_page.html?category=CXSJ&dimension=dd_sale" target="_blank">更多同类图书 ></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bookshow_box" id="topic_box" dd_name="专题列表">
+
+                    <a target="_blank" href="http://bang.dangdang.com/books/ebooks/98.01.00.00.00.00-24hours-0-0-1-1">
+                        <img src="http://img61.ddimg.cn/PC2017/xqy/bd245-125.png" alt="电子书排行榜"/>
+                    </a>
+
+                    <a target="_blank" href="http://bang.dangdang.com/books/enewhotbooks/98.01.00.00.00.00-24hours-0-0-1-1">
+                        <img src="http://img61.ddimg.cn/PC2017/xqy/xs245-125.png" alt="新书排行榜"/>
+                    </a>
+
+                    <a target="_blank" href="http://category.dangdang.com/cp98.01.00.00.00.00-lp-hp5.html">
+                        <img src="http://img63.ddimg.cn/ddreader/dangebook/5yuanfengding245-125.jpg" alt="5元封顶"/>
+                    </a>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- 页尾begin -->
+		<div class="public_footerfun_module">
+		
+	<div class="inner clearfix">
+		<ul>
+			<li class="func focusOn clearfix">
+				<div class="left">
+					<img src="img/footer_share.jpg" alt="" class="icon">
+				</div>
+				<div class="right">
+					<p class="title">关注我们</p>
+					<p class="desc">最受欢迎的阅读产品</p>
+					<p class="subtitle">关注我们：</p>
+					<ul class="share_link">
+						<li id="footerWeiboShare"><a href="http://weibo.com/dangdangread" target="_blank"><i class="icon weibo"></i>新浪微博</a></li>
+						<li><a href="javascript:;"><i class="icon weixin"></i>官方微信<div class="ecode"><span class="arrow"></span><img src="img/footer_ecode.jpg?123" alt=""></div></a></li>
+					</ul>
+				</div>
+			</li>
+			<li class="func author clearfix">
+				<div class="left">
+					<img src="img/footer_author.jpg" alt="" class="icon">
+				</div>
+				<div class="right">
+					<p class="title"><a href="http://dpp.dangdang.com/" target="_blank">作者后台</a></p>
+					<p class="desc">加入当当原创网，尊享作者</p>
+					<p class="subtitle">福利，成就网文大神</p>
+					<div class="btn"><a href="http://dangdu.dangdang.com/author/" target="_blank">我要写书<i></i></a></div>
+				</div>
+			</li>
+			<li class="func about_us clearfix">
+				<div class="left">
+					<img src="img/footer_us.jpg" alt="" class="icon">
+				</div>
+				<div class="right">
+					<p class="title">关于我们</p>
+					<p class="desc">欢迎反馈宝贵意见给我们</p>
+					<p class="subtitle">客服书吧：当当云阅读问答</p>
+					<div class="btn"><a href="http://e.dangdang.com/bar_detail_page.html?barId=2618070" target="_blank">意见反馈<i></i></a></div>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	</div>
+	<div class="public_footermes_module">
+		
+	<div class="footer_copyright"><span>Copyright (C) 当当网 2004-2014, All Rights Reserved</span></div>
+	<div class="footer_copyright"><span><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP证041189号</a></span><span class="sep">|</span><span>出版物经营许可证 新出发京批字第直0673号</span></div>
+	<div class="footer_copyright"><span>当当网收录的免费小说作品、频道内容、书友评论、用户上传文字、图片等其他一切内容及在当当网所做之广告均属用户个人行为，与当当网无关。</span></div>
+
+	</div>
+	<!-- 页尾end -->
+
+<div class="go_to_floor">
+    <img src="img/side_bar_code.png?1514366210" alt="" class="side_bar_code">
+    <div class="side_bar_code_hover">
+        <h2>当当云阅读</h2>
+        <img src="http://img61.ddimg.cn/web/pcbookstore/qrcode.jpg" alt="二维码">
+        <p>0元畅读数万本精选电子书</p>
+    </div>
+    <div class="back_to_top"><a href="javascript:;"><span class="white_arrow"></span>回顶部</a></div>
+</div>
+
+
+<script src="http://static.dangdang.com/js/header2012/pagetop2015_0827.js?1508485834" charset="gb2312"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    var require = {urlArgs: "v=1512458766"}
+</script>
+<script type="text/javascript" src="../lib/require.min.js"  data-main="../js/productNew"></script>
+<script>
+    require.config({
+        baseUrl: "../js/",
+        paths: {
+            "jquery": "../lib/jquery.min",
+            "underscore": "../lib/underscore.min",
+            "backbone": "../lib/backbone.min",
+            "fly":"../lib/jquery.fly.min",
+            "loginWindow":"http://static.ddimg.cn/js/login/LoginWindow.js?1508485834"
+        },
+        shim:{
+            'fly':['jquery'],
+            'loginWindow': {
+                deps: ['jquery'],
+                exports: 'loginWindow'
+            }
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://click.dangdang.com/js_tracker.js?1508485834"></script>
+
+</body>
+</html>

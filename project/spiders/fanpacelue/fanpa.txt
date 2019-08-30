@@ -1,0 +1,3611 @@
+标题:
+TensorFlow识别字母扭曲干扰型验证码-开放源码与98%模型
+		本项目源码及训练完成的模型均开源当前识别率98%。
+转载请附：博文网址： urlteam   ，github 网址：tensorflow_cnn
+新开一个专门存储TensorFlow项目的仓库逐步更新欢迎star ：tensorflow
+
+主流验证码偏向于用扭曲，倾斜，干扰例如下图：
+
+因为字符距离近，没法采用先切割为单个字符然后进行局部识别的方式，so。
+使用TensorFlow+cnn。进行卷积识别，该方法无需切割验证码，最终结果为训练4天(单台i5机器)达到98准确率
+项目综述：
+相关论文：
+
+Multi-digit Number Recognition from Street View Imagery using Deep CNN
+CAPTCHA Recognition with Active Deep Learning
+http://matthewearl.github.io/2016/05/06/cnn-anpr/
+
+使用深度学习+训练数据+大量计算力，我们可以在几天内训练一个可以破解验证码的模型，不需要分割验证码，而是把验证码做为一个整体进行识别。
+自己做一个验证码生成器，然后训练CNN模型破解自己做的验证码生成器。感觉的字符验证码机制可以废了，单纯的增加验证码难度只会让人更难识别，使用CNN+RNN，机器的识别准确率不比人差。Google已经意识到了这一点，他们现在使用机器学习技术检测异常流量。
+CNN需要大量的样本进行训练。如果使用数字+大小写字母CNN网络有4*62个输出，只使用数字CNN网络有4*10个输出。因此需要一个脚本自动生成训练集。
+最初cnn学习自: http://blog.topspeedsnail.com/archives/10858
+ 
+成功率（可能波动，均亲身实践）：
+
+达到50%成功率需要2000个批次，总计20w张图片。
+达到70%成功率需要4000个批次，总计40w张图片。
+达到94%成功率需要40000个批次，总计400w张图片。
+达到98%成功率需要100000个批次，总计1000w张图片。
+
+loss曲线为：
+
+成功率曲线为：
+
+实践流程：
+
+TensorFlow环境搭建：官网下查看安装教程
+测试批量验证码生成训练集： github
+TensorFlow—cnn 批量生成验证码并用cnn训练： github
+将训练模型存放于同一目录下，测试结果：github
+98%准确率模型下载：链接: https://pan.baidu.com/s/1cs0LCM 密码: sngx
+
+运行截图：
+测试训练图片生成：
+
+模型训练中：
+
+测试模型：
+
+ 
+本项目由urlteam维护，欢迎star
+相关的验证码破解系列可以在这里找到：github
+逐步更新TensorFlow系列项目：github
+博客主页：https://www.urlteam.org
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: TensorFlow识别字母扭曲干扰型验证码-开放源码与98%模型
+
+
+Related posts:
+使用python-sklearn-机器学习框架针对140W个点进行kmeans基于密度聚类划分 
+selenium自动登录挂stackoverflow的金牌 
+python 爬虫资源包汇总 
+亚马逊验证码破解倾斜字体识别机器学习 
+数据采集技术指南 第一篇 技术栈总览-附总图和演讲ppt 
+TensorFlow 资源大全–中文版 
+
+
+	
+
+
+标题:
+常用selenium浏览器配置
+		
+1.限制页面加载时间
+selenium webdriver在get()方法会一直等待页面加载完毕才会执行后面的，可如果加载时间太长会导致后续操作无法进行。有时我们要的信息已经加载出来了，再继续加载网页就没有意义了。
+可以通过set_page_load_time()方法来设定时间
+然后捕获TimeoutException异常，并通过执行Javascript来停止页面加载 window.stop()
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+
+driver = webdriver.PhantomJS()
+# 设定页面加载限制时间
+driver.set_page_load_timeout(5)
+driver.maximize_window()
+
+try:
+    driver.get('http://phantomjs.org/api/command-line.html')
+except TimeoutException:  
+    print('加载超过5秒，强制停止加载....') 
+    #当页面加载时间超过设定时间，通过执行Javascript来stop加载，即可执行后续动作
+    driver.execute_script('window.stop()')
+			
+				
+					
+				
+					1234567891011121314
+				
+						from selenium import webdriverfrom selenium.common.exceptions import TimeoutException driver = webdriver.PhantomJS()# 设定页面加载限制时间driver.set_page_load_timeout(5)driver.maximize_window() try:    driver.get('http://phantomjs.org/api/command-line.html')except TimeoutException:      print('加载超过5秒，强制停止加载....')     #当页面加载时间超过设定时间，通过执行Javascript来stop加载，即可执行后续动作    driver.execute_script('window.stop()')
+					
+				
+			
+		
+
+execute_script()是一个执行Javascript代码的方法。
+2.修改浏览器窗口大小
+有时候PhantomJS不修改浏览器不修改窗口大小就会有意外的惊喜（报错！），修改的方法也很简单，建议使用PhantomJS访问网页时都先加上。
+
+		
+		
+			
+			Python
+			
+			
+#自定义窗口大小：
+driver.set_window_size(1366,768)
+			
+				
+					
+				
+					12
+				
+						#自定义窗口大小：driver.set_window_size(1366,768)
+					
+				
+			
+		
+
+ 
+
+		
+		
+			
+			Python
+			
+			
+#默认为最大窗口：
+driver.maximize_window()
+			
+				
+					
+				
+					12
+				
+						#默认为最大窗口：driver.maximize_window()
+					
+				
+			
+		
+
+ 
+一般用driver.maximize_window()默认最大窗口就行了。
+3.修改User-Agent
+为了反爬虫或者获取一些移动端网络数据时，需要改变User-Agent。
+
+修改PhantomJS的User-Agent
+
+
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+dcap = dict(DesiredCapabilities.PHANTOMJS)
+dcap["phantomjs.page.settings.userAgent"] = (
+    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.103 Safari/537.36"
+)
+
+driver = webdriver.PhantomJS(desired_capabilities=dcap)
+
+driver.get("http://www.baidu.com/")
+#利用javascript的方法查看user-agent，须在调用get()后使用。
+agent = driver.execute_script("return navigator.userAgent")
+print(agent)
+driver.quit()
+			
+				
+					
+				
+					123456789101112131415
+				
+						from selenium import webdriverfrom selenium.webdriver.common.desired_capabilities import DesiredCapabilities dcap = dict(DesiredCapabilities.PHANTOMJS)dcap["phantomjs.page.settings.userAgent"] = (    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.103 Safari/537.36") driver = webdriver.PhantomJS(desired_capabilities=dcap) driver.get("http://www.baidu.com/")#利用javascript的方法查看user-agent，须在调用get()后使用。agent = driver.execute_script("return navigator.userAgent")print(agent)driver.quit()
+					
+				
+			
+		
+
+运行结果：
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.103 Safari/537.36
+			
+				
+					
+				
+					1
+				
+						Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.103 Safari/537.36
+					
+				
+			
+		
+
+ 
+查看当前User-Agent的方法，还可以通过访问 https://httpbin.org/user-agent ，然后提取信息，比如说截个图。
+
+		
+		
+			
+			Python
+			
+			
+driver.get("https://httpbin.org/user-agent")
+#网页截图
+driver.save_screenshot('User-Agent.png')
+			
+				
+					
+				
+					123
+				
+						driver.get("https://httpbin.org/user-agent")#网页截图driver.save_screenshot('User-Agent.png')
+					
+				
+			
+		
+
+ 
+获得截图
+
+
+
+
+
+
+
+修改Chrome的User-Agent
+
+
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+
+options = webdriver.ChromeOptions()
+# 设置成中文
+options.add_argument('lang=zh_CN.UTF-8')
+# 添加头部
+options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.103 Safari/537.36"')
+driver = webdriver.Chrome(chrome_options=options)
+driver.get("https://httpbin.org/user-agent")
+#driver.quit()
+			
+				
+					
+				
+					12345678910
+				
+						from selenium import webdriver options = webdriver.ChromeOptions()# 设置成中文options.add_argument('lang=zh_CN.UTF-8')# 添加头部options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.103 Safari/537.36"')driver = webdriver.Chrome(chrome_options=options)driver.get("https://httpbin.org/user-agent")#driver.quit()
+					
+				
+			
+		
+
+ 
+网页运行结果：
+
+
+
+
+
+实际上我的Chrome的User-Agent（之前说过chromedriver不支持太新版本的chrome）是：
+
+
+
+
+
+
+可以看到，user-agent确实是改变了。
+4.浏览器无图模式加载网页
+大多情况下，图片加载对我们并无意义。无图模式加载能提高网页加载速度，从而提高爬取速度。
+
+PhantomJS无图模式
+
+PhantomJS官网中给出了一些PhantomJS的设置参数（点我查看）。
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+#不加载图片，开启缓存
+SERVICE_ARGS = ['--load-images=false', '--disk-cache=true']
+driver = webdriver.PhantomJS(service_args=SERVICE_ARGS)
+
+driver.get("http://huaban.com/")
+#网页截图
+driver.save_screenshot('screenshot.png')
+driver.quit()
+			
+				
+					
+				
+					123456789
+				
+						from selenium import webdriver#不加载图片，开启缓存SERVICE_ARGS = ['--load-images=false', '--disk-cache=true']driver = webdriver.PhantomJS(service_args=SERVICE_ARGS) driver.get("http://huaban.com/")#网页截图driver.save_screenshot('screenshot.png')driver.quit()
+					
+				
+			
+		
+
+ 
+还有一个和之前设置user-agent类似的方法，也能实现无图加载的功能。
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+dcap = dict(DesiredCapabilities.PHANTOMJS)
+#设置无图模式
+dcap["phantomjs.page.settings.loadImages"] = False
+
+driver = webdriver.PhantomJS(desired_capabilities=dcap)
+
+driver.get('http://huaban.com/')
+driver.save_screenshot('screenshot.png')
+
+driver.quit()
+			
+				
+					
+				
+					12345678910111213
+				
+						from selenium import webdriverfrom selenium.webdriver.common.desired_capabilities import DesiredCapabilities dcap = dict(DesiredCapabilities.PHANTOMJS)#设置无图模式dcap["phantomjs.page.settings.loadImages"] = False driver = webdriver.PhantomJS(desired_capabilities=dcap) driver.get('http://huaban.com/')driver.save_screenshot('screenshot.png') driver.quit()
+					
+				
+			
+		
+
+ 
+
+Chrome无图模式
+
+
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+
+options = webdriver.ChromeOptions()
+#1允许所有图片；2阻止所有图片；3阻止第三方服务器图片
+prefs = {
+    'profile.default_content_setting_values': {
+        'images': 2
+    }
+}
+options.add_experimental_option('prefs', prefs)
+driver = webdriver.Chrome(chrome_options=options)
+
+driver.get("http://huaban.com/")
+#driver.quit()
+			
+				
+					
+				
+					1234567891011121314
+				
+						from selenium import webdriver options = webdriver.ChromeOptions()#1允许所有图片；2阻止所有图片；3阻止第三方服务器图片prefs = {    'profile.default_content_setting_values': {        'images': 2    }}options.add_experimental_option('prefs', prefs)driver = webdriver.Chrome(chrome_options=options) driver.get("http://huaban.com/")#driver.quit()
+					
+				
+			
+		
+
+ 
+运行结果：
+
+
+
+
+
+
+
+5.ip代理
+
+PhantomJS
+
+
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+from selenium.webdriver.common.proxy import Proxy
+from selenium.webdriver.common.proxy import ProxyType
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+proxy = Proxy(
+    {
+        'proxyType': ProxyType.MANUAL,
+        'httpProxy': '171.13.37.182:808'  # 代理ip和端口
+    }
+)
+desired_capabilities = DesiredCapabilities.PHANTOMJS.copy()
+# 把代理ip加入
+proxy.add_to_capabilities(desired_capabilities)
+driver = webdriver.PhantomJS(desired_capabilities=desired_capabilities)
+driver.get('http://httpbin.org/ip')
+print(driver.page_source)
+driver.close()
+			
+				
+					
+				
+					123456789101112131415161718
+				
+						from selenium import webdriverfrom selenium.webdriver.common.proxy import Proxyfrom selenium.webdriver.common.proxy import ProxyTypefrom selenium.webdriver.common.desired_capabilities import DesiredCapabilities proxy = Proxy(    {        'proxyType': ProxyType.MANUAL,        'httpProxy': '171.13.37.182:808'  # 代理ip和端口    })desired_capabilities = DesiredCapabilities.PHANTOMJS.copy()# 把代理ip加入proxy.add_to_capabilities(desired_capabilities)driver = webdriver.PhantomJS(desired_capabilities=desired_capabilities)driver.get('http://httpbin.org/ip')print(driver.page_source)driver.close()
+					
+				
+			
+		
+
+ 
+运行结果：
+
+		
+		
+			
+			Python
+			
+			
+<html><head></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">{
+  "origin": "171.13.37.182"
+}
+</pre></body></html>
+			
+				
+					
+				
+					1234
+				
+						<html><head></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">{  "origin": "171.13.37.182"}</pre></body></html>
+					
+				
+			
+		
+
+ 
+或者（方法基本一致）
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+from selenium.webdriver.common.proxy import Proxy
+from selenium.webdriver.common.proxy import ProxyType
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+driver=webdriver.PhantomJS()
+proxy=webdriver.Proxy()
+proxy.proxy_type=ProxyType.MANUAL
+proxy.http_proxy='171.13.37.182:808'
+
+proxy.add_to_capabilities(webdriver.DesiredCapabilities.PHANTOMJS)
+# 新建一个会话，并把参数传入，可以多次修改ip，用start_session实现动态修改ip
+driver.start_session(webdriver.DesiredCapabilities.PHANTOMJS)
+driver.get('http://httpbin.org/ip')
+print(driver.page_source)
+
+driver.quit()
+			
+				
+					
+				
+					1234567891011121314151617
+				
+						from selenium import webdriverfrom selenium.webdriver.common.proxy import Proxyfrom selenium.webdriver.common.proxy import ProxyTypefrom selenium.webdriver.common.desired_capabilities import DesiredCapabilities driver=webdriver.PhantomJS()proxy=webdriver.Proxy()proxy.proxy_type=ProxyType.MANUALproxy.http_proxy='171.13.37.182:808' proxy.add_to_capabilities(webdriver.DesiredCapabilities.PHANTOMJS)# 新建一个会话，并把参数传入，可以多次修改ip，用start_session实现动态修改ipdriver.start_session(webdriver.DesiredCapabilities.PHANTOMJS)driver.get('http://httpbin.org/ip')print(driver.page_source) driver.quit()
+					
+				
+			
+		
+
+ 
+
+		
+		
+			
+			Python
+			
+			
+# 还原为系统代理
+proxy=webdriver.Proxy()
+proxy.proxy_type=ProxyType.DIRECT
+proxy.add_to_capabilities(webdriver.DesiredCapabilities.PHANTOMJS)
+driver.start_session(webdriver.DesiredCapabilities.PHANTOMJS)
+#driver.get('http://httpbin.org/ip')
+			
+				
+					
+				
+					123456
+				
+						# 还原为系统代理proxy=webdriver.Proxy()proxy.proxy_type=ProxyType.DIRECTproxy.add_to_capabilities(webdriver.DesiredCapabilities.PHANTOMJS)driver.start_session(webdriver.DesiredCapabilities.PHANTOMJS)#driver.get('http://httpbin.org/ip')
+					
+				
+			
+		
+
+ 
+亲测都有效，按理说根据PhantomJS的参数说明直接修改service_args中的proxy参数就能实现ip代理，代码也比较精简易读，不过实际运行时无法返回正确信息。
+
+		
+		
+			
+			Python
+			
+			
+#活在理想中，并运行不出来的辣鸡程序23333
+from selenium import webdriver
+service_args = ['--proxy=171.13.37.182:808','--proxy-type=http']
+driver = webdriver.PhantomJS(service_args=service_args)
+driver.get('http://httpbin.org/ip')
+print(driver.page_source)
+driver.quit()
+			
+				
+					
+				
+					1234567
+				
+						#活在理想中，并运行不出来的辣鸡程序23333from selenium import webdriverservice_args = ['--proxy=171.13.37.182:808','--proxy-type=http']driver = webdriver.PhantomJS(service_args=service_args)driver.get('http://httpbin.org/ip')print(driver.page_source)driver.quit()
+					
+				
+			
+		
+
+ 
+希望有大佬指点下，这个程序为啥不对。。。
+
+Chrome
+和修改User-Agent的方法类似
+
+
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+#打开chrome设置
+chrome_options = webdriver.ChromeOptions()
+#添加proxy参数
+chrome_options.add_argument('--proxy-server=http://58.209.151.126:808')
+chrome = webdriver.Chrome(chrome_options=chrome_options)
+chrome.get('http://httpbin.org/ip')
+print(chrome.page_source)
+chrome.quit()
+			
+				
+					
+				
+					123456789
+				
+						from selenium import webdriver#打开chrome设置chrome_options = webdriver.ChromeOptions()#添加proxy参数chrome_options.add_argument('--proxy-server=http://58.209.151.126:808')chrome = webdriver.Chrome(chrome_options=chrome_options)chrome.get('http://httpbin.org/ip')print(chrome.page_source)chrome.quit()
+					
+				
+			
+		
+
+ 
+6.鼠标操作
+selenium对浏览器操作、鼠标操作等总结
+——简友“古佛青灯度流年”的总结，非常详细，还包括了一些键盘操作、多窗口、显示等待预期条件的完整翻译等等，很棒！
+个人感觉鼠标操作比较有用的是悬停操作，现在越来越多的网页需要把鼠标放到指定位置才显示新的内容，比如百度知道的问题分类、比如淘宝的价格区间输入框等等。
+
+
+
+
+
+
+
+悬停操作的模板如下
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+improt time
+#引入ActionChains 类
+from selenium.webdriver.common.action_chains import ActionChains
+
+driver = webdriver.Chrome()
+driver.get("http://www.baidu.com")
+#定位到要悬停的元素
+above =driver.find_element_by_id("xx")
+#对定位到的元素执行悬停操作
+ActionChains(driver).move_to_element(above).perform()
+time.sleep(5)
+			
+				
+					
+				
+					123456789101112
+				
+						from selenium import webdriverimprot time#引入ActionChains 类from selenium.webdriver.common.action_chains import ActionChains driver = webdriver.Chrome()driver.get("http://www.baidu.com")#定位到要悬停的元素above =driver.find_element_by_id("xx")#对定位到的元素执行悬停操作ActionChains(driver).move_to_element(above).perform()time.sleep(5)
+					
+				
+			
+		
+
+ 
+7.COOKIE设置
+使用COOKIE登录可以免去模拟输入账号、密码、验证码的过程。selenium中常见的对cookie主要有以下几种：
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get('http://www.baidu.com')
+
+#获取cookie
+driver.get_cookies()
+#删除指定cookie
+driver.delete_cookie("CookieName")
+#删除全部cookie
+driver.delete_all_cookies()
+#添加cookie，可操作参数为name、value、secure、domain、path。
+driver.add_cookie({'name':'AAA', 'value':'BBB'})
+			
+				
+					
+				
+					12345678910111213
+				
+						from selenium import webdriver driver = webdriver.Chrome()driver.get('http://www.baidu.com') #获取cookiedriver.get_cookies()#删除指定cookiedriver.delete_cookie("CookieName")#删除全部cookiedriver.delete_all_cookies()#添加cookie，可操作参数为name、value、secure、domain、path。driver.add_cookie({'name':'AAA', 'value':'BBB'})
+					
+				
+			
+		
+
+本来我直接复制浏览器头里面的COOKIE，发现程序会报错。这里的COOKIE的参数只能是name、value、secure、domain、path。所以我们首先用自带的方法先拿到COOKIE。
+下面以登录百度为例，获取COOKIE：
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+import time
+
+driver = webdriver.Chrome()
+driver.get('http://www.baidu.com')
+print(driver.get_cookies())
+driver.delete_all_cookies()
+input('等待登录..')
+print(driver.get_cookies())
+time.sleep(2)
+driver.quit()
+			
+				
+					
+				
+					1234567891011
+				
+						from selenium import webdriverimport time driver = webdriver.Chrome()driver.get('http://www.baidu.com')print(driver.get_cookies())driver.delete_all_cookies()input('等待登录..')print(driver.get_cookies())time.sleep(2)driver.quit()
+					
+				
+			
+		
+
+ 
+浏览器显示百度首页后，程序卡在input中，我们手动登录下，然后回程序界面随便给个输入，即获得了新的cookie。
+运行结果：
+
+		
+		
+			
+			Python
+			
+			
+[{'secure': False, 'path': '/', 'name': 'H_PS_PSSID', 'domain': '.baidu.com', 'value': '1437_21088_22919_22159'}, {'expiry': 3643448945.194736, 'secure': False, 'name': 'BAIDUID', 'path': '/', 'value': '83E3B71AB47A71D9C41D8D6FC4B7DD52:FG=1', 'domain': '.baidu.com'}, {'expiry': 3643448945.1948347, 'secure': False, 'name': 'PSTM', 'path': '/', 'value': '1495965372', 'domain': '.baidu.com'}, {'expiry': 3643448945.194802, 'secure': False, 'name': 'BIDUPSID', 'path': '/', 'value': '83E3B71AB47A71D9C41D8D6FC4B7DD52', 'domain': '.baidu.com'}, {'expiry': 1496829298, 'secure': False, 'name': 'BD_UPN', 'path': '/', 'value': '12314753', 'domain': 'www.baidu.com'}, {'expiry': 1495965299.194861, 'secure': False, 'name': 'BD_LAST_QID', 'path': '/', 'value': '13404962645896014853', 'domain': 'www.baidu.com'}, {'secure': False, 'path': '/', 'name': 'BD_HOME', 'domain': 'www.baidu.com', 'value': '0'}, {'expiry': 1495965303.996251, 'secure': False, 'name': '__bsi', 'path': '/', 'value': '17537283370589855674_00_0_I_R_2_0303_C02F_N_I_I_0', 'domain': '.www.baidu.com'}]
+等待登录..
+[{'secure': False, 'path': '/', 'name': 'H_PS_PSSID', 'domain': '.baidu.com', 'value': '1421_21121_22747_17001_22158'}, {'expiry': 1527501307.234465, 'secure': False, 'name': 'BAIDUID', 'path': '/', 'value': '37ECD490B4A2D652FE0A0C6264F18DBC:FG=1', 'domain': '.baidu.com'}, {'expiry': 2505117350, 'secure': False, 'name': 'KKK', 'path': '/', 'value': 'KKKKK', 'domain': '.baidu.com'}, {'expiry': 3643448997.013932, 'secure': False, 'name': 'PSKK', 'path': '/', 'value': '149KKK', 'domain': '.baidu.com'}, {'expiry': 2556057600, 'secure': False, 'name': 'KK_UID', 'path': '/', 'value': '0667eKKed5bKKKKK06K71', 'domain': '.www.baidu.com'}, {'expiry': 1496829350, 'secure': False, 'name': 'BD_UPN', 'path': '/', 'value': '12KK753', 'domain': 'www.baidu.com'}, {'expiry': 1496051750.065559, 'secure': False, 'name': 'BDORZ', 'path': '/', 'value': 'B490B5EKK15DKDA1598', 'domain': '.baidu.com'}, {'expiry': 1755165348.82662, 'secure': False, 'name': 'BDUSS', 'path': '/', 'value': 'ZsUzhOYzl4bVZFdk94NFlpSmVTTzAKKKKAAAAAAEAAAAGEUIGYWQ5OTYAAAAAKKKKAAAAAAAAAO-eKlnvKZbE', 'domain': '.baidu.com'}, {'secure': False, 'path': '/', 'name': 'BD_HOME', 'domain': 'www.baidu.com', 'value': '1'}, {'expiry': 2442045350, 'secure': False, 'name': 'sug', 'path': '/', 'value': '3', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'sugstore', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'ORIGIN', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'bdime', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 1495965355.737065, 'secure': False, 'name': '__bsi', 'path': '/', 'value': '170867479KKKK03KKI_0', 'domain': '.www.baidu.com'}]
+			
+				
+					
+				
+					123
+				
+						[{'secure': False, 'path': '/', 'name': 'H_PS_PSSID', 'domain': '.baidu.com', 'value': '1437_21088_22919_22159'}, {'expiry': 3643448945.194736, 'secure': False, 'name': 'BAIDUID', 'path': '/', 'value': '83E3B71AB47A71D9C41D8D6FC4B7DD52:FG=1', 'domain': '.baidu.com'}, {'expiry': 3643448945.1948347, 'secure': False, 'name': 'PSTM', 'path': '/', 'value': '1495965372', 'domain': '.baidu.com'}, {'expiry': 3643448945.194802, 'secure': False, 'name': 'BIDUPSID', 'path': '/', 'value': '83E3B71AB47A71D9C41D8D6FC4B7DD52', 'domain': '.baidu.com'}, {'expiry': 1496829298, 'secure': False, 'name': 'BD_UPN', 'path': '/', 'value': '12314753', 'domain': 'www.baidu.com'}, {'expiry': 1495965299.194861, 'secure': False, 'name': 'BD_LAST_QID', 'path': '/', 'value': '13404962645896014853', 'domain': 'www.baidu.com'}, {'secure': False, 'path': '/', 'name': 'BD_HOME', 'domain': 'www.baidu.com', 'value': '0'}, {'expiry': 1495965303.996251, 'secure': False, 'name': '__bsi', 'path': '/', 'value': '17537283370589855674_00_0_I_R_2_0303_C02F_N_I_I_0', 'domain': '.www.baidu.com'}]等待登录..[{'secure': False, 'path': '/', 'name': 'H_PS_PSSID', 'domain': '.baidu.com', 'value': '1421_21121_22747_17001_22158'}, {'expiry': 1527501307.234465, 'secure': False, 'name': 'BAIDUID', 'path': '/', 'value': '37ECD490B4A2D652FE0A0C6264F18DBC:FG=1', 'domain': '.baidu.com'}, {'expiry': 2505117350, 'secure': False, 'name': 'KKK', 'path': '/', 'value': 'KKKKK', 'domain': '.baidu.com'}, {'expiry': 3643448997.013932, 'secure': False, 'name': 'PSKK', 'path': '/', 'value': '149KKK', 'domain': '.baidu.com'}, {'expiry': 2556057600, 'secure': False, 'name': 'KK_UID', 'path': '/', 'value': '0667eKKed5bKKKKK06K71', 'domain': '.www.baidu.com'}, {'expiry': 1496829350, 'secure': False, 'name': 'BD_UPN', 'path': '/', 'value': '12KK753', 'domain': 'www.baidu.com'}, {'expiry': 1496051750.065559, 'secure': False, 'name': 'BDORZ', 'path': '/', 'value': 'B490B5EKK15DKDA1598', 'domain': '.baidu.com'}, {'expiry': 1755165348.82662, 'secure': False, 'name': 'BDUSS', 'path': '/', 'value': 'ZsUzhOYzl4bVZFdk94NFlpSmVTTzAKKKKAAAAAAEAAAAGEUIGYWQ5OTYAAAAAKKKKAAAAAAAAAO-eKlnvKZbE', 'domain': '.baidu.com'}, {'secure': False, 'path': '/', 'name': 'BD_HOME', 'domain': 'www.baidu.com', 'value': '1'}, {'expiry': 2442045350, 'secure': False, 'name': 'sug', 'path': '/', 'value': '3', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'sugstore', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'ORIGIN', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'bdime', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 1495965355.737065, 'secure': False, 'name': '__bsi', 'path': '/', 'value': '170867479KKKK03KKI_0', 'domain': '.www.baidu.com'}]
+					
+				
+			
+		
+
+ 
+然后我们把得到的cookie添加进去：
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+
+
+driver = webdriver.Chrome()
+driver.get('http://www.baidu.com')
+driver.delete_all_cookies()
+cookie_list =[{'secure': False, 'path': '/', 'name': 'H_PS_PSSID', 'domain': '.baidu.com', 'value': '1421_21121_22747_17001_22158'}, {'expiry': 1527501307.234465, 'secure': False, 'name': 'BAIDUID', 'path': '/', 'value': '37ECD490B4A2D652FE0A0C6264F18DBC:FG=1', 'domain': '.baidu.com'}, {'expiry': 2505117350, 'secure': False, 'name': 'KKK', 'path': '/', 'value': 'KKKKK', 'domain': '.baidu.com'}, {'expiry': 3643448997.013932, 'secure': False, 'name': 'PSKK', 'path': '/', 'value': '149KKK', 'domain': '.baidu.com'}, {'expiry': 2556057600, 'secure': False, 'name': 'KK_UID', 'path': '/', 'value': '0667eKKed5bKKKKK06K71', 'domain': '.www.baidu.com'}, {'expiry': 1496829350, 'secure': False, 'name': 'BD_UPN', 'path': '/', 'value': '12KK753', 'domain': 'www.baidu.com'}, {'expiry': 1496051750.065559, 'secure': False, 'name': 'BDORZ', 'path': '/', 'value': 'B490B5EKK15DKDA1598', 'domain': '.baidu.com'}, {'expiry': 1755165348.82662, 'secure': False, 'name': 'BDUSS', 'path': '/', 'value': 'ZsUzhOYzl4bVZFdk94NFlpSmVTTzAKKKKAAAAAAEAAAAGEUIGYWQ5OTYAAAAAKKKKAAAAAAAAAO-eKlnvKZbE', 'domain': '.baidu.com'}, {'secure': False, 'path': '/', 'name': 'BD_HOME', 'domain': 'www.baidu.com', 'value': '1'}, {'expiry': 2442045350, 'secure': False, 'name': 'sug', 'path': '/', 'value': '3', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'sugstore', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'ORIGIN', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'bdime', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 1495965355.737065, 'secure': False, 'name': '__bsi', 'path': '/', 'value': '170867479KKKK03KKI_0', 'domain': '.www.baidu.com'}]
+for i in cookie_list:
+    driver.add_cookie(i)
+driver.get('http://www.baidu.com')
+input('查看是否登录')
+
+driver.quit()
+			
+				
+					
+				
+					12345678910111213
+				
+						from selenium import webdriver  driver = webdriver.Chrome()driver.get('http://www.baidu.com')driver.delete_all_cookies()cookie_list =[{'secure': False, 'path': '/', 'name': 'H_PS_PSSID', 'domain': '.baidu.com', 'value': '1421_21121_22747_17001_22158'}, {'expiry': 1527501307.234465, 'secure': False, 'name': 'BAIDUID', 'path': '/', 'value': '37ECD490B4A2D652FE0A0C6264F18DBC:FG=1', 'domain': '.baidu.com'}, {'expiry': 2505117350, 'secure': False, 'name': 'KKK', 'path': '/', 'value': 'KKKKK', 'domain': '.baidu.com'}, {'expiry': 3643448997.013932, 'secure': False, 'name': 'PSKK', 'path': '/', 'value': '149KKK', 'domain': '.baidu.com'}, {'expiry': 2556057600, 'secure': False, 'name': 'KK_UID', 'path': '/', 'value': '0667eKKed5bKKKKK06K71', 'domain': '.www.baidu.com'}, {'expiry': 1496829350, 'secure': False, 'name': 'BD_UPN', 'path': '/', 'value': '12KK753', 'domain': 'www.baidu.com'}, {'expiry': 1496051750.065559, 'secure': False, 'name': 'BDORZ', 'path': '/', 'value': 'B490B5EKK15DKDA1598', 'domain': '.baidu.com'}, {'expiry': 1755165348.82662, 'secure': False, 'name': 'BDUSS', 'path': '/', 'value': 'ZsUzhOYzl4bVZFdk94NFlpSmVTTzAKKKKAAAAAAEAAAAGEUIGYWQ5OTYAAAAAKKKKAAAAAAAAAO-eKlnvKZbE', 'domain': '.baidu.com'}, {'secure': False, 'path': '/', 'name': 'BD_HOME', 'domain': 'www.baidu.com', 'value': '1'}, {'expiry': 2442045350, 'secure': False, 'name': 'sug', 'path': '/', 'value': '3', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'sugstore', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'ORIGIN', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 2442045350, 'secure': False, 'name': 'bdime', 'path': '/', 'value': '0', 'domain': '.www.baidu.com'}, {'expiry': 1495965355.737065, 'secure': False, 'name': '__bsi', 'path': '/', 'value': '170867479KKKK03KKI_0', 'domain': '.www.baidu.com'}]for i in cookie_list:    driver.add_cookie(i)driver.get('http://www.baidu.com')input('查看是否登录') driver.quit()
+					
+				
+			
+		
+
+ 
+结果显示登录成功：
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------
+后续大概会继续更新一些常见的JS函数、区域截图等等。
+
+
+
+		
+		
+			
+			Python
+			
+			
+作者：X_xxieRiemann
+链接：https://www.jianshu.com/p/19890d7af5dd
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+			
+				
+					
+				
+					1234
+				
+						作者：X_xxieRiemann链接：https://www.jianshu.com/p/19890d7af5dd來源：简书著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+					
+				
+			
+		
+
+
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: 常用selenium浏览器配置
+
+
+Related posts:
+爱奇艺腾讯搜狐优酷四大视频网站反爬虫技术研究 
+python 爬虫资源包汇总 
+selenium设置chrome和phantomjs的请求头信息 
+selenium frame 切换 
+Python Selenium下拉列表元素定位 
+关于反爬虫我见到的各种前后端奇葩姿势 
+
+
+	
+
+
+标题:
+谈谈 UserAgent 字符串的规律和伪造方法
+		需要用到随机的 User Agent，想想平时看到的 UA 的形式也比较规范，于是简单地分析了一下，方便伪造 UA，本文主要讨论桌面浏览器的 UA，而其他设备的略有涉及。
+
+首先打开浏览器，按 F12 进入控制台（Console），然后输入：navigator.userAgent，即可看到 UA。例如：
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0
+
+			
+				
+					
+				
+					12
+				
+						Mozilla/5.0 (Windows NT 10.0; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0 
+					
+				
+			
+		
+
+总结一下，UA 通常格式如下：
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/5.0 (平台) 引擎版本 浏览器版本号
+
+			
+				
+					
+				
+					12
+				
+						Mozilla/5.0 (平台) 引擎版本 浏览器版本号 
+					
+				
+			
+		
+
+由于历史上的浏览器大战，当时想获得图文并茂的网页，就必须宣称自己是 Mozilla 浏览器。此事导致如今 UA 里通常都带有 Mozilla 字样，最早包含该字样的是 Mozilla/1.0 (Win3.1)。斯人已逝，而且现代服务器也不强烈依赖该字符串响应，换言之，现在已经可以不必带上该字样，但几乎每个浏览器依然带有该字样，算是尊重历史吧。关于 UA 历史，可以参见《浏览器野史 UserAgent列传（上）》《浏览器野史 UserAgent列传（下） 》两篇风趣幽默的文章。
+然后是平台部分，这部分可由多个字符串组成，用英文半角分号分开。这部分通常包含操作系统，如果是 Windows 系统，可以参考百度百科 Windows NT 词条。太长不看的版本：
+
+		
+		
+			
+			Python
+			
+			
+Windows NT 5.0 // 如 Windows 2000 
+Windows NT 5.1 // 如 Windows XP
+Windows NT 6.0 // 如 Windows Vista 
+Windows NT 6.1 // 如 Windows 7
+Windows NT 6.2 // 如 Windows 8
+Windows NT 6.3 // 如 Windows 8.1
+Windows NT 10.0 // 如 Windows 10
+Win64; x64 // Win64 on x64
+WOW64 // Win32 on x64
+
+			
+				
+					
+				
+					12345678910
+				
+						Windows NT 5.0 // 如 Windows 2000 Windows NT 5.1 // 如 Windows XPWindows NT 6.0 // 如 Windows Vista Windows NT 6.1 // 如 Windows 7Windows NT 6.2 // 如 Windows 8Windows NT 6.3 // 如 Windows 8.1Windows NT 10.0 // 如 Windows 10Win64; x64 // Win64 on x64WOW64 // Win32 on x64 
+					
+				
+			
+		
+
+其中这个 WOW64 (Windows-on-Windows 64-bit)。它是 Windows 的子系统，让大多数 32 位的程序不用修改也能运行在 64 位系统上。
+如果是 Linux 系统，用的人少，就不多说了。
+
+		
+		
+			
+			Python
+			
+			
+X11; Linux i686; // Linux 桌面，i686 版本
+X11; Linux x86_64; // Linux 桌面，x86_64 版本
+X11; Linux i686 on x86_64 // Linux 桌面，运行在 x86_64 的 i686 版本
+
+			
+				
+					
+				
+					1234
+				
+						X11; Linux i686; // Linux 桌面，i686 版本X11; Linux x86_64; // Linux 桌面，x86_64 版本X11; Linux i686 on x86_64 // Linux 桌面，运行在 x86_64 的 i686 版本 
+					
+				
+			
+		
+
+此外还可以加发行版名：X11; Ubuntu; Linux x86_64;
+如果是 macOS（OS X、Mac OS X），形如：
+
+		
+		
+			
+			Python
+			
+			
+Macintosh; Intel Mac OS X 10_9_0 // Intel x86 或者 x86_64
+Macintosh; PPC Mac OS X 10_9_0 // PowerPC
+Macintosh; Intel Mac OS X 10.12; // 不用下划线，用点
+
+			
+				
+					
+				
+					1234
+				
+						Macintosh; Intel Mac OS X 10_9_0 // Intel x86 或者 x86_64Macintosh; PPC Mac OS X 10_9_0 // PowerPCMacintosh; Intel Mac OS X 10.12; // 不用下划线，用点 
+					
+				
+			
+		
+
+最后面的部分就是系统版本。由于 Mac 的系统多次易名，这里只写出 OS X 和 mac OS 的版本号（10.8 之后系统名称均为加州景点），分别是 ：
+
+		
+		
+			
+			Python
+			
+			
+Mountain Lion 10.8.0~10.8.3
+Mavericks 10.9.0~10.9.4
+Yosemite 10.10.0~10.10.5
+EI Capitan 10.11.0~10.11.6
+Sierra 10.12.0~10.12.4（至今2017.02，更多的内容参考维基百科）
+
+			
+				
+					
+				
+					123456
+				
+						Mountain Lion 10.8.0~10.8.3Mavericks 10.9.0~10.9.4Yosemite 10.10.0~10.10.5EI Capitan 10.11.0~10.11.6Sierra 10.12.0~10.12.4（至今2017.02，更多的内容参考维基百科） 
+					
+				
+			
+		
+
+你可指明你是 Android、iPod、iPhone、iPad 等：
+
+		
+		
+			
+			Python
+			
+			
+Android; Mobile // Firefox40 及以下
+Android; Tablet // Firefox40 及以下
+Android 4.4; Mobile // Firefox41 及以上
+Android 4.4; Tablet // Firefox41 及以上
+iPod touch; CPU iPhone OS 8_3 like Mac OS X
+iPhone; CPU iPhone OS 8_3 like Mac OS X
+iPad; CPU iPhone OS 8_3 like Mac OS X
+
+			
+				
+					
+				
+					12345678
+				
+						Android; Mobile // Firefox40 及以下Android; Tablet // Firefox40 及以下Android 4.4; Mobile // Firefox41 及以上Android 4.4; Tablet // Firefox41 及以上iPod touch; CPU iPhone OS 8_3 like Mac OS XiPhone; CPU iPhone OS 8_3 like Mac OS XiPad; CPU iPhone OS 8_3 like Mac OS X 
+					
+				
+			
+		
+
+有的时候还可能看见加密等级的字符：
+
+		
+		
+			
+			Python
+			
+			
+N; 表示无安全
+I; 表示弱安全
+U; 表示强安全
+
+			
+				
+					
+				
+					1234
+				
+						N; 表示无安全I; 表示弱安全U; 表示强安全 
+					
+				
+			
+		
+
+引擎版本和浏览器版本号接下来细说。
+据 StatCounter 统计，2017 年 1 月，各桌面浏览器的的使用分布为情况大致如下：
+
+可知，Google Chrome 占了六成，Firefox 和 IE（Edge） 差不多。三者占据了九成市场，那么接下来主要分析这三者的 UA。（如果想看国内市场情况，请访问 http://tongji.baidu.com/data/browser ）
+Chrome 的 UA
+首先是 Google Chrome。以我的浏览器为例：
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36
+
+			
+				
+					
+				
+					12
+				
+						Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36 
+					
+				
+			
+		
+
+Mozilla/5.0 (Windows NT 10.0; WOW64)，这部分不赘述了。
+AppleWebKit/537.36 (KHTML, like Gecko)...Safari/537.36，历史上，苹果依靠了 WebKit 内核开发出 Safari 浏览器，WebKit 包含了 WebCore 引擎，而 WebCore 又从 KHTML 衍生而来。由于历史原因，KHTML 引擎需要声明自己是“类似 Gecko”的，因此引擎部分这么写。再后来，Google 开发 Chrome 也是用了 WebKit 内核，于是也跟着这么写。借用 Littern 的一句话：“Chrome 希望能得到为 Safari 编写的网页，于是决定装成 Safari，Safari 使用了 WebKit 渲染引擎，而 WebKit 呢又伪装自己是KHTML，KHTML 呢又是伪装成 Gecko 的。同时所有的浏览器又都宣称自己是 Mozilla。”。不过，后来 Chrome 28 某个版本改用了 blink 内核，但还是保留了这些字符串。而且，最近的几十个版本中，这部分已经固定，没再变过。
+Chrome/56.0.2924.76 ，这部分才是 Chrome 的版本。56.0 是大版本，2924 是持续增大的一个数字，而 76则是修补漏洞的小版本。由于没找到版本号的规律，只能寄希望于别人记录了，查找得如下网站：
+（1）谷歌Chrome 旧版本 （3~目前最新）
+（2）Google Chrome （比较新的五六个版本）
+（3）下载旧版本 Google Chrome （0.x ~46）
+根据上述网站筛选出的数十个版本号，把版本号看成 xx.0.yyyy.zz ，通常一个 xx 只对应一两个 yyyy，但可能有多个 zz。不强求正确的情况下，可以随意指定 zz（zz通常0~200之间）或者都指定为 0，下列为约近 20 个大版本。
+
+		
+		
+			
+			Python
+			
+			
+58.0.2995.zz
+57.0.2986.zz
+56.0.2924.zz
+55.0.2883.zz
+54.0.2840.zz
+53.0.2785.zz
+52.0.2743.zz
+51.0.2704.zz
+50.0.2661.zz
+49.0.2623.zz
+48.0.2564.zz
+47.0.2526.zz
+46.0.2490.zz
+45.0.2454.zz
+44.0.2403.zz
+43.0.2357.zz
+42.0.2311.zz
+41.0.2272.zz
+40.0.2214.zz
+39.0.2171.zz
+38.0.2125.zz
+37.0.2062.zz
+
+			
+				
+					
+				
+					1234567891011121314151617181920212223
+				
+						58.0.2995.zz57.0.2986.zz56.0.2924.zz55.0.2883.zz54.0.2840.zz53.0.2785.zz52.0.2743.zz51.0.2704.zz50.0.2661.zz49.0.2623.zz48.0.2564.zz47.0.2526.zz46.0.2490.zz45.0.2454.zz44.0.2403.zz43.0.2357.zz42.0.2311.zz41.0.2272.zz40.0.2214.zz39.0.2171.zz38.0.2125.zz37.0.2062.zz 
+					
+				
+			
+		
+
+
+Firefox 的 UA
+第二部分便是 Firefox。说起来，Firefox 的 UA 相当容易伪造，根据 MDN 一篇文章内容指出格式如下：
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
+
+			
+				
+					
+				
+					12
+				
+						Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion 
+					
+				
+			
+		
+
+rv: GeckoVersion 为 Gecko 内核版本号，rv 是 release version 的缩写。最近的几十个版本中，GeckoVersion 和 FirefoxVersion 一致。
+Gecko/GeckoTrail ，桌面端固定不变为“Gecko/20100101”
+Firefox/firefoxversion，Firefox 的版本，形如xx.0。
+不过，随着 Firefox 换 Servo 内核的步伐推进，上述内容可能很快就要发生改变。
+IE / Edge 的 UA
+第三部分是 IE
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)
+Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; SV1)
+Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)
+
+			
+				
+					
+				
+					1234
+				
+						Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; SV1)Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0) 
+					
+				
+			
+		
+
+以上三个没啥好说的，都含有 MSIE（Microsoft Internet Explorer），其中 IE 8 开始加入 Trident 字符串。当使用兼容模式时，UA 如下，细看可知仅仅只是 MSIE 部分变了：
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0)
+
+			
+				
+					
+				
+					12
+				
+						Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0) 
+					
+				
+			
+		
+
+然后从 IE9 开始，终于也改为了 “Mozilla/5.0”，前面这部分没变，后面越来越乱。可能包含 NET CLR 等内容。
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; WOW64; Trident/5.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.30729)
+
+			
+				
+					
+				
+					1234
+				
+						Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; WOW64; Trident/5.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.30729) 
+					
+				
+			
+		
+
+IE10 和 IE9 差不多，可能包含 NET CLR 等内容：
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)
+Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)
+
+			
+				
+					
+				
+					123
+				
+						Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0) 
+					
+				
+			
+		
+
+最混乱的是 IE11，看着就像是 Gecko 内核（rv: 11.0），但是显然又不是（like Gecko）同时声明自己是 Trident/7.0 内核。移除了之前版本的“compatible”（兼容）和“MSIE”
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+
+			
+				
+					
+				
+					12
+				
+						Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko 
+					
+				
+			
+		
+
+然后是 IE 继任者 Microsoft Edge ，UA 格式：
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/5.0 (Windows NT 10.0; &lt;64-bit tags&gt;) AppleWebKit/&lt;WebKit Rev&gt; (KHTML, like Gecko) Chrome/&lt;Chrome Rev&gt; Safari/&lt;WebKit Rev&gt; Edge/&lt;EdgeHTML Rev&gt;.&lt;Windows Build&gt;
+
+			
+				
+					
+				
+					12
+				
+						Mozilla/5.0 (Windows NT 10.0; &lt;64-bit tags&gt;) AppleWebKit/&lt;WebKit Rev&gt; (KHTML, like Gecko) Chrome/&lt;Chrome Rev&gt; Safari/&lt;WebKit Rev&gt; Edge/&lt;EdgeHTML Rev&gt;.&lt;Windows Build&gt; 
+					
+				
+			
+		
+
+Edge 移除了以下内容
+
+		
+		
+			
+			Python
+			
+			
+.NET CLR &lt;version&gt;
+.NET &lt;version&gt;
+TabletPC &lt;version&gt;
+Touch
+Infopath &lt;version&gt;
+Trident &lt;version&gt;
+
+			
+				
+					
+				
+					1234567
+				
+						.NET CLR &lt;version&gt;.NET &lt;version&gt;TabletPC &lt;version&gt;TouchInfopath &lt;version&gt;Trident &lt;version&gt; 
+					
+				
+			
+		
+
+三大家说完了，其余的 Safari 浏览器和 Opera 浏览器也有一定的市场，但是大家应该也知道该怎么分析它们的 UA 了。另外国产的套壳浏览器可能会在 Chrome UA 的基础上再添加几个字符串。例如“QQBrowser”（QQ）、“BIDUBrowser”（百度）、“UBrowser”（UC）、“LBBROWSER”（猎豹）。当然也有某些浏览器 UA 完全等同于 Chrome UA，比如 3Q 大战后 360 浏览器的做法就是完全伪装成 Chrome，丧失了自己的名字。
+参考内容，除上述内容外，主要还有：
+1、 用户代理检测与浏览器Ua详细分析
+2、 User-agent string changes
+以下为按照上述规律伪造的 Win7 和 Win 10 上 Firefox 和 Chrome 的 UA，共计 66 个。
+
+		
+		
+			
+			Python
+			
+			
+Mozilla/5.0 (Windows NT 6.1; rv:41.0) Gecko/20100101 Firefox/41.0
+Mozilla/5.0 (Windows NT 6.1; rv:42.0) Gecko/20100101 Firefox/42.0
+Mozilla/5.0 (Windows NT 6.1; rv:43.0) Gecko/20100101 Firefox/43.0
+Mozilla/5.0 (Windows NT 6.1; rv:44.0) Gecko/20100101 Firefox/44.0
+Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0
+Mozilla/5.0 (Windows NT 6.1; rv:46.0) Gecko/20100101 Firefox/46.0
+Mozilla/5.0 (Windows NT 6.1; rv:47.0) Gecko/20100101 Firefox/47.0
+Mozilla/5.0 (Windows NT 6.1; rv:48.0) Gecko/20100101 Firefox/48.0
+Mozilla/5.0 (Windows NT 6.1; rv:49.0) Gecko/20100101 Firefox/49.0
+Mozilla/5.0 (Windows NT 6.1; rv:50.0) Gecko/20100101 Firefox/50.0
+Mozilla/5.0 (Windows NT 6.1; rv:51.0) Gecko/20100101 Firefox/51.0
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.2995.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2986.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.2995.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2986.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.0 Safari/537.36
+Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0
+Mozilla/5.0 (Windows NT 10.0; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.2995.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2986.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.2995.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2986.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.0 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.0 
+			
+				
+					
+				
+					123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566
+				
+						Mozilla/5.0 (Windows NT 6.1; rv:41.0) Gecko/20100101 Firefox/41.0Mozilla/5.0 (Windows NT 6.1; rv:42.0) Gecko/20100101 Firefox/42.0Mozilla/5.0 (Windows NT 6.1; rv:43.0) Gecko/20100101 Firefox/43.0Mozilla/5.0 (Windows NT 6.1; rv:44.0) Gecko/20100101 Firefox/44.0Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0Mozilla/5.0 (Windows NT 6.1; rv:46.0) Gecko/20100101 Firefox/46.0Mozilla/5.0 (Windows NT 6.1; rv:47.0) Gecko/20100101 Firefox/47.0Mozilla/5.0 (Windows NT 6.1; rv:48.0) Gecko/20100101 Firefox/48.0Mozilla/5.0 (Windows NT 6.1; rv:49.0) Gecko/20100101 Firefox/49.0Mozilla/5.0 (Windows NT 6.1; rv:50.0) Gecko/20100101 Firefox/50.0Mozilla/5.0 (Windows NT 6.1; rv:51.0) Gecko/20100101 Firefox/51.0Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.2995.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2986.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.2995.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2986.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.0 Safari/537.36Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0Mozilla/5.0 (Windows NT 10.0; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0Mozilla/5.0 (Windows NT 10.0; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0Mozilla/5.0 (Windows NT 10.0; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0Mozilla/5.0 (Windows NT 10.0; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0Mozilla/5.0 (Windows NT 10.0; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.2995.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2986.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.2995.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2986.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.0 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.0 
+					
+				
+			
+		
+
+
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: 谈谈 UserAgent 字符串的规律和伪造方法
+
+
+Related posts:
+Scrapy笔记四 自动爬取网页之使用CrawlSpider 
+Scrapy笔记五 爬取妹子图网的图片 详细解析 
+python 爬虫资源包汇总 
+python 进程超时控制 防止phantomjs假死 
+Python Selenium下拉列表元素定位 
+关于反爬虫我见到的各种前后端奇葩姿势 
+
+
+	
+
+
+标题:
+任意关键词下淘宝商品信息采集器，我拿下了信息却看不透套路
+		完成了一个淘宝采集项目。写在服务器上用crontab定时跑了半个月，拿下了机械键盘关键词下的数据后，生成一份采集后的excel，包含具体的商品名，店铺，付款人数，当前价格，原始价格，优惠类型，地区，还有商品页面中的具体商品参数信息等。。分析还没开始，先把数据开源出来，有兴趣的朋友可以自己看看。。回头整理好代码再发。
+数据展示：
+每天采集下来的文件包含40张商品主图
+
+同时生成一份采集后的excel，包含具体的商品名，店铺，付款人数，当前价格，原始价格，优惠类型，地区，还有商品页面中的具体商品参数信息等。。
+
+目前我跑了26天的，先把数据发出了，回头整理好了再开源代码吧。。
+下载在这里 。 机械键盘商品信息采集26天
+同时我把项目的结果样例放到github上，整理好后代码也会放上去。
+https://github.com/luyishisi/Anti-Anti-Spider/tree/master/6.%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81/17.%E6%B7%98%E5%AE%9D%E5%85%B3%E9%94%AE%E8%AF%8D%E9%87%87%E9%9B%86%E5%99%A8
+发这篇文章的目的是希望有能人异士提一下有什么能分析和继续采集的方向。我想把这个项目做的更有趣一些。
+ 
+关于程序功能上已经有的则是：
+淘宝搜索程序  Search.py
+功能。给定关键词与排序方式将采集淘宝商品数据存入指定文件夹内。
+命令 python Search.py 关键词 文件夹 排序方式 最大页码 （价格区间）
+说明：
+关键词可为：皮裤 毛衣 任意名词均可 但不可包含空格
+文件夹 ：将在当前目录下自动生成一个文件夹目录，包含pic文件（商品主图）待采集完成将出现一个excel文件
+排序方式：有1、2、3三种选项。1为综合排序呢，2为销量排序。3为价格区间搜索，选择3的时候需要在补充两个参数作为价格区间。
+使用样例：
+python Search.py 皮裤 piku1 1 5 #综合排序 # 5页
+python Search.py 皮裤 piku2 2 5 #销量排序
+python Search.py 皮裤 piku3 3 5 100 300 #指定价格搜索
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: 任意关键词下淘宝商品信息采集器，我拿下了信息却看不透套路
+
+
+Related posts:
+基于百度IP定位的网站访问来源分析的python实战项目–实践笔记零–项目规划 
+Scrapy-笔记一 入门项目 爬虫抓取w3c网站 
+Scrapy笔记四 自动爬取网页之使用CrawlSpider 
+Scrapy笔记五 爬取妹子图网的图片 详细解析 
+基于百度IP定位的网站访问来源分析的python实战项目–实践笔记一–ip与经纬信息采集 
+基于百度IP定位的网站访问来源分析的python实战项目–实践笔记二–调百度地图将经纬信息可视化呈现 
+
+
+	
+
+
+标题:
+Python Selenium下拉列表元素定位
+		对于select>option结构的下拉列表定位总结以下两种方法：
+1.定位父元素select,然后通过tag name找到所有option，得到option元素的数组，然后通过数组索引定位，最后click.
+
+		
+		
+			
+			Python
+			
+			
+driver.find_element_by_id("test").find_elements_by_tag_name("option")[0].click();
+			
+				
+					
+				
+					1
+				
+						driver.find_element_by_id("test").find_elements_by_tag_name("option")[0].click();
+					
+				
+			
+		
+
+2.用到了Select类, 实例select对象有很多方法：
+
+		
+		
+			
+			Python
+			
+			
+　　deselect_all()，全不选。
+
+　　deselect_by_index(index)，不选第 index 项。或者是 index+1项，忘了index从0 还是从1 开始了。
+
+　　deselect_by_value( value)，不选元素value属性为value的项，听着有点拗口，其实value值就是option标签中value的值。
+
+　　deselect_by_visible_text( text)，不选标签innerHTML为text的option
+
+　　select_by_index( index)，同上，选择第 index 项。这个用于 option的text和value不固定的情况
+
+　　select_by_value( value)， 同上，选择。
+
+　　select_by_visible_text( text)，同上，选择。
+			
+				
+					
+				
+					12345678910111213
+				
+						　　deselect_all()，全不选。 　　deselect_by_index(index)，不选第 index 项。或者是 index+1项，忘了index从0 还是从1 开始了。 　　deselect_by_value( value)，不选元素value属性为value的项，听着有点拗口，其实value值就是option标签中value的值。 　　deselect_by_visible_text( text)，不选标签innerHTML为text的option 　　select_by_index( index)，同上，选择第 index 项。这个用于 option的text和value不固定的情况 　　select_by_value( value)， 同上，选择。 　　select_by_visible_text( text)，同上，选择。
+					
+				
+			
+		
+
+ 
+3.使用示例如下：
+
+		
+		
+			
+			Python
+			
+			
+from selenium.webdriver.support.ui import Select
+
+select = Select(driver.find_element_by_id("test"))
+select.select_by_visible_text("Edam")
+			
+				
+					
+				
+					1234
+				
+						from selenium.webdriver.support.ui import Select select = Select(driver.find_element_by_id("test"))select.select_by_visible_text("Edam")
+					
+				
+			
+		
+
+ 
+4.不仅是click可以，同样的text等方法也是通用：
+
+		
+		
+			
+			Python
+			
+			
+title1 = driver.find_element_by_xpath('//*[@id="cateid"]').find_elements_by_tag_name("option")[1].text  #text 获取该下拉行的文本内容
+driver.find_element_by_xpath('//*[@id="cateid"]').find_elements_by_tag_name("option")[1].click() #click 模拟点击
+time.sleep(2)
+			
+				
+					
+				
+					123
+				
+						title1 = driver.find_element_by_xpath('//*[@id="cateid"]').find_elements_by_tag_name("option")[1].text  #text 获取该下拉行的文本内容driver.find_element_by_xpath('//*[@id="cateid"]').find_elements_by_tag_name("option")[1].click() #click 模拟点击time.sleep(2)
+					
+				
+			
+		
+
+
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: Python Selenium下拉列表元素定位
+
+
+Related posts:
+爬虫首尝试—爬取百度贴吧图片 
+Scrapy-笔记一 入门项目 爬虫抓取w3c网站 
+Scrapy笔记五 爬取妹子图网的图片 详细解析 
+Scrapy笔记零 环境搭建与五大组件架构 
+python 进程超时控制 防止phantomjs假死 
+selenium frame 切换 
+
+
+	
+
+
+标题:
+淘宝商品信息采集器二，开放源码可自定义关键词进行采集
+		淘宝商品信息采集器 开放源码篇。上篇 文章 任意关键词下淘宝商品信息采集器 现在整理好代码连同使用方式发布在github上，欢迎star，并且多多指教。
+github：淘宝关键词采集器  博客原文：urlteam
+主要程序运行环境：python 2.7
+经测试，环境配置得当可在mac，linux ubuntu 16.04 和win7下完美运行。
+python依赖包：
+
+
+		
+		
+			
+			Python
+			
+			
+import requests
+import time
+import sys
+import json
+import os
+import xlsxwriter
+from sys import argv
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from lxml import etree
+import re
+			
+				
+					
+				
+					1234567891011
+				
+						import requestsimport timeimport sysimport jsonimport osimport xlsxwriterfrom sys import argvfrom selenium import webdriverfrom selenium.webdriver.common.keys import Keysfrom lxml import etreeimport re
+					
+				
+			
+		
+
+
+主要绕开淘宝天猫反爬虫的思路：
+
+使用手机版ua使请求自动重定向到手机版淘宝网址中。
+使用selenium+chrome模拟浏览器的请求与验证计算，携带足够伪造的请求头，确保refere和host等合理，发出的请求可以正常被接受。携带自己使用正常浏览的cookie。
+搜索功能从淘宝网址中走内部后期ajax加载通道。
+减少频率，并非疯狂请求，仅仅监控固定的少数关键词。
+
+获得到的数据是：
+机械键盘商品信息采集26天
+
+
+ 
+使用方式：
+
+淘宝搜索程序  Search.py
+功能。给定关键词与排序方式将采集淘宝商品数据存入指定文件夹内。
+命令 python Search.py 关键词 文件夹 排序方式 最大页码 （价格区间）
+说明：
+关键词可为：皮裤 毛衣 任意名词均可 但不可包含空格
+文件夹 ：将在当前目录下自动生成一个文件夹目录，包含pic文件（商品主图）待采集完成将出现一个excel文件
+排序方式：有1、2、3三种选项。1为综合排序呢，2为销量排序。3为价格区间搜索，选择3的时候需要在补充两个参数作为价格区间。
+使用样例：
+python Search.py 皮裤 piku1 1 5 #综合排序 # 5页
+python Search.py 皮裤 piku2 2 5 #销量排序
+python Search.py 皮裤 piku3 3 5 100 300 #指定价格搜索
+
+转载请附：
+github：淘宝关键词采集器  博客原文：urlteam
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: 淘宝商品信息采集器二，开放源码可自定义关键词进行采集
+
+
+Related posts:
+基于百度IP定位的网站访问来源分析的python实战项目–实践笔记零–项目规划 
+selenium自动登录挂stackoverflow的金牌 
+python 爬虫资源包汇总 
+python 高度鲁棒性爬虫的超时控制问题 
+数据采集技术指南 第一篇 技术栈总览-附总图和演讲ppt 
+Scrapy笔记五 爬取妹子图网的图片 详细解析 
+
+
+	
+
+
+标题:
+常用正则
+		一、校验数字的表达式
+1 数字：^[0-9]*$
+2 n位的数字：^\d{n}$
+3 至少n位的数字：^\d{n,}$
+4 m-n位的数字：^\d{m,n}$
+5 零和非零开头的数字：^(0|[1-9][0-9]*)$
+6 非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]{1,2})?$
+7 带1-2位小数的正数或负数：^(\-)?\d+(\.\d{1,2})?$
+8 正数、负数、和小数：^(\-|\+)?\d+(\.\d+)?$
+9 有两位小数的正实数：^[0-9]+(.[0-9]{2})?$
+10 有1~3位小数的正实数：^[0-9]+(.[0-9]{1,3})?$
+11 非零的正整数：^[1-9]\d*$ 或 ^([1-9][0-9]*){1,3}$ 或 ^\+?[1-9][0-9]*$
+12 非零的负整数：^\-[1-9][]0-9″*$ 或 ^-[1-9]\d*$
+13 非负整数：^\d+$ 或 ^[1-9]\d*|0$
+14 非正整数：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$
+15 非负浮点数：^\d+(\.\d+)?$ 或 ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$
+16 非正浮点数：^((-\d+(\.\d+)?)|(0+(\.0+)?))$ 或 ^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$
+17 正浮点数：^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$ 或 ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$
+18 负浮点数：^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$ 或 ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$
+19 浮点数：^(-?\d+)(\.\d+)?$ 或 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$
+二、校验字符的表达式
+1 汉字：^[\u4e00-\u9fa5]{0,}$
+2 英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$
+3 长度为3-20的所有字符：^.{3,20}$
+4 由26个英文字母组成的字符串：^[A-Za-z]+$
+5 由26个大写英文字母组成的字符串：^[A-Z]+$
+6 由26个小写英文字母组成的字符串：^[a-z]+$
+7 由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$
+8 由数字、26个英文字母或者下划线组成的字符串：^\w+$ 或 ^\w{3,20}$
+9 中文、英文、数字包括下划线：^[\u4E00-\u9FA5A-Za-z0-9_]+$
+10 中文、英文、数字但不包括下划线等符号：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$
+11 可以输入含有^%&’,;=?$\”等字符：[^%&’,;=?$\x22]+
+12 禁止输入含有~的字符：[^~\x22]+
+三、特殊需求表达式
+1 Email地址：^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+2 域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?
+3 InternetURL：[a-zA-z]+://[^\s]* 或 ^http://([\w-]+\.)+[\w-]+(/[\w-./?%&=]*)?$
+4 手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$
+5 电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：^(\(\d{3,4}-)|\d{3.4}-)?\d{7,8}$
+6 国内电话号码(0511-4405222、021-87888822)：\d{3}-\d{8}|\d{4}-\d{7}
+7 身份证号(15位、18位数字)：^\d{15}|\d{18}$
+8 短身份证号码(数字、字母x结尾)：^([0-9]){7,18}(x|X)?$ 或 ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$
+9 帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$
+10 密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]\w{5,17}$
+11 强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$
+12 日期格式：^\d{4}-\d{1,2}-\d{1,2}
+13 一年的12个月(01～09和1～12)：^(0?[1-9]|1[0-2])$
+14 一个月的31天(01～09和1～31)：^((0?[1-9])|((1|2)[0-9])|30|31)$
+15 钱的输入格式：
+16 1.有四种钱的表示形式我们可以接受:”10000.00” 和 “10,000.00”, 和没有 “分” 的 “10000” 和 “10,000”：^[1-9][0-9]*$
+17 2.这表示任意一个不以0开头的数字,但是,这也意味着一个字符”0″不通过,所以我们采用下面的形式：^(0|[1-9][0-9]*)$
+18 3.一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：^(0|-?[1-9][0-9]*)$
+19 4.这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：^[0-9]+(.[0-9]+)?$
+20 5.必须说明的是,小数点后面至少应该有1位数,所以”10.”是不通过的,但是 “10” 和 “10.2” 是通过的：^[0-9]+(.[0-9]{2})?$
+21 6.这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：^[0-9]+(.[0-9]{1,2})?$
+22 7.这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$
+23 8.1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$
+24 备注：这就是最终结果了,别忘了”+”可以用”*”替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里
+25 xml文件：^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$
+26 中文字符的正则表达式：[\u4e00-\u9fa5]
+27 双字节字符：[^\x00-\xff] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))
+28 空白行的正则表达式：\s* (可以用来删除空白行)
+29 HTML标记的正则表达式：<(\S*?)[^>]*>.*?</\1>|<.*? /> (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)
+30 首尾空白字符的正则表达式：^\s*|\s*$或(^\s*)|(\s*$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)
+31 腾讯QQ号：[1-9][0-9]{4,} (腾讯QQ号从10000开始)
+32 中国邮政编码：[1-9]\d{5}(?!\d) (中国邮政编码为6位数字)
+33 IP地址：\d+\.\d+\.\d+\.\d+ (提取IP地址时有用)
+34 IP地址：((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: 常用正则
+
+
+No related posts.
+
+	
+
+
+标题:
+Python模拟登录的几种方法（转）
+		
+目录
+
+方法一：直接使用已知的cookie访问
+方法二：模拟登录后再携带得到的cookie访问
+方法三：模拟登录后用session保持登录状态
+方法四：使用无头浏览器访问
+
+原文网址：https://www.cnblogs.com/chenxiaohan/p/7654667.html
+方法一：直接使用已知的cookie访问
+特点：
+简单，但需要先在浏览器登录
+原理：
+简单地说，cookie保存在发起请求的客户端中，服务器利用cookie来区分不同的客户端。因为http是一种无状态的连接，当服务器一下子收到好几个请求时，是无法判断出哪些请求是同一个客户端发起的。而“访问登录后才能看到的页面”这一行为，恰恰需要客户端向服务器证明：“我是刚才登录过的那个客户端”。于是就需要cookie来标识客户端的身份，以存储它的信息（如登录状态）。
+当然，这也意味着，只要得到了别的客户端的cookie，我们就可以假冒成它来和服务器对话。这给我们的程序带来了可乘之机。
+我们先用浏览器登录，然后使用开发者工具查看cookie。接着在程序中携带该cookie向网站发送请求，就能让你的程序假扮成刚才登录的那个浏览器，得到只有登录后才能看到的页面。
+具体步骤：
+1.用浏览器登录，获取浏览器里的cookie字符串
+先使用浏览器登录。再打开开发者工具，转到network选项卡。在左边的Name一栏找到当前的网址，选择右边的Headers选项卡，查看Request Headers，这里包含了该网站颁发给浏览器的cookie。对，就是后面的字符串。把它复制下来，一会儿代码里要用到。
+注意，最好是在运行你的程序前再登录。如果太早登录，或是把浏览器关了，很可能复制的那个cookie就过期无效了。
+
+2.写代码
+urllib库的版本：
+
+
+
+
+		
+		
+			
+			Python
+			
+			
+import sys
+import io
+from urllib import request
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
+
+#登录后才能访问的网站
+url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal'
+
+#浏览器登录后得到的cookie，也就是刚才复制的字符串
+cookie_str = r'JSESSIONID=xxxxxxxxxxxxxxxxxxxxxx; iPlanetDirectoryPro=xxxxxxxxxxxxxxxxxx'
+
+#登录后才能访问的网页
+url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal'
+
+req = request.Request(url)
+#设置cookie
+req.add_header('cookie', raw_cookies)
+#设置请求头
+req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36')
+
+resp = request.urlopen(req)
+
+print(resp.read().decode('utf-8'))
+			
+				
+					
+				
+					123456789101112131415161718192021222324
+				
+						import sysimport iofrom urllib import request sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码 #登录后才能访问的网站url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal' #浏览器登录后得到的cookie，也就是刚才复制的字符串cookie_str = r'JSESSIONID=xxxxxxxxxxxxxxxxxxxxxx; iPlanetDirectoryPro=xxxxxxxxxxxxxxxxxx' #登录后才能访问的网页url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal' req = request.Request(url)#设置cookiereq.add_header('cookie', raw_cookies)#设置请求头req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36') resp = request.urlopen(req) print(resp.read().decode('utf-8'))
+					
+				
+			
+		
+
+
+
+requests库的版本：
+
+
+
+		
+		
+			
+			Python
+			
+			
+import requests
+import sys
+import io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
+
+#登录后才能访问的网页
+url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal'
+
+#浏览器登录后得到的cookie，也就是刚才复制的字符串
+cookie_str = r'JSESSIONID=xxxxxxxxxxxxxxxxxxxxxx; iPlanetDirectoryPro=xxxxxxxxxxxxxxxxxx'
+
+#把cookie字符串处理成字典，以便接下来使用
+cookies = {}
+for line in cookie_str.split(';'):
+    key, value = line.split('=', 1)
+    cookies[key] = value
+			
+				
+					
+				
+					1234567891011121314151617
+				
+						import requestsimport sysimport io sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码 #登录后才能访问的网页url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal' #浏览器登录后得到的cookie，也就是刚才复制的字符串cookie_str = r'JSESSIONID=xxxxxxxxxxxxxxxxxxxxxx; iPlanetDirectoryPro=xxxxxxxxxxxxxxxxxx' #把cookie字符串处理成字典，以便接下来使用cookies = {}for line in cookie_str.split(';'):    key, value = line.split('=', 1)    cookies[key] = value
+					
+				
+			
+		
+
+
+
+ 
+方法二：模拟登录后再携带得到的cookie访问
+原理：
+我们先在程序中向网站发出登录请求，也就是提交包含登录信息的表单（用户名、密码等）。从响应中得到cookie，今后在访问其他页面时也带上这个cookie，就能得到只有登录后才能看到的页面。
+具体步骤：
+1.找出表单提交到的页面
+还是要利用浏览器的开发者工具。转到network选项卡，并勾选Preserve Log（重要！）。在浏览器里登录网站。然后在左边的Name一栏找到表单提交到的页面。怎么找呢？看看右侧，转到Headers选项卡。首先，在General那段，Request Method应当是POST。其次最下方应该要有一段叫做Form Data的，里面可以看到你刚才输入的用户名和密码等。也可以看看左边的Name，如果含有login这个词，有可能就是提交表单的页面（不一定！）。
+
+这里要强调一点，“表单提交到的页面”通常并不是你填写用户名和密码的页面！所以要利用工具来找到它。
+2.找出要提交的数据
+虽然你在浏览器里登陆时只填了用户名和密码，但表单里包含的数据可不只这些。从Form Data里就可以看到需要提交的所有数据。
+
+3.写代码
+urllib库的版本：
+
+
+
+		
+		
+			
+			Python
+			
+			
+import sys
+import io
+import urllib.request
+import http.cookiejar
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
+
+#登录时需要POST的数据
+data = {'Login.Token1':'学号', 
+        'Login.Token2':'密码', 
+        'goto:http':'//ssfw.xmu.edu.cn/cmstar/loginSuccess.portal', 
+        'gotoOnFail:http':'//ssfw.xmu.edu.cn/cmstar/loginFailure.portal'}
+post_data = urllib.parse.urlencode(data).encode('utf-8')
+
+#设置请求头
+headers = {'User-agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'}
+
+#登录时表单提交到的地址（用开发者工具可以看到）
+login_url = ' http://ssfw.xmu.edu.cn/cmstar/userPasswordValidate.portal
+
+#构造登录请求
+req = urllib.request.Request(login_url, headers = headers, data = post_data)
+
+#构造cookie
+cookie = http.cookiejar.CookieJar()
+
+#由cookie构造opener
+opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie))
+
+#发送登录请求，此后这个opener就携带了cookie，以证明自己登录过
+resp = opener.open(req)
+
+#登录后才能访问的网页
+url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal'
+
+#构造访问请求
+req = urllib.request.Request(url, headers = headers)
+
+resp = opener.open(req)
+
+print(resp.read().decode('utf-8'))
+			
+				
+					
+				
+					1234567891011121314151617181920212223242526272829303132333435363738394041
+				
+						import sysimport ioimport urllib.requestimport http.cookiejar sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码 #登录时需要POST的数据data = {'Login.Token1':'学号',         'Login.Token2':'密码',         'goto:http':'//ssfw.xmu.edu.cn/cmstar/loginSuccess.portal',         'gotoOnFail:http':'//ssfw.xmu.edu.cn/cmstar/loginFailure.portal'}post_data = urllib.parse.urlencode(data).encode('utf-8') #设置请求头headers = {'User-agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'} #登录时表单提交到的地址（用开发者工具可以看到）login_url = ' http://ssfw.xmu.edu.cn/cmstar/userPasswordValidate.portal #构造登录请求req = urllib.request.Request(login_url, headers = headers, data = post_data) #构造cookiecookie = http.cookiejar.CookieJar() #由cookie构造openeropener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie)) #发送登录请求，此后这个opener就携带了cookie，以证明自己登录过resp = opener.open(req) #登录后才能访问的网页url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal' #构造访问请求req = urllib.request.Request(url, headers = headers) resp = opener.open(req) print(resp.read().decode('utf-8'))
+					
+				
+			
+		
+
+
+
+requests库的版本：
+
+
+
+		
+		
+			
+			Python
+			
+			
+import requests
+import sys
+import io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
+
+#登录后才能访问的网页
+url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal'
+
+#浏览器登录后得到的cookie，也就是刚才复制的字符串
+cookie_str = r'JSESSIONID=xxxxxxxxxxxxxxxxxxxxxx; iPlanetDirectoryPro=xxxxxxxxxxxxxxxxxx'
+
+#把cookie字符串处理成字典，以便接下来使用
+cookies = {}
+for line in cookie_str.split(';'):
+    key, value = line.split('=', 1)
+    cookies[key] = value
+
+#设置请求头
+headers = {'User-agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'}
+
+#在发送get请求时带上请求头和cookies
+resp = requests.get(url, headers = headers, cookies = cookies)
+        
+print(resp.content.decode('utf-8'))
+			
+				
+					
+				
+					12345678910111213141516171819202122232425
+				
+						import requestsimport sysimport io sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码 #登录后才能访问的网页url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal' #浏览器登录后得到的cookie，也就是刚才复制的字符串cookie_str = r'JSESSIONID=xxxxxxxxxxxxxxxxxxxxxx; iPlanetDirectoryPro=xxxxxxxxxxxxxxxxxx' #把cookie字符串处理成字典，以便接下来使用cookies = {}for line in cookie_str.split(';'):    key, value = line.split('=', 1)    cookies[key] = value #设置请求头headers = {'User-agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'} #在发送get请求时带上请求头和cookiesresp = requests.get(url, headers = headers, cookies = cookies)        print(resp.content.decode('utf-8'))
+					
+				
+			
+		
+
+
+
+明显感觉requests库用着更方便啊~~~
+方法三：模拟登录后用session保持登录状态
+原理：
+session是会话的意思。和cookie的相似之处在于，它也可以让服务器“认得”客户端。简单理解就是，把每一个客户端和服务器的互动当作一个“会话”。既然在同一个“会话”里，服务器自然就能知道这个客户端是否登录过。
+具体步骤：
+1.找出表单提交到的页面
+2.找出要提交的数据
+这两步和方法二的前两步是一样的
+3.写代码
+requests库的版本
+
+
+
+		
+		
+			
+			Python
+			
+			
+import requests
+import sys
+import io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
+
+#登录时需要POST的数据
+data = {'Login.Token1':'学号', 
+        'Login.Token2':'密码', 
+        'goto:http':'//ssfw.xmu.edu.cn/cmstar/loginSuccess.portal', 
+        'gotoOnFail:http':'//ssfw.xmu.edu.cn/cmstar/loginFailure.portal'}
+
+#设置请求头
+headers = {'User-agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'}
+
+#登录时表单提交到的地址（用开发者工具可以看到）
+login_url = 'http://ssfw.xmu.edu.cn/cmstar/userPasswordValidate.portal'
+
+#构造Session
+session = requests.Session()
+
+#在session中发送登录请求，此后这个session里就存储了cookie
+#可以用print(session.cookies.get_dict())查看
+resp = session.post(login_url, data)
+
+#登录后才能访问的网页
+url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal'
+
+#发送访问请求
+resp = session.get(url)
+
+print(resp.content.decode('utf-8'))
+			
+				
+					
+				
+					1234567891011121314151617181920212223242526272829303132
+				
+						import requestsimport sysimport io sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码 #登录时需要POST的数据data = {'Login.Token1':'学号',         'Login.Token2':'密码',         'goto:http':'//ssfw.xmu.edu.cn/cmstar/loginSuccess.portal',         'gotoOnFail:http':'//ssfw.xmu.edu.cn/cmstar/loginFailure.portal'} #设置请求头headers = {'User-agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'} #登录时表单提交到的地址（用开发者工具可以看到）login_url = 'http://ssfw.xmu.edu.cn/cmstar/userPasswordValidate.portal' #构造Sessionsession = requests.Session() #在session中发送登录请求，此后这个session里就存储了cookie#可以用print(session.cookies.get_dict())查看resp = session.post(login_url, data) #登录后才能访问的网页url = 'http://ssfw.xmu.edu.cn/cmstar/index.portal' #发送访问请求resp = session.get(url) print(resp.content.decode('utf-8'))
+					
+				
+			
+		
+
+
+
+ 
+方法四：使用无头浏览器访问
+特点：
+功能强大，几乎可以对付任何网页，但会导致代码效率低
+原理：
+如果能在程序里调用一个浏览器来访问网站，那么像登录这样的操作就轻而易举了。在Python中可以使用Selenium库来调用浏览器，写在代码里的操作（打开网页、点击……）会变成浏览器忠实地执行。这个被控制的浏览器可以是Firefox，Chrome等，但最常用的还是PhantomJS这个无头（没有界面）浏览器。也就是说，只要把填写用户名密码、点击“登录”按钮、打开另一个网页等操作写到程序中，PhamtomJS就能确确实实地让你登录上去，并把响应返回给你。
+具体步骤：
+1.安装selenium库、PhantomJS浏览器
+2.在源代码中找到登录时的输入文本框、按钮这些元素
+因为要在无头浏览器中进行操作，所以就要先找到输入框，才能输入信息。找到登录按钮，才能点击它。
+在浏览器中打开填写用户名密码的页面，将光标移动到输入用户名的文本框，右键，选择“审查元素”，就可以在右边的网页源代码中看到文本框是哪个元素。同理，可以在源代码中找到输入密码的文本框、登录按钮。
+3.考虑如何在程序中找到上述元素
+Selenium库提供了find_element(s)_by_xxx的方法来找到网页中的输入框、按钮等元素。其中xxx可以是id、name、tag_name（标签名）、class_name（class），也可以是xpath（xpath表达式）等等。当然还是要具体分析网页源代码。
+4.写代码
+
+
+
+		
+		
+			
+			Python
+			
+			
+import requests
+import sys
+import io
+from selenium import webdriver
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8') #改变标准输出的默认编码
+
+#建立Phantomjs浏览器对象，括号里是phantomjs.exe在你的电脑上的路径
+browser = webdriver.PhantomJS('d:/tool/07-net/phantomjs-windows/phantomjs-2.1.1-windows/bin/phantomjs.exe')
+
+#登录页面
+url = r'http://ssfw.xmu.edu.cn/cmstar/index.portal'
+
+# 访问登录页面
+browser.get(url)
+
+# 等待一定时间，让js脚本加载完毕
+browser.implicitly_wait(3)
+
+#输入用户名
+username = browser.find_element_by_name('user')
+username.send_keys('学号')
+
+#输入密码
+password = browser.find_element_by_name('pwd')
+password.send_keys('密码')
+
+#选择“学生”单选按钮
+student = browser.find_element_by_xpath('//input[@value="student"]')
+student.click()
+
+#点击“登录”按钮
+login_button = browser.find_element_by_name('btn')
+login_button.submit()
+
+#网页截图
+browser.save_screenshot('picture1.png')
+#打印网页源代码
+print(browser.page_source.encode('utf-8').decode())
+
+browser.quit()
+			
+				
+					
+				
+					1234567891011121314151617181920212223242526272829303132333435363738394041
+				
+						import requestsimport sysimport iofrom selenium import webdriver sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8') #改变标准输出的默认编码 #建立Phantomjs浏览器对象，括号里是phantomjs.exe在你的电脑上的路径browser = webdriver.PhantomJS('d:/tool/07-net/phantomjs-windows/phantomjs-2.1.1-windows/bin/phantomjs.exe') #登录页面url = r'http://ssfw.xmu.edu.cn/cmstar/index.portal' # 访问登录页面browser.get(url) # 等待一定时间，让js脚本加载完毕browser.implicitly_wait(3) #输入用户名username = browser.find_element_by_name('user')username.send_keys('学号') #输入密码password = browser.find_element_by_name('pwd')password.send_keys('密码') #选择“学生”单选按钮student = browser.find_element_by_xpath('//input[@value="student"]')student.click() #点击“登录”按钮login_button = browser.find_element_by_name('btn')login_button.submit() #网页截图browser.save_screenshot('picture1.png')#打印网页源代码print(browser.page_source.encode('utf-8').decode()) browser.quit()
+					
+				
+			
+		
+
+
+
+ 
+
+
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: Python模拟登录的几种方法（转）
+
+
+Related posts:
+爬虫首尝试—爬取百度贴吧图片 
+Scrapy-笔记一 入门项目 爬虫抓取w3c网站 
+Scrapy-笔记二  中文处理以及保存中文数据 
+Scrapy笔记四 自动爬取网页之使用CrawlSpider 
+Scrapy笔记五 爬取妹子图网的图片 详细解析 
+Scrapy笔记零 环境搭建与五大组件架构 
+
+
+	
+
+
+标题:
+phantomjs截图中文网站网页页面乱码，安装字体库
+		用phantomjs去截取中文页面的网站可能会出现乱码的情况，也就是截图中中文的位置全是方框。
+解决办法就是安装字体。
+在centos中执行：yum install bitmap-fonts bitmap-fonts-cjk
+在ubuntu中执行：sudo apt-get install xfonts-wqy
+这样再去截图中文的页面就不会出现一堆的方框了。
+ 
+
+		
+		
+			
+			Python
+			
+			
+sudo apt-get install xfonts-wqy
+正在读取软件包列表... 完成
+正在分析软件包的依赖关系树       
+正在读取状态信息... 完成       
+下列软件包是自动安装的并且现在不需要了：
+  libllvm3.8
+使用'sudo apt autoremove'来卸载它(它们)。
+下列【新】软件包将被安装：
+  xfonts-wqy
+升级了 0 个软件包，新安装了 1 个软件包，要卸载 0 个软件包，有 257 个软件包未被升级。
+需要下载 2,065 kB 的归档。
+解压缩后会消耗 12.6 MB 的额外空间。
+获取:1 http://mirrors.tencentyun.com/ubuntu xenial/universe amd64 xfonts-wqy all 1.0.0~rc1-1 [2,065 kB]
+已下载 2,065 kB，耗时 0秒 (9,418 kB/s)
+N: 忽略‘50unattended-upgrades.ucf-dist’(于目录‘/etc/apt/apt.conf.d/’)，鉴于它的文件扩展名无效
+正在预设定软件包 ...
+正在选中未选择的软件包 xfonts-wqy。
+(正在读取数据库 ... 系统当前共安装有 87935 个文件和目录。)
+正准备解包 .../xfonts-wqy_1.0.0~rc1-1_all.deb  ...
+正在解包 xfonts-wqy (1.0.0~rc1-1) ...
+正在处理用于 fontconfig (2.11.94-0ubuntu1.1) 的触发器 ...
+正在设置 xfonts-wqy (1.0.0~rc1-1) ...
+Regenerating fonts cache... done.
+N: 忽略‘50unattended-upgrades.ucf-dist’(于目录‘/etc/apt/apt.conf.d/’)，鉴于它的文件扩展名无效
+			
+				
+					
+				
+					123456789101112131415161718192021222324
+				
+						sudo apt-get install xfonts-wqy正在读取软件包列表... 完成正在分析软件包的依赖关系树       正在读取状态信息... 完成       下列软件包是自动安装的并且现在不需要了：  libllvm3.8使用'sudo apt autoremove'来卸载它(它们)。下列【新】软件包将被安装：  xfonts-wqy升级了 0 个软件包，新安装了 1 个软件包，要卸载 0 个软件包，有 257 个软件包未被升级。需要下载 2,065 kB 的归档。解压缩后会消耗 12.6 MB 的额外空间。获取:1 http://mirrors.tencentyun.com/ubuntu xenial/universe amd64 xfonts-wqy all 1.0.0~rc1-1 [2,065 kB]已下载 2,065 kB，耗时 0秒 (9,418 kB/s)N: 忽略‘50unattended-upgrades.ucf-dist’(于目录‘/etc/apt/apt.conf.d/’)，鉴于它的文件扩展名无效正在预设定软件包 ...正在选中未选择的软件包 xfonts-wqy。(正在读取数据库 ... 系统当前共安装有 87935 个文件和目录。)正准备解包 .../xfonts-wqy_1.0.0~rc1-1_all.deb  ...正在解包 xfonts-wqy (1.0.0~rc1-1) ...正在处理用于 fontconfig (2.11.94-0ubuntu1.1) 的触发器 ...正在设置 xfonts-wqy (1.0.0~rc1-1) ...Regenerating fonts cache... done.N: 忽略‘50unattended-upgrades.ucf-dist’(于目录‘/etc/apt/apt.conf.d/’)，鉴于它的文件扩展名无效
+					
+				
+			
+		
+
+对比图如下：
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: phantomjs截图中文网站网页页面乱码，安装字体库
+
+
+Related posts:
+selenium设置chrome和phantomjs的请求头信息 
+selenium frame 切换 
+Python Selenium下拉列表元素定位 
+常用selenium浏览器配置 
+
+
+	
+
+
+标题:
+selenium driver.Close和Quit方法的差异，如何正确关闭模拟器
+		不应该使用Close（），尽量试用quit或者dispose方法。
+我查看了Selenium 的源代码，发现了以下内容。
+
+webDriver.Close() – 关闭驱动程序所关注的浏览器窗口
+webDriver.Quit() – 调用Dispose（）
+webDriver.Dispose() 关闭所有浏览器窗口并安全结束会话
+
+当我在一个for中每次循环都启动一个phantomjs，并且完成操作后执行close，这样会导致该回话的日志文件依旧存留在内存中，直到全部for都结束，程序退出才会清空，这样的代码是有内存隐患的。如果每次都是quit退出话，则会连同会话信息都清理。
+ 
+总之，确保在退出程序之前调用Quit（）或Dispose（），并且除非确定自己在做什么，否则不要使用Close（）方法。
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: selenium driver.Close和Quit方法的差异，如何正确关闭模拟器
+
+
+Related posts:
+selenium设置chrome和phantomjs的请求头信息 
+phantomjs截图中文网站网页页面乱码，安装字体库 
+selenium frame 切换 
+Python Selenium下拉列表元素定位 
+常用selenium浏览器配置 
+
+
+	
+
+
+标题:
+python爬虫文件存储通用方法，编码错误解决 ‘utf-8’ codec can’t decode byte 0xfc in position 14: invalid start byte
+		对于网站采用不容易出异常的方式将网页源码存为文件，一般使用wb的形式写入，取requests返回的response.content
+
+		
+		
+			
+			Python
+			
+			
+with open(save_file,"wb") as f:
+    f.write(response.content)
+			
+				
+					
+				
+					12
+				
+						with open(save_file,"wb") as f:    f.write(response.content)
+					
+				
+			
+		
+
+读取了一个.html的wb形式写入的文件，然后报错：
+
+		
+		
+			
+			Python
+			
+			
+'utf-8' codec can't decode byte 0xfc in position 14: invalid start byte
+			
+				
+					
+				
+					1
+				
+						'utf-8' codec can't decode byte 0xfc in position 14: invalid start byte
+					
+				
+			
+		
+
+解决方法很简单，用各种text reader（我用atom ）将文件打开，我发现当设置编码格式为GBK 的时候，中文显示正常，因此 我的文件编码形式是这样的：’GBK’
+确定了该wb写入的文件是gbk编码，那么读取的时候也一样加上参数就行了
+
+		
+		
+			
+			Python
+			
+			
+with open(file_path,"r",encoding='gbk') as f:
+    html = f.read()
+			
+				
+					
+				
+					12
+				
+						with open(file_path,"r",encoding='gbk') as f:    html = f.read()
+					
+				
+			
+		
+
+另外，文件中有不可理解的错误字符，可以用 errors=”ignore” 来忽略之
+
+		
+		
+			
+			Python
+			
+			
+with open("a.html","r",encoding='GBK', errors="ignore") as f:
+    html = f.read()
+			
+				
+					
+				
+					12
+				
+						with open("a.html","r",encoding='GBK', errors="ignore") as f:    html = f.read()
+					
+				
+			
+		
+
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: python爬虫文件存储通用方法，编码错误解决 ‘utf-8’ codec can’t decode byte 0xfc in position 14: invalid start byte
+
+
+Related posts:
+千万级批量采集框架，就叫他UrlSpider吧 
+python 进程超时控制 防止phantomjs假死 
+
+
+	
+
+
+标题:
+python 爬虫 过滤全部html标签 提取正文内容
+		很多时候网页中采用正则或者xpath提取数据内容的方式是很好的，但是对于不确定网页内容结构，可以采用xpath提取更大范围的div，然后去除一切标签来提取数据。
+
+
+		
+		
+			
+			Python
+			
+			
+import re
+
+def filter_tags(htmlstr):
+    #先过滤CDATA
+    re_cdata=re.compile('//<!\[CDATA\[[^>]*//\]\]>',re.I) #匹配CDATA
+    re_script=re.compile('<\s*script[^>]*>[^<]*<\s*/\s*script\s*>',re.I)#Script
+    re_style=re.compile('<\s*style[^>]*>[^<]*<\s*/\s*style\s*>',re.I)#style
+    re_br=re.compile('<br\s*?/?>')#处理换行
+    re_h=re.compile('</?\w+[^>]*>')#HTML标签
+    re_comment=re.compile('<!--[^>]*-->')#HTML注释
+    s=re_cdata.sub('',htmlstr)#去掉CDATA
+    s=re_script.sub('',s) #去掉SCRIPT
+    s=re_style.sub('',s)#去掉style
+    s=re_br.sub('',s)#将br转换为换行
+    s=re_h.sub('',s) #去掉HTML 标签
+    s=re_comment.sub('',s)#去掉HTML注释
+    #去掉多余的空行
+    blank_line=re.compile('+')
+    s=blank_line.sub('',s)
+    s=replaceCharEntity(s)#替换实体
+    return s
+def replaceCharEntity(htmlstr):
+    CHAR_ENTITIES={'nbsp':' ','160':' ',
+        'lt':'<','60':'<',
+        'gt':'>','62':'>',
+        'amp':'&','38':'&',
+        'quot':'"','34':'"',}
+
+    re_charEntity=re.compile(r'&#?(?P<name>\w+);')
+    sz=re_charEntity.search(htmlstr)
+    while sz:
+    entity=sz.group()#entity全称，如>
+    key=sz.group('name')#去除&;后entity,如>为gt
+    try:
+      htmlstr=re_charEntity.sub(CHAR_ENTITIES[key],htmlstr,1)
+      sz=re_charEntity.search(htmlstr)
+    except KeyError:
+      #以空串代替
+      htmlstr=re_charEntity.sub('',htmlstr,1)
+      sz=re_charEntity.search(htmlstr)
+    return htmlstr
+if __name__=='__main__':
+  s=file('index.html').read()
+  news=filter_tags(s)
+  print news
+			
+				
+					
+				
+					123456789101112131415161718192021222324252627282930313233343536373839404142434445
+				
+						import re def filter_tags(htmlstr):    #先过滤CDATA    re_cdata=re.compile('//<!\[CDATA\[[^>]*//\]\]>',re.I) #匹配CDATA    re_script=re.compile('<\s*script[^>]*>[^<]*<\s*/\s*script\s*>',re.I)#Script    re_style=re.compile('<\s*style[^>]*>[^<]*<\s*/\s*style\s*>',re.I)#style    re_br=re.compile('<br\s*?/?>')#处理换行    re_h=re.compile('</?\w+[^>]*>')#HTML标签    re_comment=re.compile('<!--[^>]*-->')#HTML注释    s=re_cdata.sub('',htmlstr)#去掉CDATA    s=re_script.sub('',s) #去掉SCRIPT    s=re_style.sub('',s)#去掉style    s=re_br.sub('',s)#将br转换为换行    s=re_h.sub('',s) #去掉HTML 标签    s=re_comment.sub('',s)#去掉HTML注释    #去掉多余的空行    blank_line=re.compile('+')    s=blank_line.sub('',s)    s=replaceCharEntity(s)#替换实体    return sdef replaceCharEntity(htmlstr):    CHAR_ENTITIES={'nbsp':' ','160':' ',        'lt':'<','60':'<',        'gt':'>','62':'>',        'amp':'&','38':'&',        'quot':'"','34':'"',}     re_charEntity=re.compile(r'&#?(?P<name>\w+);')    sz=re_charEntity.search(htmlstr)    while sz:    entity=sz.group()#entity全称，如>    key=sz.group('name')#去除&;后entity,如>为gt    try:      htmlstr=re_charEntity.sub(CHAR_ENTITIES[key],htmlstr,1)      sz=re_charEntity.search(htmlstr)    except KeyError:      #以空串代替      htmlstr=re_charEntity.sub('',htmlstr,1)      sz=re_charEntity.search(htmlstr)    return htmlstrif __name__=='__main__':  s=file('index.html').read()  news=filter_tags(s)  print news
+					
+				
+			
+		
+
+亲测好用。
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: python 爬虫 过滤全部html标签 提取正文内容
+
+
+Related posts:
+Scrapy-笔记一 入门项目 爬虫抓取w3c网站 
+Scrapy-笔记二  中文处理以及保存中文数据 
+Scrapy笔记三 自动多网页爬取-本wordpress博客所有文章 
+Scrapy笔记五 爬取妹子图网的图片 详细解析 
+Scrapy笔记零 环境搭建与五大组件架构 
+任意关键词下淘宝商品信息采集器，我拿下了信息却看不透套路 
+
+
+	
+
+
+标题:
+python 爬虫伪造UA字符串-第三方海量ua库
+		写好爬虫的原则只有一条：
+就是让你的抓取行为和用户访问网站的真实行为尽量一致。
+1、伪造UA字符串，每次请求都使用随机生成的UA。
+为了减少复杂度，随机生成UA的功能通过第三方库fake-useragent实现
+
+		
+		
+			
+			Python
+			
+			
+pip install fake-useragent
+			
+				
+					
+				
+					1
+				
+						pip install fake-useragent
+					
+				
+			
+		
+
+ 
+2、生成一个UA字符串只需要如下代码：
+
+		
+		
+			
+			Python
+			
+			
+from fake_useragent import UserAgent
+ua=UserAgent()
+print(ua.random)
+			
+				
+					
+				
+					123
+				
+						from fake_useragent import UserAgentua=UserAgent()print(ua.random)
+					
+				
+			
+		
+
+3、亲测：
+
+		
+		
+			
+			Python
+			
+			
+n [5]: ua.random
+Out[5]: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36'
+
+In [6]: ua.random
+Out[6]: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:16.0.1) Gecko/20121011 Firefox/21.0.1'
+
+In [7]: ua.random
+Out[7]: 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.16 Safari/537.36'
+
+In [8]: ua.random
+Out[8]: 'Mozilla/5.0 (X11; NetBSD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36'
+
+In [9]: ua.random
+Out[9]: 'Mozilla/5.0 (Windows NT 4.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36'
+
+In [10]: ua.random
+Out[10]: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.517 Safari/537.36'
+			
+				
+					
+				
+					1234567891011121314151617
+				
+						n [5]: ua.randomOut[5]: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36' In [6]: ua.randomOut[6]: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:16.0.1) Gecko/20121011 Firefox/21.0.1' In [7]: ua.randomOut[7]: 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.16 Safari/537.36' In [8]: ua.randomOut[8]: 'Mozilla/5.0 (X11; NetBSD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36' In [9]: ua.randomOut[9]: 'Mozilla/5.0 (Windows NT 4.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36' In [10]: ua.randomOut[10]: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.517 Safari/537.36'
+					
+				
+			
+		
+
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: python 爬虫伪造UA字符串-第三方海量ua库
+
+
+Related posts:
+使用phantomjs采集运用了强制跳转与页面等待等反爬技术的网站 
+数据采集技术指南 第一篇 技术栈总览-附总图和演讲ppt 
+1000家公司五年的新浪微博采集 
+python 高度鲁棒性爬虫的超时控制问题 
+python 爬虫资源包汇总 
+phantomjs 模块进阶 
+
+
+	
+
+
+标题:
+关于反爬虫我见到的各种前后端奇葩姿势
+		以下方式都是比较有意思而非是非常有效的做法，
+ 
+一：前端高危数据的特殊显示
+去哪儿网、猫眼电影、美团，都可喜欢在价格字体上做文章：
+1：去哪儿网
+网上表明标注的价格在html源码中竟然不一样，
+
+仔细分析他们的CSS就会发现他们用了一个字体，正常字体是0123456789 在官方字体中替换为：（这是他们以前的做法，现在已经更新因此图来自网络）
+
+或者价格的显示与html中的顺序不同
+
+3：猫眼电影
+每次都不同的字符集，需要对应采集一起解码。
+
+4：过去美团也采用过font的思路，用backgfround拼接，数字其实是图片，用不同的偏移量显示不同的字符。还个比较狠的，呈现的数值是SVG矢量图。
+5：部分微信公众号会穿插各种蜜汁字符，再用样式调整隐藏他们，比如他：叨逼姐说
+
+6：用display:none来随机化网页源码，有网站还会随机类和id的名字再加点随机的trtd，更加不好捕捉.比如：全网代理ip
+
+7：用css替换固定字–大众点评的评论
+ 
+ 
+二：各种异步加载反复嵌套
+1：网易云音乐也怕爬什么都是异步加载嵌套在iframe里的，包括他的整个主页，而且src=”about:blank”
+
+三：别以为后端汉子就不花哨
+1：还有的网站识别出爬虫后会反骂一句话：
+比如IT桔子，会返回Fack you Spider, 还有个麦子金服会返回一个go away，然后一般我就会解开加密后在hreder里加个呵呵，再发给他。
+4：还有ip方面的操作
+比如新浪知乎的反爬虫机制会对ip异常或者不带cookie的跳转到访客系统中，如果用模拟登陆就会反复出现验证码，这就涉及到是否是白ip，他的判定机制也和其他网站不同，其他主要是看近期常用登陆地ip为白，他是用注册时ip为白，因此只要用服务器去注册一个号，就基本轻松过了（17年实测）。
+还有些佛系反爬虫，每个ip的第一次访问秒回数据，但是第二次就必然sleep 12 秒才返回，这招其实很佛系，你爬可以，别让我老板发现数据量太夸张了。一般这种就程序放着慢慢来吧，因为换个可靠ip也得好几秒。对方这么坦诚咱们也不乱来。
+5：网页数据转化为图片的
+比如站大爷的免费代理端口数据是扭曲图片构成的数字
+
+ 
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: 关于反爬虫我见到的各种前后端奇葩姿势
+
+
+Related posts:
+基于百度IP定位的网站访问来源分析的python实战项目–实践笔记零–项目规划 
+淘宝商品信息采集器二，开放源码可自定义关键词进行采集 
+Python模拟登录的几种方法（转） 
+Scrapy笔记三 自动多网页爬取-本wordpress博客所有文章 
+Scrapy笔记四 自动爬取网页之使用CrawlSpider 
+Scrapy笔记五 爬取妹子图网的图片 详细解析 
+
+
+	
+
+
+标题:
+Python3 中文在URL中的编码解码
+		一些url的编码问题，在浏览器提交请求api时，如果url中包含汉子或者空格这类符号，就会被自动编码掉。呈现的结果是 ==> %xx%xx%xx。如果出现3个百分号为一个原字符则为utf8编码，如果2个百分号则为gb2312编码。下面为大家演示编码和解码的代码。
+ 
+编码
+text为要进行编码的字符串
+
+		
+		
+			
+			Python
+			
+			
+from urllib.parse import quote
+text = quote(text, 'utf-8')
+			
+				
+					
+				
+					12
+				
+						from urllib.parse import quotetext = quote(text, 'utf-8')
+					
+				
+			
+		
+
+
+解码
+
+
+		
+		
+			
+			Python
+			
+			
+from urllib.parse import unquote
+text = unquote(text, 'utf-8')
+			
+				
+					
+				
+					12
+				
+						from urllib.parse import unquotetext = unquote(text, 'utf-8')
+					
+				
+			
+		
+
+
+源码
+
+
+		
+		
+			
+			Python
+			
+			
+def quote(string, safe='/', encoding=None, errors=None):
+    """quote('abc def') -> 'abc%20def'
+
+    Each part of a URL, e.g. the path info, the query, etc., has a
+    different set of reserved characters that must be quoted.
+
+    RFC 2396 Uniform Resource Identifiers (URI): Generic Syntax lists
+    the following reserved characters.
+
+    reserved    = ";" | "/" | "?" | ":" | "@" | "&" | "=" | "+" |
+                  "$" | ","
+
+    Each of these characters is reserved in some component of a URL,
+    but not necessarily in all of them.
+
+    By default, the quote function is intended for quoting the path
+    section of a URL.  Thus, it will not encode '/'.  This character
+    is reserved, but in typical usage the quote function is being
+    called on a path where the existing slash characters are used as
+    reserved characters.
+
+    string and safe may be either str or bytes objects. encoding and errors
+    must not be specified if string is a bytes object.
+
+    The optional encoding and errors parameters specify how to deal with
+    non-ASCII characters, as accepted by the str.encode method.
+    By default, encoding='utf-8' (characters are encoded with UTF-8), and
+    errors='strict' (unsupported characters raise a UnicodeEncodeError).
+    """
+    if isinstance(string, str):
+        if not string:
+            return string
+        if encoding is None:
+            encoding = 'utf-8'
+        if errors is None:
+            errors = 'strict'
+        string = string.encode(encoding, errors)
+    else:
+        if encoding is not None:
+            raise TypeError("quote() doesn't support 'encoding' for bytes")
+        if errors is not None:
+            raise TypeError("quote() doesn't support 'errors' for bytes")
+    return quote_from_bytes(string, safe)
+
+
+def unquote(string, encoding='utf-8', errors='replace'):
+    """Replace %xx escapes by their single-character equivalent. The optional
+    encoding and errors parameters specify how to decode percent-encoded
+    sequences into Unicode characters, as accepted by the bytes.decode()
+    method.
+    By default, percent-encoded sequences are decoded with UTF-8, and invalid
+    sequences are replaced by a placeholder character.
+
+    unquote('abc%20def') -> 'abc def'.
+    """
+    if '%' not in string:
+        string.split
+        return string
+    if encoding is None:
+        encoding = 'utf-8'
+    if errors is None:
+        errors = 'replace'
+    bits = _asciire.split(string)
+    res = [bits[0]]
+    append = res.append
+    for i in range(1, len(bits), 2):
+        append(unquote_to_bytes(bits[i]).decode(encoding, errors))
+        append(bits[i + 1])
+    return ''.join(res)
+			
+				
+					
+				
+					123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869
+				
+						def quote(string, safe='/', encoding=None, errors=None):    """quote('abc def') -> 'abc%20def'     Each part of a URL, e.g. the path info, the query, etc., has a    different set of reserved characters that must be quoted.     RFC 2396 Uniform Resource Identifiers (URI): Generic Syntax lists    the following reserved characters.     reserved    = ";" | "/" | "?" | ":" | "@" | "&" | "=" | "+" |                  "$" | ","     Each of these characters is reserved in some component of a URL,    but not necessarily in all of them.     By default, the quote function is intended for quoting the path    section of a URL.  Thus, it will not encode '/'.  This character    is reserved, but in typical usage the quote function is being    called on a path where the existing slash characters are used as    reserved characters.     string and safe may be either str or bytes objects. encoding and errors    must not be specified if string is a bytes object.     The optional encoding and errors parameters specify how to deal with    non-ASCII characters, as accepted by the str.encode method.    By default, encoding='utf-8' (characters are encoded with UTF-8), and    errors='strict' (unsupported characters raise a UnicodeEncodeError).    """    if isinstance(string, str):        if not string:            return string        if encoding is None:            encoding = 'utf-8'        if errors is None:            errors = 'strict'        string = string.encode(encoding, errors)    else:        if encoding is not None:            raise TypeError("quote() doesn't support 'encoding' for bytes")        if errors is not None:            raise TypeError("quote() doesn't support 'errors' for bytes")    return quote_from_bytes(string, safe)  def unquote(string, encoding='utf-8', errors='replace'):    """Replace %xx escapes by their single-character equivalent. The optional    encoding and errors parameters specify how to decode percent-encoded    sequences into Unicode characters, as accepted by the bytes.decode()    method.    By default, percent-encoded sequences are decoded with UTF-8, and invalid    sequences are replaced by a placeholder character.     unquote('abc%20def') -> 'abc def'.    """    if '%' not in string:        string.split        return string    if encoding is None:        encoding = 'utf-8'    if errors is None:        errors = 'replace'    bits = _asciire.split(string)    res = [bits[0]]    append = res.append    for i in range(1, len(bits), 2):        append(unquote_to_bytes(bits[i]).decode(encoding, errors))        append(bits[i + 1])    return ''.join(res)
+					
+				
+			
+		
+
+ 
+ 
+
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: Python3 中文在URL中的编码解码
+
+
+Related posts:
+Scrapy-笔记一 入门项目 爬虫抓取w3c网站 
+Scrapy-笔记二  中文处理以及保存中文数据 
+Scrapy笔记三 自动多网页爬取-本wordpress博客所有文章 
+Scrapy笔记零 环境搭建与五大组件架构 
+基于百度IP定位的网站访问来源分析的python实战项目–实践笔记零–项目规划 
+数据采集技术指南 第一篇 技术栈总览-附总图和演讲ppt 
+
+
+	
+
+
+标题:
+解决爬虫模拟登录时验证码图片拉取提交问题的两种方式
+		当爬虫在模拟登录的时候，主流采用2种手法，模拟浏览器操作和协议破解。都会遇到的问题是，验证码的答案即使是通CNN或者OCR或者打码平台获得，如何提交呢？恐怕不少同学会说，提交还用说？
+
+因为验证码的图片，往往再次请求会是不同的图片，如何将验证码与当前登录流程绑定呢？
+目前主流有3种方法
+一：采用模拟浏览器登录；
+1：最直观的解决思路，截图打码提交
+加载完毕网页后，单独截取当前网页的截图，明知验证码位置，截图该验证码位置image模块可以解决，提交打码平台或者各种模块识别后，填写。
+优点自然是直观，缺点就是模拟登录比较慢，截图也繁琐
+2：采用cookie获取验证码图
+获取当前网页的cookie，携带cookie再次请求验证码图片采用requests模块，类似刷新下一张验证码，这时候，虽网页中的验证码图片没有变化，但是服务器端已经认为这个cookie对应的访客使用下一个验证码图片了，这样节省了一个截图的过程。
+二：采用协议破解
+所谓协议破解指通过理解他js发出登录请求的详细参数，伪造这些参数去完成登录，只需要requests之类请求发出，因此速度可以非常快，这样一来，如何标志前后请求是同一个访客发出的呢？有的网站给初始init页面一个唯一token，让后续请求都带同一个token就是同一个访客，也有用cookie来标志前后请求。
+1：cookie标记，将请求index首页的cookie保存，带着cookie去请求验证码图片，再将带着cookie的答案连同登录参数一起发出。
+2：绕过首页cookie，有时候也是可以的，比如12306.只用cookie直接取验证码就可以了，不用拿首页cookie
+3：通过会话session，这样的请求会自动连接前后的cookie
+ 
+ 
+ 
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: 解决爬虫模拟登录时验证码图片拉取提交问题的两种方式
+
+
+Related posts:
+selenium自动登录挂stackoverflow的金牌 
+python 爬虫资源包汇总 
+python 高度鲁棒性爬虫的超时控制问题 
+数据采集技术指南 第一篇 技术栈总览-附总图和演讲ppt 
+淘宝商品信息采集器二，开放源码可自定义关键词进行采集 
+Python模拟登录的几种方法（转） 
+
+
+	
+
+
+标题:
+如何解决selenium被检测，实现淘宝登陆
+		爬虫都会碰到某些网站刚刚打开页面就被判定为：非人类行为
+因为不少大网站有对selenium的js监测机制。比如：navigator.webdriver，navigator.languages，navigator.plugins.length……
+
+美团，大众，淘宝这些大站点都有这种技术能力。正常情况下 window.navigator.webdriver的值为undefined。
+
+而当我们使用selenium 的时候-window.navigator.webdriver的值为True。 如下图
+
+——-那么如何解决呢？
+第一种：使用mitmproxy用中间人的方式截取服务器发送来的js，修改js里面函数的参值方式发送给服务器。相当于在browser和server之间做一层中介的拦截。不过此方法要对js非常熟悉的人才好实施。
+第二种方法依旧通过selenium，不过是在服务器在第一次发送js并在本地验证的时候，做好‘第一次’的伪装，从而实现‘第一次登陆’有效。。方法简单，适合小白。
+pyppeteer 加 asyncio 绕过selenium检测，实现鼠标滑动后自动登陆（代码很简单。主要熟悉异步模块及pyppeteer模块。pyppeteer模块看不懂就去看puppeteer文档，pyppeteer只是在puppeteer之上稍微包装了下而已 ）。
+代码如下 main.py
+
+		
+		
+			
+			Python
+			
+			
+import asyncio
+import time,random
+from pyppeteer.launcher import launch # 控制模拟浏览器用
+from retrying import retry #设置重试次数用的
+
+async def main(username, pwd, url):# 定义main协程函数，
+    #以下使用await 可以针对耗时的操作进行挂起
+    browser = await launch({'headless': False, 'args': ['--no-sandbox'], }) # 启动pyppeteer 属于内存中实现交互的模拟器
+    page = await browser.newPage()  # 启动个新的浏览器页面
+    await page.setUserAgent(
+        'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36')
+
+    await page.goto(url) # 访问登录页面
+    # 替换淘宝在检测浏览时采集的一些参数。
+    # 就是在浏览器运行的时候，始终让window.navigator.webdriver=false
+    # navigator是windiw对象的一个属性，同时修改plugins，languages，navigator 且让
+    await page.evaluate('''() =>{ Object.defineProperties(navigator,{ webdriver:{ get: () => false } }) }''') #以下为插入中间js，将淘宝会为了检测浏览器而调用的js修改其结果。
+    await page.evaluate('''() =>{ window.navigator.chrome = { runtime: {},  }; }''')
+    await page.evaluate('''() =>{ Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] }); }''')
+    await page.evaluate('''() =>{ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5,6], }); }''')
+
+    # 使用type选定页面元素，并修改其数值，用于输入账号密码，修改的速度仿人类操作，因为有个输入速度的检测机制
+    # 因为 pyppeteer 框架需要转换为js操作，而js和python的类型定义不同，所以写法与参数要用字典，类型导入
+    await page.type('.J_UserName', username, {'delay': input_time_random() - 50})
+    await page.type('#J_StandardPwd input', pwd, {'delay': input_time_random()})
+
+    #await page.screenshot({'path': './headless-test-result.png'})    # 截图测试
+    time.sleep(2)
+
+    # 检测页面是否有滑块。原理是检测页面元素。
+    slider = await page.Jeval('#nocaptcha', 'node => node.style')  # 是否有滑块
+
+    if slider:
+        print('当前页面出现滑块')
+        #await page.screenshot({'path': './headless-login-slide.png'}) # 截图测试
+        flag,page = await mouse_slide(page=page) #js拉动滑块过去。
+        if flag:
+            await page.keyboard.press('Enter') # 确保内容输入完毕，少数页面会自动完成按钮点击
+            print("print enter",flag)
+            await page.evaluate('''document.getElementById("J_SubmitStatic").click()''') # 如果无法通过回车键完成点击，就调用js模拟点击登录按钮。
+
+            time.sleep(2)
+            #cookies_list = await page.cookies()
+            #print(cookies_list)
+            await get_cookie(page) # 导出cookie 完成登陆后就可以拿着cookie玩各种各样的事情了。
+    else:
+        print("")
+        await page.keyboard.press('Enter')
+        print("print enter")
+        await page.evaluate('''document.getElementById("J_SubmitStatic").click()''')
+        await page.waitFor(20)
+        await page.waitForNavigation()
+
+        try:
+            global error # 检测是否是账号密码错误
+            print("error_1:",error)
+            error = await page.Jeval('.error', 'node => node.textContent')
+            print("error_2:",error)
+        except Exception as e:
+            error = None
+        finally:
+            if error:
+                print('确保账户安全重新入输入')
+                # 程序退出。
+                loop.close()
+              else:
+                print(page.url)
+                await get_cookie(page)
+    #time.sleep(100)
+# 获取登录后cookie
+async def get_cookie(page):
+    #res = await page.content()
+    cookies_list = await page.cookies()
+    cookies = ''
+    for cookie in cookies_list:
+        str_cookie = '{0}={1};'
+        str_cookie = str_cookie.format(cookie.get('name'), cookie.get('value'))
+        cookies += str_cookie
+    print(cookies)
+    return cookies
+
+def retry_if_result_none(result):
+    return result is None
+
+@retry(retry_on_result=retry_if_result_none,)
+async def mouse_slide(page=None):
+    await asyncio.sleep(2)
+    try :
+        #鼠标移动到滑块，按下，滑动到头（然后延时处理），松开按键
+        await page.hover('#nc_1_n1z') # 不同场景的验证码模块能名字不同。
+        await page.mouse.down()
+        await page.mouse.move(2000, 0, {'delay': random.randint(1000, 2000)})
+        await page.mouse.up()
+    except Exception as e:
+        print(e, ':验证失败')
+        return None,page
+    else:
+        await asyncio.sleep(2)
+        # 判断是否通过
+        slider_again = await page.Jeval('.nc-lang-cnt', 'node => node.textContent')
+        if slider_again != '验证通过':
+            return None,page
+        else:
+            #await page.screenshot({'path': './headless-slide-result.png'}) # 截图测试
+            print('验证通过')
+            return 1,page
+
+def input_time_random():
+    return random.randint(100, 151)
+
+if __name__ == '__main__':
+    username = 'xxxxxxxxx' # 淘宝用户名
+    pwd = 'xxxxxxxxxxx' #密码
+    url = 'https://login.taobao.com/member/login.jhtml?style=mini&css_style=b2b&from=b2b&full_redirect=true&redirect_url=https://login.1688.com/member/jump.htm?target=https://login.1688.com/member/marketSigninJump.htm?Done=http://login.1688.com/member/taobaoSellerLoginDispatch.htm&reg= http://member.1688.com/member/join/enterprise_join.htm?lead=http://login.1688.com/member/taobaoSellerLoginDispatch.htm&leadUrl=http://login.1688.com/member/'
+    loop = asyncio.get_event_loop()  #协程，开启个无限循环的程序流程，把一些函数注册到事件循环上。当满足事件发生的时候，调用相应的协程函数。
+    loop.run_until_complete(main(username, pwd, url))  #将协程注册到事件循环，并启动事件循环
+			
+				
+					
+				
+					123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116
+				
+						import asyncioimport time,randomfrom pyppeteer.launcher import launch # 控制模拟浏览器用from retrying import retry #设置重试次数用的 async def main(username, pwd, url):# 定义main协程函数，    #以下使用await 可以针对耗时的操作进行挂起    browser = await launch({'headless': False, 'args': ['--no-sandbox'], }) # 启动pyppeteer 属于内存中实现交互的模拟器    page = await browser.newPage()  # 启动个新的浏览器页面    await page.setUserAgent(        'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36')     await page.goto(url) # 访问登录页面    # 替换淘宝在检测浏览时采集的一些参数。    # 就是在浏览器运行的时候，始终让window.navigator.webdriver=false    # navigator是windiw对象的一个属性，同时修改plugins，languages，navigator 且让    await page.evaluate('''() =>{ Object.defineProperties(navigator,{ webdriver:{ get: () => false } }) }''') #以下为插入中间js，将淘宝会为了检测浏览器而调用的js修改其结果。    await page.evaluate('''() =>{ window.navigator.chrome = { runtime: {},  }; }''')    await page.evaluate('''() =>{ Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] }); }''')    await page.evaluate('''() =>{ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5,6], }); }''')     # 使用type选定页面元素，并修改其数值，用于输入账号密码，修改的速度仿人类操作，因为有个输入速度的检测机制    # 因为 pyppeteer 框架需要转换为js操作，而js和python的类型定义不同，所以写法与参数要用字典，类型导入    await page.type('.J_UserName', username, {'delay': input_time_random() - 50})    await page.type('#J_StandardPwd input', pwd, {'delay': input_time_random()})     #await page.screenshot({'path': './headless-test-result.png'})    # 截图测试    time.sleep(2)     # 检测页面是否有滑块。原理是检测页面元素。    slider = await page.Jeval('#nocaptcha', 'node => node.style')  # 是否有滑块     if slider:        print('当前页面出现滑块')        #await page.screenshot({'path': './headless-login-slide.png'}) # 截图测试        flag,page = await mouse_slide(page=page) #js拉动滑块过去。        if flag:            await page.keyboard.press('Enter') # 确保内容输入完毕，少数页面会自动完成按钮点击            print("print enter",flag)            await page.evaluate('''document.getElementById("J_SubmitStatic").click()''') # 如果无法通过回车键完成点击，就调用js模拟点击登录按钮。             time.sleep(2)            #cookies_list = await page.cookies()            #print(cookies_list)            await get_cookie(page) # 导出cookie 完成登陆后就可以拿着cookie玩各种各样的事情了。    else:        print("")        await page.keyboard.press('Enter')        print("print enter")        await page.evaluate('''document.getElementById("J_SubmitStatic").click()''')        await page.waitFor(20)        await page.waitForNavigation()         try:            global error # 检测是否是账号密码错误            print("error_1:",error)            error = await page.Jeval('.error', 'node => node.textContent')            print("error_2:",error)        except Exception as e:            error = None        finally:            if error:                print('确保账户安全重新入输入')                # 程序退出。                loop.close()              else:                print(page.url)                await get_cookie(page)    #time.sleep(100)# 获取登录后cookieasync def get_cookie(page):    #res = await page.content()    cookies_list = await page.cookies()    cookies = ''    for cookie in cookies_list:        str_cookie = '{0}={1};'        str_cookie = str_cookie.format(cookie.get('name'), cookie.get('value'))        cookies += str_cookie    print(cookies)    return cookies def retry_if_result_none(result):    return result is None @retry(retry_on_result=retry_if_result_none,)async def mouse_slide(page=None):    await asyncio.sleep(2)    try :        #鼠标移动到滑块，按下，滑动到头（然后延时处理），松开按键        await page.hover('#nc_1_n1z') # 不同场景的验证码模块能名字不同。        await page.mouse.down()        await page.mouse.move(2000, 0, {'delay': random.randint(1000, 2000)})        await page.mouse.up()    except Exception as e:        print(e, ':验证失败')        return None,page    else:        await asyncio.sleep(2)        # 判断是否通过        slider_again = await page.Jeval('.nc-lang-cnt', 'node => node.textContent')        if slider_again != '验证通过':            return None,page        else:            #await page.screenshot({'path': './headless-slide-result.png'}) # 截图测试            print('验证通过')            return 1,page def input_time_random():    return random.randint(100, 151) if __name__ == '__main__':    username = 'xxxxxxxxx' # 淘宝用户名    pwd = 'xxxxxxxxxxx' #密码    url = 'https://login.taobao.com/member/login.jhtml?style=mini&css_style=b2b&from=b2b&full_redirect=true&redirect_url=https://login.1688.com/member/jump.htm?target=https://login.1688.com/member/marketSigninJump.htm?Done=http://login.1688.com/member/taobaoSellerLoginDispatch.htm&reg= http://member.1688.com/member/join/enterprise_join.htm?lead=http://login.1688.com/member/taobaoSellerLoginDispatch.htm&leadUrl=http://login.1688.com/member/'    loop = asyncio.get_event_loop()  #协程，开启个无限循环的程序流程，把一些函数注册到事件循环上。当满足事件发生的时候，调用相应的协程函数。    loop.run_until_complete(main(username, pwd, url))  #将协程注册到事件循环，并启动事件循环
+					
+				
+			
+		
+
+ 
+运行结果:
+ 
+ 
+ 
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: 如何解决selenium被检测，实现淘宝登陆
+
+
+Related posts:
+selenium自动登录挂stackoverflow的金牌 
+python 爬虫资源包汇总 
+python 高度鲁棒性爬虫的超时控制问题 
+数据采集技术指南 第一篇 技术栈总览-附总图和演讲ppt 
+Python模拟登录的几种方法（转） 
+解决爬虫模拟登录时验证码图片拉取提交问题的两种方式 
+
+
+	
+
+
+标题:
+持久连接 WebSocket 到底是什么？
+		首先HTTP有1.1和1.0之说，也就是所谓的keep-alive，把多个HTTP请求合并为一个，但是Websocket其实是一个新协议，跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，
+
+也就是说它是HTTP协议上的一种补充可以通过这样一张图理解
+
+有交集，但是并不是全部。
+另外Html5是指的一系列新的API，或者说新规范，新技术。Http协议本身只有1.0和1.1，而且跟Html本身没有直接关系。。
+通俗来说，你可以用HTTP协议传输非Html数据，就是这样=。=
+再简单来说，层级不一样。二、Websocket是什么样的协议，具体有什么优点
+首先，Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说。
+简单的举个例子吧，用目前应用比较广泛的PHP生命周期来解释。
+1) HTTP的生命周期通过Request来界定，也就是一个Request 一个Response，那么在HTTP1.0中，这次HTTP请求就结束了。
+在HTTP1.1中进行了改进，使得有一个keep-alive，也就是说，在一个HTTP连接中，可以发送多个Request，接收多个Response。
+但是请记住 Request = Response ， 在HTTP中永远是这样，也就是说一个request只能有一个response。而且这个response也是被动的，不能主动发起。
+教练，你BB了这么多，跟Websocket有什么关系呢？
+_(:з」∠)_好吧，我正准备说Websocket呢。。
+首先Websocket是基于HTTP协议的，或者说借用了HTTP的协议来完成一部分握手。
+在握手阶段是一样的
+——-以下涉及专业技术内容，不想看的可以跳过lol:，或者只看加黑内容——–
+首先我们来看个典型的Websocket握手（借用Wikipedia的。。）
+
+
+
+		
+		
+			
+			Python
+			
+			
+GET /chat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+Origin: http://example.com
+
+			
+				
+					
+				
+					123456789
+				
+						GET /chat HTTP/1.1Host: server.example.comUpgrade: websocketConnection: UpgradeSec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==Sec-WebSocket-Protocol: chat, superchatSec-WebSocket-Version: 13Origin: http://example.com 
+					
+				
+			
+		
+
+
+
+熟悉HTTP的童鞋可能发现了，这段类似HTTP协议的握手请求中，多了几个东西。
+我会顺便讲解下作用。
+
+
+
+		
+		
+			
+			Python
+			
+			
+Upgrade: websocket
+Connection: Upgrade
+
+			
+				
+					
+				
+					123
+				
+						Upgrade: websocketConnection: Upgrade 
+					
+				
+			
+		
+
+
+
+这个就是Websocket的核心了，告诉Apache、Nginx等服务器：注意啦，窝发起的是Websocket协议，快点帮我找到对应的助理处理~不是那个老土的HTTP。
+
+
+
+		
+		
+			
+			Python
+			
+			
+Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+
+			
+				
+					
+				
+					1234
+				
+						Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==Sec-WebSocket-Protocol: chat, superchatSec-WebSocket-Version: 13 
+					
+				
+			
+		
+
+
+
+首先，Sec-WebSocket-Key 是一个Base64 encode的值，这个是浏览器随机生成的，告诉服务器：泥煤，不要忽悠窝，我要验证尼是不是真的是Websocket助理。
+然后，Sec_WebSocket-Protocol 是一个用户定义的字符串，用来区分同URL下，不同的服务所需要的协议。简单理解：今晚我要服务A，别搞错啦~
+最后，Sec-WebSocket-Version 是告诉服务器所使用的Websocket Draft（协议版本），在最初的时候，Websocket协议还在 Draft 阶段，各种奇奇怪怪的协议都有，而且还有很多期奇奇怪怪不同的东西，什么Firefox和Chrome用的不是一个版本之类的，当初Websocket协议太多可是一个大难题。。不过现在还好，已经定下来啦~大家都使用的一个东西~ 脱水：服务员，我要的是13岁的噢→_→
+然后服务器会返回下列东西，表示已经接受到请求， 成功建立Websocket啦！
+
+
+
+		
+		
+			
+			Python
+			
+			
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=
+Sec-WebSocket-Protocol: chat
+
+			
+				
+					
+				
+					123456
+				
+						HTTP/1.1 101 Switching ProtocolsUpgrade: websocketConnection: UpgradeSec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=Sec-WebSocket-Protocol: chat 
+					
+				
+			
+		
+
+
+
+这里开始就是HTTP最后负责的区域了，告诉客户，我已经成功切换协议啦~
+
+
+
+		
+		
+			
+			Python
+			
+			
+Upgrade: websocket
+Connection: Upgrade
+
+			
+				
+					
+				
+					123
+				
+						Upgrade: websocketConnection: Upgrade 
+					
+				
+			
+		
+
+
+
+依然是固定的，告诉客户端即将升级的是Websocket协议，而不是mozillasocket，lurnarsocket或者shitsocket。
+然后，Sec-WebSocket-Accept 这个则是经过服务器确认，并且加密过后的 Sec-WebSocket-Key。服务器：好啦好啦，知道啦，给你看我的ID CARD来证明行了吧。。
+后面的，Sec-WebSocket-Protocol 则是表示最终使用的协议。
+至此，HTTP已经完成它所有工作了，接下来就是完全按照Websocket协议进行了。
+具体的协议就不在这阐述了。
+——————技术解析部分完毕——————
+
+你TMD又BBB了这么久，那到底Websocket有什么鬼用，http long poll，或者ajax轮询不都可以实现实时信息传递么。
+
+好好好，年轻人，那我们来讲一讲Websocket有什么用。
+来给你吃点胡（苏）萝（丹）卜（红）
+
+三、Websocket的作用
+在讲Websocket之前，我就顺带着讲下 long poll 和 ajax轮询 的原理。
+首先是 ajax轮询 ，ajax轮询 的原理非常简单，让浏览器隔个几秒就发送一次请求，询问服务器是否有新信息。
+场景再现：
+客户端：啦啦啦，有没有新信息(Request)
+服务端：没有（Response）
+客户端：啦啦啦，有没有新信息(Request)
+服务端：没有。。（Response）
+客户端：啦啦啦，有没有新信息(Request)
+服务端：你好烦啊，没有啊。。（Response）
+客户端：啦啦啦，有没有新消息（Request）
+服务端：好啦好啦，有啦给你。（Response）
+客户端：啦啦啦，有没有新消息（Request）
+服务端：。。。。。没。。。。没。。。没有（Response） —- looplong poll
+long poll 其实原理跟 ajax轮询 差不多，都是采用轮询的方式，不过采取的是阻塞模型（一直打电话，没收到就不挂电话），也就是说，客户端发起连接后，如果没消息，就一直不返回Response给客户端。直到有消息才返回，返回完之后，客户端再次建立连接，周而复始。
+场景再现
+客户端：啦啦啦，有没有新信息，没有的话就等有了才返回给我吧（Request）
+服务端：额。。 等待到有消息的时候。。来 给你（Response）
+客户端：啦啦啦，有没有新信息，没有的话就等有了才返回给我吧（Request） -loop
+从上面可以看出其实这两种方式，都是在不断地建立HTTP连接，然后等待服务端处理，可以体现HTTP协议的另外一个特点，被动性。
+何为被动性呢，其实就是，服务端不能主动联系客户端，只能有客户端发起。
+简单地说就是，服务器是一个很懒的冰箱（这是个梗）（不会、不能主动发起连接），但是上司有命令，如果有客户来，不管多么累都要好好接待。
+说完这个，我们再来说一说上面的缺陷（原谅我废话这么多吧OAQ）
+从上面很容易看出来，不管怎么样，上面这两种都是非常消耗资源的。
+ajax轮询 需要服务器有很快的处理速度和资源。（速度）
+long poll 需要有很高的并发，也就是说同时接待客户的能力。（场地大小）
+所以ajax轮询 和long poll 都有可能发生这种情况。
+客户端：啦啦啦啦，有新信息么？
+服务端：月线正忙，请稍后再试（503 Server Unavailable）
+客户端：。。。。好吧，啦啦啦，有新信息么？
+服务端：月线正忙，请稍后再试（503 Server Unavailable）
+
+客户端：
+
+然后服务端在一旁忙的要死：冰箱，我要更多的冰箱！更多。。更多。。（我错了。。这又是梗。。）————————–
+言归正传，我们来说Websocket吧
+通过上面这个例子，我们可以看出，这两种方式都不是最好的方式，需要很多资源。
+一种需要更快的速度，一种需要更多的’电话’。这两种都会导致’电话’的需求越来越高。
+哦对了，忘记说了HTTP还是一个无状态协议。（感谢评论区的各位指出OAQ）
+通俗的说就是，服务器因为每天要接待太多客户了，是个健忘鬼，你一挂电话，他就把你的东西全忘光了，把你的东西全丢掉了。你第二次还得再告诉服务器一遍。
+所以在这种情况下出现了，Websocket出现了。
+他解决了HTTP的这几个难题。
+首先，被动性，当服务器完成协议升级后（HTTP->Websocket），服务端就可以主动推送信息给客户端啦。
+所以上面的情景可以做如下修改。
+客户端：啦啦啦，我要建立Websocket协议，需要的服务：chat，Websocket协议版本：17（HTTP Request）
+服务端：ok，确认，已升级为Websocket协议（HTTP Protocols Switched）
+客户端：麻烦你有信息的时候推送给我噢。。
+服务端：ok，有的时候会告诉你的。
+服务端：balabalabalabala
+服务端：balabalabalabala
+服务端：哈哈哈哈哈啊哈哈哈哈
+服务端：笑死我了哈哈哈哈哈哈哈
+就变成了这样，只需要经过一次HTTP请求，就可以做到源源不断的信息传送了。（在程序设计中，这种设计叫做回调，即：你有信息了再来通知我，而不是我傻乎乎的每次跑来问你）
+这样的协议解决了上面同步有延迟，而且还非常消耗资源的这种情况。
+那么为什么他会解决服务器上消耗资源的问题呢？
+其实我们所用的程序是要经过两层代理的，即HTTP协议在Nginx等服务器的解析下，然后再传送给相应的Handler（PHP等）来处理。
+简单地说，我们有一个非常快速的接线员（Nginx），他负责把问题转交给相应的客服（Handler）。
+本身接线员基本上速度是足够的，但是每次都卡在客服（Handler）了，老有客服处理速度太慢。，导致客服不够。
+Websocket就解决了这样一个难题，建立后，可以直接跟接线员建立持久连接，有信息的时候客服想办法通知接线员，然后接线员在统一转交给客户。
+这样就可以解决客服处理速度过慢的问题了。
+同时，在传统的方式上，要不断的建立，关闭HTTP协议，由于HTTP是非状态性的，每次都要重新传输identity info（鉴别信息），来告诉服务端你是谁。
+虽然接线员很快速，但是每次都要听这么一堆，效率也会有所下降的，同时还得不断把这些信息转交给客服，不但浪费客服的处理时间，而且还会在网路传输中消耗过多的流量/时间。
+但是Websocket只需要一次HTTP握手，所以说整个通讯过程是建立在一次连接/状态中，也就避免了HTTP的非状态性，服务端会一直知道你的信息，直到你关闭请求，这样就解决了接线员要反复解析HTTP协议，还要查看identity info的信息。
+同时由客户主动询问，转换为服务器（推送）有信息的时候就发送（当然客户端还是等主动发送信息过来的。。），没有信息的时候就交给接线员（Nginx），不需要占用本身速度就慢的客服（Handler）了
+——————–
+至于怎么在不支持Websocket的客户端上使用Websocket。。答案是：不能
+但是可以通过上面说的 long poll 和 ajax 轮询来 模拟出类似的效果
+一、WebSocket是HTML5出的东西（协议），也就是说HTTP协议没有变化，或者说没关系，但HTTP是不支持持久连接的（长连接，循环连接的不算）
+
+
+作者：Ovear
+链接：https://www.zhihu.com/question/20215561/answer/40316953
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: 持久连接 WebSocket 到底是什么？
+
+
+No related posts.
+
+	
+
+
+标题:
+ubuntu 16.04 （桌面与服务器版）配置Selenium+Chrome+Python3实现自动化测试
+		ubuntu 16.04 （桌面与服务器版）配置Selenium+Chrome+Python3实现自动化测试
+
+1.安装chrome
+
+
+		
+		
+			
+			Python
+			
+			
+sudo apt-get install libxss1 libappindicator1 libindicator7
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+			
+				
+					
+				
+					123
+				
+						sudo apt-get install libxss1 libappindicator1 libindicator7wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.debsudo dpkg -i google-chrome*.deb
+					
+				
+			
+		
+
+如果上面运行
+sudo dpkg -i google-chrome*.deb命令之后报错
+
+		
+		
+			
+			Python
+			
+			
+Errors were encountered while processing:
+			
+				
+					
+				
+					1
+				
+						Errors were encountered while processing:
+					
+				
+			
+		
+
+使用如下命令修复一下：
+
+		
+		
+			
+			Python
+			
+			
+sudo apt-get install -f
+			
+				
+					
+				
+					1
+				
+						sudo apt-get install -f
+					
+				
+			
+		
+
+之后再次运行下面命令就可以了
+
+		
+		
+			
+			Python
+			
+			
+sudo dpkg -i google-chrome*.deb
+			
+				
+					
+				
+					1
+				
+						sudo dpkg -i google-chrome*.deb
+					
+				
+			
+		
+
+
+2.安装python、安装Selenium
+
+
+		
+		
+			
+			Python
+			
+			
+sudo apt-get install python3-pip
+sudo pip install selenium
+			
+				
+					
+				
+					12
+				
+						sudo apt-get install python3-pipsudo pip install selenium
+					
+				
+			
+		
+
+
+3.安装chromedriver
+安装最新版本的chromedriver，下载页面： http://chromedriver.storage.googleapis.com/index.html
+在这个页面里列出了chromedriver的各个版本，我选择版本（2.29），使用命令行安装：
+
+		
+		
+			
+			Python
+			
+			
+wget -N http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+chmod +x chromedriver
+sudo mv -f chromedriver /usr/local/share/chromedriver
+sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
+			
+				
+					
+				
+					123456
+				
+						wget -N http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zipunzip chromedriver_linux64.zipchmod +x chromedriversudo mv -f chromedriver /usr/local/share/chromedriversudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriversudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
+					
+				
+			
+		
+
+安装后确认/usr/bin目录下是否有chromedriver文件
+由于时效性，在安装时应当先去网站查看最新版本，然后替换命令行中的2.29版本信息
+4.简单示例
+这时候就可以在图形界面的终端运行python自动化测试脚本了。
+示例脚本，打开网址并截图：
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("https://www.baidu.com/")
+driver.save_screenshot(driver.title+".png")
+			
+				
+					
+				
+					12345
+				
+						from selenium import webdriver driver = webdriver.Chrome()driver.get("https://www.baidu.com/")driver.save_screenshot(driver.title+".png")
+					
+				
+			
+		
+
+ 
+5.服务器无可视化界面环境运行
+如果想要在服务器无可视化界面使用Chrome进行测试，需要使用工具Xvfb.
+
+		
+		
+			
+			Python
+			
+			
+sudo apt-get -y install xvfb gtk2-engines-pixbuf
+sudo apt-get -y install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
+# 截图功能，可选
+sudo apt-get -y install imagemagick x11-apps
+Xvfb -ac :99 -screen 0 1280x1024x16 & export DISPLAY=:99
+			
+				
+					
+				
+					12345
+				
+						sudo apt-get -y install xvfb gtk2-engines-pixbufsudo apt-get -y install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable# 截图功能，可选sudo apt-get -y install imagemagick x11-appsXvfb -ac :99 -screen 0 1280x1024x16 & export DISPLAY=:99
+					
+				
+			
+		
+
+这可以是手动在命令行敲完运行，也可以使用python包完成
+手动版直接在上面Xvfb装完启动后执行下面脚本：
+
+		
+		
+			
+			Python
+			
+			
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("https://github.com/")
+print driver.title
+			
+				
+					
+				
+					12345
+				
+						from selenium import webdriver driver = webdriver.Chrome()driver.get("https://github.com/")print driver.title
+					
+				
+			
+		
+
+自动版：
+
+		
+		
+			
+			Python
+			
+			
+from pyvirtualdisplay import Display
+from selenium import webdriver
+display = Display(visible=0, size=(800, 600))
+display.start()
+driver = webdriver.Chrome()
+driver.set_window_size(800,600) #设置浏览器窗口的大小
+url = "https://www.baidu.com"
+driver.get(url)
+			
+				
+					
+				
+					12345678
+				
+						from pyvirtualdisplay import Displayfrom selenium import webdriverdisplay = Display(visible=0, size=(800, 600))display.start()driver = webdriver.Chrome()driver.set_window_size(800,600) #设置浏览器窗口的大小url = "https://www.baidu.com"driver.get(url)
+					
+				
+			
+		
+
+ 
+ 
+ 
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: ubuntu 16.04 （桌面与服务器版）配置Selenium+Chrome+Python3实现自动化测试
+
+
+Related posts:
+Scrapy-笔记二  中文处理以及保存中文数据 
+Scrapy笔记三 自动多网页爬取-本wordpress博客所有文章 
+基于百度IP定位的网站访问来源分析的python实战项目–实践笔记零–项目规划 
+基于百度IP定位的网站访问来源分析的python实战项目–实践笔记一–ip与经纬信息采集 
+数据采集技术指南 第一篇 技术栈总览-附总图和演讲ppt 
+Python3 中文在URL中的编码解码 
+
+
+	
+
+
+标题:
+从谷歌和12306验证码的破解说起，人类与机器不平等的对抗
+		12306验证码，长时间高居反人类产品排行榜第一名，普通人一次通过率仅8%，人也识别不清的图片就能成功阻挡自动机了吗？谷歌街景验证码完全取自自然环境确保图片的不重复不被爆破，但是面对黑产的巨额利润，又能坚持多久？本文通过仿黑产破解的手法去重新思考验证码产品发展方向
+
+验证码，人类与机器不平等的对抗
+在这AI的新时代下，破解一款验证码的成本有多低？
+很多时候看似复杂的谷歌街景和12306验证码，让人望而却步的百万图库，实际并不复杂：
+
+12306验证码有多少种问题呢？–其实只有100种
+他的数百万图库需要多少样本可以训练识别？–只需要5W张
+需要花费多少标记成本呢？–只需要500块
+破解花费了多少时间？–笔者一周的零碎时间
+模型需要多少计算力？–GTX1070上训了20分钟
+识别速度呢？–接口虽然慢其实只是部署在2核2G的云机器上而已
+
+终究起来，现在的人机识别的对抗已经不再是人力对抗人力，图像的识别已经再也不用向传统验证码识别一样，人工去分析每一种特征去耐心的做切割和字库，如今端到端的CNN模型完美的解决了纯图像分类问题。字符型验证码，已经再也不需要二值预处理分割等复杂操作，一个4层的仿alexnet的网络模型就可以轻松达到90+的准确率。
+目前的验证码行业，业界多数还围绕在更难看，更复杂的发展方向上。有的走向了反人类的深渊，比如苹果app商店的
+
+也有的取自自然防止爆破，比如谷歌的街景路牌：
+ 
+然而，黑产的破解方考虑问题是只关注于结果，简单统计下，谷歌验证码出现街景问题的概率高达40%，其余问题30%概率分别为汽车或者道路，坏人哪怕只做出一个路牌定位器，就能意味着可以通过无限刷新验证码只验证路牌类问题，从而根本无视其余复杂的自然场景。然而研发一个路牌定位器需要多少资源？笔者采用fast-rcnn算法，仅需要500张粗糙标注的样本，30分钟训练便有了上图的定位效果。
+12306验证码是如何破解的呢？
+回到12306验证码，要解决这款验证码，本质只是一个 分类问题
+ 
+文本的分类：
+首先要做问题的识别，将下图中的问题部分200*30的区域截取处理，到某知名实验室的OCR接口去识别，会得到有80%准确率的标记样本，这个准确率并不乐观，因此我们自己做一个问题识别器，如果直接将全部OCR识别后的样本投入Alex-net模型中，由于存在大幅度的错误数据得到的分类器的准确率将低于10%效果很差。
+因此要做样本数据的清洗，先统计全部OCR样本，就会发现5W张图片平均每个问题有1%的出现率，但是也有会不少错误识别结果，将出现频率高的认为是一个正确的标签，去除出现频率特别低的样本数据后（比如口哨偶尔会识别错为口肖，出现频率低则去除该样本），重新训练识别成功率就高达99%，扭曲的问题文本形同虚设。
+
+
+		
+		
+			
+			Python
+			
+			
+['日历', '薯条', '口哨', '蜥蜴', '蒸笼', '护腕', '印章', '蜜蜂', '文具盒', '绿豆', '菠萝', '铃铛', '剪纸', '耳塞', '手掌印', '锣', '仪表盘', '红枣', '金字塔', '电线', '老虎', '', '辣椒酱', '挂钟', '双面胶', '啤酒', '蜡烛', '雨靴', '毛线', '茶几', '茶盅', '档案袋', '盘子', '狮子', '订书机', '篮球', '国结', '开瓶器', '打字机', '热水袋', '海鸥', '电子秤', '排风机', '风铃', '棉棒', '鞭炮', '龙舟', '电饭煲', '锅铲', '珊瑚', '蚂蚁', '红豆', '海苔', '钟表', '卷尺', '冰箱', '苍蝇拍', '烛台', '药片', '调色板', '创可贴', '沙包', '话梅', '本子', '安全帽', '海报', '刺绣', '牌坊', '网球拍', '路灯', '航母', '高压锅', '黑板', '拖把', '锦旗', '公交卡', '红酒', '跑步机', '樱桃', '沙拉', '漏斗']
+			
+				
+					
+				
+					1
+				
+						['日历', '薯条', '口哨', '蜥蜴', '蒸笼', '护腕', '印章', '蜜蜂', '文具盒', '绿豆', '菠萝', '铃铛', '剪纸', '耳塞', '手掌印', '锣', '仪表盘', '红枣', '金字塔', '电线', '老虎', '', '辣椒酱', '挂钟', '双面胶', '啤酒', '蜡烛', '雨靴', '毛线', '茶几', '茶盅', '档案袋', '盘子', '狮子', '订书机', '篮球', '国结', '开瓶器', '打字机', '热水袋', '海鸥', '电子秤', '排风机', '风铃', '棉棒', '鞭炮', '龙舟', '电饭煲', '锅铲', '珊瑚', '蚂蚁', '红豆', '海苔', '钟表', '卷尺', '冰箱', '苍蝇拍', '烛台', '药片', '调色板', '创可贴', '沙包', '话梅', '本子', '安全帽', '海报', '刺绣', '牌坊', '网球拍', '路灯', '航母', '高压锅', '黑板', '拖把', '锦旗', '公交卡', '红酒', '跑步机', '樱桃', '沙拉', '漏斗']
+					
+				
+			
+		
+
+
+图像的分类：
+依旧是将标记好的图片投入VGG-16层的模型中，初期得到的识别结果是很差的，因为标记数据并不会完全正确，事实上现在的通用模型已经十分完善，训练的结果很依赖于数据清洗效果如何。
+然而，有什么办法得到一个能高精度区分标记正确与否的样本集呢？当然是问网站本身了。
+绝大多数网站， 都会在登录页面存在验证码，而用户常识登录时，会首先校验验证码是否正确，其次是账号密码，因此就是自己生产一堆随机账号密码，去撞登录网页，发现验证码校验通过了，但是账号密码错误，就可以有效筛选出正确的标记数据。
+同样的思路，如果我用现在已经达到95%的识别模型去重复这个样本标记的行为，将得到的就会是远比现在5W样本集多的多的样本量，可预期将得到的准确率会更高，当然会有同学说，那样你的模型将局限在这类问题下，而不能成功适应他新的图像，一旦更新不就失效了吗？
+是的，但是解决实际问题的时候，一些小tips就能解决这样问题，
+
+问：如何应对验证码图片的更新迭代？
+答：只识别模型能识别的验证码，在高并发刷新下即使只能识别5%的问题，实际应用也是100%。
+问：如何让模型自己学习没遇到过的图像?
+答：将非模型可识别的问题和图片标记为 _  交付人工打码，将打码结果重新训练模型。
+问：上面的问题有没有高级点的解决办法？
+答：撞验证码库，新出现的问题随机性标注，8个格子随机撞约有2%的成功率，学会一个新物体也只需要500张样本，撞10W次即可。
+问：能不能别这么流氓?
+答：不能，因为面对实际问题与巨大利润，坏人就是这么流氓。
+
+验证码场景的对抗该何去何从？
+在验证码这类场景的人机对抗是十分不平等的，坏人哪怕在识别上做到5%的识别，也能通过撞的手法当成100%，固定类型的验证码图像又能够被低价打码获取到样本，即使是谷歌那样自然背景缺乏更新迭代也难逃黑手，持续的在图像方面纠缠就会走向12306和苹果那样影响用户体验的产品。
+面对恶意的抗争，同样要掌握对手的思维，或许实验室中图像识别率达不到90%以上就是失败的模型，但是放在黑产中5%就是一个能赚钱的模型。
+或许并不该用破解率去作为唯一指标，面对新时代的黑产，更应该用黑产的角度来反思现在的方向，从对抗的角度除了识别率，更多去牵制黑产需要动用的资源成本，破解率，识别速度，打码成本，训练成本，更新迭代的速度，后台策略更新的速度，来综合衡量一个验证码产品。
+体系化以成本为评估的验证系统
+例如谷歌的验证码，时不时会弹出4*4个格子的汽车道路识别，意味着坏人要做16次的CNN分类，然而在校验的过程中，他会充满互动，识别出若干后还会随机弹出若干要求继续识别，这样即使最终能被破解，坏人所需要的计算力成本时间交互成本就远远大于普通验证码。并且后台还有更多浏览器行为，设备指纹，IP等普通用户看不到的属性在综合形成人机识别的体系。
+就像我们的VTT验证码新物体新逻辑问题快速迭代半小时快速上线，而即使坏人要采用fastrcnn等算法进行目标定位破解，则需要数十倍的标注成本以及多倍人力不断跟随迭代，而不再是传统字符验证码几分几厘的标注成本，自动化破解无需人力调参。而坏人在破解过程中用到的ip资源设备指纹等，又有其他策略进行对抗，因此验证码将不再只是一张验证码图片而是一套人机验证系统，一套的围绕着影响坏人成本的人机识别体系。
+在这种体系下我们看到的验证码将会是最可爱可亲的情切的图片，一键的点击，通过无数只有真人具备的特征才能通过这道验证。
+
+也会看到利用机器学习在理解人类逻辑的薄弱点而推出的
+基于逻辑语义的VTT（Visual Turing Test）验证码
+VTT验证码需要用户根据题目，选出图中一个或者多个答案物体，通过点击、拖动、连接等方式选中区域提交给后台判断。在保证体验依旧简单无需输入的基础上，实现了良好的对抗效果。VTT的图片由后台3D渲染随机产生，保证图片不会重复，语义也可以根据题目中的图片中的物件属性组合产生，多种多样的变化可以有效阻挡恶意。
+ 
+或许要不了多久，坏人依旧诱惑于高额利润最终突破我们的验证码，而我们也将不断从红蓝对抗中，越战越强。
+
+原创文章，转载请注明： 转载自URl-team
+本文链接地址: 从谷歌和12306验证码的破解说起，人类与机器不平等的对抗
+
+
+Related posts:
+数据采集技术指南 第一篇 技术栈总览-附总图和演讲ppt 
+TensorFlow识别字母扭曲干扰型验证码-开放源码与98%模型 
+Scrapy笔记四 自动爬取网页之使用CrawlSpider 
+python 进程超时控制 防止phantomjs假死 
+IOError: broken data stream when reading image file 
+关于反爬虫我见到的各种前后端奇葩姿势 
+
+
+	
+
+

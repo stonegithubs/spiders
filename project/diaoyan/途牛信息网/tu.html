@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>访问速度过快 - 途牛旅游网</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link type="text/css" href="//img1.tuniucdn.com/ui/v2/common.css?v=1229" rel="stylesheet" />
+<link type="text/css" href="//img1.tuniucdn.com/u/zt/commonhead/zthead-min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="//img1.tuniucdn.com/zt/fangshua/style.css?v=1">
+<style type="text/css">
+	body{
+		font-size: 14px;
+	}
+	.main form{
+		width: 350px;
+	}
+	.main .check_image{
+		position: absolute;
+		height: 24px;
+		width: 300px;
+		top: 217px;
+		left: 375px;
+	}
+	.main .check_image a{
+		color: #fff;
+	}
+	.img_box{
+		position: absolute;
+		top: 310px;
+		left: 90px;
+		width: 500px;
+	}
+	.img_box a{
+		margin-right: 5px;
+	}
+	.pic_name{
+		display: none;
+	}
+	.response_box{
+		display: inline-block;
+	}
+	.response_box .response{
+		width: 40px;
+		height: 40px;
+		background: #fff;
+		display: inline-block;
+		text-align: center;
+		font-size: 16px;
+		line-height: 40px;
+		margin-right: 5px;
+		border: none;
+	}
+	.confirm_btn{
+		height: 36px;
+		width: 72px;
+		border: 0px;
+		border-radius: 3px;
+		background-color: #f78a0c;
+		font: 16px/34px "microsoft yahei";
+		text-align: center;
+		color: #FFF;
+		cursor: pointer;
+	}
+	a.clear_btn{
+		color: #fff;
+	}
+	.main .code_form{
+		top: 380px;
+	}
+	.code_tips{
+		position: absolute;
+		top: 285px;
+		left: 90px;
+		color: #fff;
+	}
+</style>
+<script type="text/javascript" src="//ssl1.tuniucdn.com/j/201406191714/3rd/jquery-1.7.2.min.js,common/in-min.js" crossorigin></script>
+<script type = "text/javascript">
+var refresh_code = {
+		onload_change_indenty_img: function() {
+			$('#identify_img').hide();
+			rd = Math.random();
+			var url = "/hotelWaf/getAuthCode" + "?cache=" + rd;
+			$('#identify_img').attr('src', url);
+		},
+		change_indenty_img: function() {
+			var rd = Math.random();
+			var url = "/hotelWaf/getAuthCode" + "?cache=" + rd;
+			$('#identify_img').attr('src', url);
+		},
+		indentify_img_onload: function() {
+			$('#img_loading').hide();
+			$('#identify_img').show();
+			$('#identify_code').val('');
+
+			this.getPics();
+		},
+		getPics: function(){
+			var url = '/hotelWaf/getAuthPic';
+			$.ajax({
+				type: "GET",
+				url: url,
+				data: {rd:Math.random()},
+				success: function(data) {
+					if(data){
+						$("#error_msg").val("");
+						$(".img_box").html(data);
+
+						$.each($(".response_box .response"),function(){
+							$(this).val("");
+							$(this).attr("data_id","");
+						});
+
+						$(".img_box a").on("click",function(){
+							var name = $(this).find("span").text();
+							var id = $(this).find("img").attr("data_id");
+
+							$.each($(".response_box .response"),function(){
+								if(!$(this).attr("data_id")){
+									$(this).val(name);
+									$(this).attr("data_id",id);
+									return false;
+								}
+							});
+						});
+					}
+				}
+			});
+		},
+		check_icode: function() {
+			$("#error_msg").text("");
+
+			var responses = $(".response_box .response");
+			var identify = [];
+			for(var i= 0;i<responses.length;i++){
+				if(!$(responses[i]).attr("data_id")){
+					$("#error_msg").text("请点击文字图片！");
+					return false;
+				}else{
+					identify.push($(responses[i]).attr("data_id"));
+				}
+			}
+
+			var url = '/hotelWaf/checkAuthCode';
+			var _this = this;
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: {
+					'tnwaf_identify_code': identify.join("|"),
+				},
+				success: function(data) {
+					if(data == 1){
+						$('form').submit();
+					}else if(data == 0){
+						$("#error_msg").text("验证错误，请重新选择！");
+
+						$.each(responses,function(){
+							$(this).val("");
+							$(this).attr("data_id","");
+						});
+
+						_this.change_indenty_img();
+					}
+				}
+			});
+		}
+}
+$(function(){
+    refresh_code.onload_change_indenty_img();
+    document.onkeydown = function (e) {
+        var theEvent = window.event || e;
+        var code = theEvent.keyCode || theEvent.which;
+        if (code == 13) {
+        	refresh_code.check_icode();
+        }
+	};
+
+	$(".clear_btn").on("click",function(){
+		$.each($(".response_box .response"),function(){
+			$(this).val("");
+			$(this).attr("data_id","");
+		});
+	});
+});
+</script>
+</head>
+<body>
+	<div class="head">
+		<div class="main">
+			<a href="//www.tuniu.com"><img src="//img.tuniucdn.com/img/20151013/common/logo/logo-158-53.gif" /></a>
+		</div>
+	</div>
+	<div class="content">
+		<div class="main">
+		    			<form class='code_form' method="GET" action="http://hotel.tuniu.com/detail/414421">
+			    
+			    			            <input type="hidden" name="id" value="414421"/>
+			    			    				<div class="response_box">
+					<input class="response" />
+					<input class="response" />
+					<input class="response" />
+					<input class="response" />
+					<input type="button" class="confirm_btn" value="确定" onclick="refresh_code.check_icode()"/>
+					<a class="clear_btn" href="javascript:;">清空</a>
+				</div>
+				<p style="color: red;font-size: 16px;margin-top: 10px;" id="error_msg"></p>
+			</form>
+			<div class="check_image">
+				<img src="//img1.tuniucdn.com/u/user/img/loading.gif" height="24" width="24" align="absmiddle" id="img_loading" />
+				<img id = 'identify_img'alt="如验证码无法辨别，点击即可刷新。" src="" onclick="refresh_code.change_indenty_img();" onload="refresh_code.indentify_img_onload();"/>
+				<a href="javascript:void(0);" onclick="refresh_code.change_indenty_img();">换一张？</a>
+			</div>
+			<p class="code_tips">(请按照上面验证码的中文顺序，依次点击下面的文字按钮)</p>
+			<div class="img_box">
+
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<span>Copyright &copy; 2006-2016 南京途牛科技有限公司 Tuniu.com | 营业执照 | ICP证：苏B2-20130006 | 苏ICP备12009060号 | 南京旅游网</span>
+	</div>
+</body>
+</html>

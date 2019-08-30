@@ -1,0 +1,108 @@
+{  "errno": 0,
+  "phonetic": [
+    {
+      "src_str": "\u4f60",
+      "trg_str": "n\u01d0"
+    },
+    {
+      "src_str": "\u597d",
+      "trg_str": "h\u01ceo"
+    }
+  ],
+  "from": "en",
+  "to": "zh",
+  "trans": [
+    {
+      "dst": "\u4f60\u597d",
+      "prefixWrap": 0,
+      "src": "hello",
+      "relation": [],
+      "result": [
+        [
+          0,
+          "\u4f60\u597d",
+          [
+            "0|5"
+          ],
+          [],
+          [
+            "0|5"
+          ],
+          [
+            "0|6"
+          ]
+        ]
+      ]
+    }
+  ],
+  "dict": {
+    "word_name": "hello",
+    "from": "kingsoft",
+    "word_means": [
+      "\u6253\u62db\u547c",
+      "\u54c8\u55bd\uff0c\u5582",
+      "\u4f60\u597d\uff0c\u60a8\u597d",
+      "\u8868\u793a\u95ee\u5019",
+      "\u201c\u5582\u201d\u7684\u62db\u547c\u58f0\u6216\u95ee\u5019\u58f0",
+      "\u558a\u201c\u5582\u201d"
+    ],
+    "exchange": {
+      "word_third": "",
+      "word_done": "",
+      "word_pl": [
+        "hellos"
+      ],
+      "word_est": "",
+      "word_ing": "",
+      "word_er": "",
+      "word_past": ""
+    },
+    "items": [
+      ""
+    ],
+    "tags": {
+      "core": [
+        "\u9ad8\u8003",
+        "CET4",
+        "\u8003\u7814"
+      ],
+      "other": [
+        ""
+      ]
+    },
+    "symbols": [
+      {
+        "ph_am_mp3": "\/1\/0\/5d\/41\/5d41402abc4b2a76b9719d911017c592.mp3",
+        "ph_am": "h\u0259\u02c8lo\u028a",
+        "ph_en_mp3": "",
+        "ph_en": "h\u0259'l\u0259\u028a",
+        "ph_other": "",
+        "parts": [
+          {
+            "part": "int.",
+            "means": [
+              "\u6253\u62db\u547c",
+              "\u54c8\u55bd\uff0c\u5582",
+              "\u4f60\u597d\uff0c\u60a8\u597d",
+              "\u8868\u793a\u95ee\u5019"
+            ]
+          },
+          {
+            "part": "n.",
+            "means": [
+              "\u201c\u5582\u201d\u7684\u62db\u547c\u58f0\u6216\u95ee\u5019\u58f0"
+            ]
+          },
+          {
+            "part": "vi.",
+            "means": [
+              "\u558a\u201c\u5582\u201d"
+            ]
+          }
+        ],
+        "ph_tts_mp3": "\/5\/d\/4\/5d41402abc4b2a76b9719d911017c592.mp3"
+      }
+    ],
+    "is_CRI": 1
+  }
+}

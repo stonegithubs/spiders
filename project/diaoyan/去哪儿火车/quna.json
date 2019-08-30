@@ -1,0 +1,26 @@
+{
+  '商务座': {
+    'price': 1748,
+    'count': 0,
+    'enable': True,
+    'seatMap': {
+      'ticketNumStatus': 3
+    }
+  },
+  '一等座': {
+    'price': 933,
+    'count': 6,
+    'enable': True,
+    'seatMap': {
+      'ticketNumStatus': 1
+    }
+  },
+  '二等座': {
+    'price': 553,
+    'count': 100,
+    'enable': True,
+    'seatMap': {
+      'ticketNumStatus': 2
+    }
+  }
+}
